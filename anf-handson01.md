@@ -159,7 +159,7 @@ az netappfiles pool update -g anfdemo-rg \
     --qos-type Manual
 </pre>
 
-- Change throughput manually to 50Mbps
+And change throughput manually to 50Mbps
 <pre>
 az netappfiles volume update -g anfdemo-rg \
     --account-name anfjpe --pool-name pool1 \
@@ -168,6 +168,13 @@ az netappfiles volume update -g anfdemo-rg \
 </pre>
 
 ## 18. Extend pool size to increase throughput further
+Extend pool size to 8 TiB
+<pre>
+az netappfiles pool update -g anfdemo-rg \
+    --account-name anfjpe \
+    --name pool1 \
+    --size 8
+</pre>
 
 ## 19. Change Service Level to increase throughput furthermore
 
