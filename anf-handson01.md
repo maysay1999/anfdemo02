@@ -8,7 +8,9 @@
 
 [View hands-on diagram](https://github.com/maysay1999/anfdemo02/blob/main/211202_hands-on_diagram_linux_nfs_sap_nfs41.pdf)
 
-## 1. Create Resouce Group named *anfdemo01-rg* located *Japan East*
+## 1. Create Resouce Group
+- Resource Group name: anfdemo01-rg
+- Location: Japan East
 `az group create -n anfdemo-rg -l japaneast`</br></br>
 [GUI: Create Resource Group](images/resource-group.png)
 
