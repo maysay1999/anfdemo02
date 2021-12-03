@@ -69,7 +69,9 @@ az netappfiles volume create \
     --file-path nfsvol1 \
     --protocol-types NFSv3
 </pre>
-
+Note) 
+<p>Maximum size of a single volume: 100 TiB</p>
+<p>Maximum number of volumes per capacity pool: 500</p>
 
 ## 7. Create SUSE linux 15 VM
 ### **Considering to set ARM template**
@@ -146,7 +148,7 @@ az netappfiles snapshot policy create -g anfdemo-rg \
     --snapshot-policy-name policy01 \
     -l japaneast \
     --hourly-snapshots 8 \
-    --hourly-minute 5 \
+    --hourly-minute 59 \
     --enabled true
 </pre>
 
