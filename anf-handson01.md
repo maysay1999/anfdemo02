@@ -47,6 +47,9 @@ az netappfiles pool create \
     --size 4 \
     --service-level Standard
 </pre>
+Note) 
+<p>Maximum size of a single capacity pool: 500 TiB</p>
+<p>Maximum number of capacity pools per NetApp account: 25</p>
 
 ## 6. Create volume
 - Volume name: nfsvol1
@@ -124,6 +127,7 @@ Note) Not necesssry to install NFS utilities
 - Create clone volume from the snapshot
 - Revert
 - Create one-time snapshot: *snapshot01*
+Note) Max number of snapshot per volume is 255
 
 ## 15. Snapshot: file-based restoration
 - `cd /mnt/nfsvol1/`
@@ -135,6 +139,16 @@ Note) Not necesssry to install NFS utilities
 - Verify: `cd ../../` and `cat text2.txt`
 
 ## 16. Snapshot policy
+Note) Timezone is UTC.  Japan Standard time is UTC +9 
+<pre>
+az netappfiles snapshot policy create -g anfdemo-rg \
+    --account-name anfjpe \
+    --snapshot-policy-name policy01 \
+    -l japaneast \
+    --hourly-snapshots 8 \
+    --hourly-minute 5 \
+    --enabled true
+</pre>
 
 ## 17. Change QoS type to Manual from Auto
 <pre>
