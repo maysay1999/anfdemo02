@@ -190,7 +190,7 @@ az netappfiles pool create \
     --qos-type Manual \
     --service-level Premium
 </pre>
-<p>And after moving all volumes to pool2, delete pool1</p>
+And after moving all volumes to pool2, delete pool1</br>
 `az netappfiles pool delete -g anfdemo-rg -a anfjpe -n pool1`
 
 ## 19. Cross Region Replication
