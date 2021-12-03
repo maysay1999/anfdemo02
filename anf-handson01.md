@@ -74,7 +74,7 @@ az netappfiles volume create \
     --subnet anf-sub \
     --usage-threshold 1024 \
     --file-path nfsvol1 \
-    --protocol-types NFSv3
+    --protocol-types "NFSv4.1
 </pre>
 Note)</br>
 Maximum size of a single volume: 100 TiB</br>
