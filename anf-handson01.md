@@ -81,14 +81,15 @@ Maximum size of a single volume: 100 TiB</br>
 Maximum number of volumes per capacity pool: 500</br>
 
 ## 7. Create SUSE linux 15 VM
-- VM type: Standard B2S
-- Authentication type: password
-- Username: anfadmin
-- Password: 
-- OS disk type: Standard HDD
-- VNet: anfjpe-vnet 
-- Subnet: vm-sub
-- Public IP: None (security reason)
+- VM type: **Standard B2S**
+- Image: **SUSE linux 15**
+- Authentication type: **password**
+- Username: **anfadmin**
+- Password: ----
+- OS disk type: **Standard HDD**
+- VNet: **anfjpe-vnet**
+- Subnet: **vm-sub**
+- Public IP: **None** (security reason)
 
 ## 8. Configure Bastion
 <pre>
