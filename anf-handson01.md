@@ -11,6 +11,7 @@
 ## 1. Create Resouce Group
 - Resource Group name: anfdemo01-rg
 - Location: Japan East
+
 `az group create -n anfdemo-rg -l japaneast`</br></br>
 [GUI: Create Resource Group](images/resource-group.png)
 
