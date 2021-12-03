@@ -85,28 +85,32 @@ az network bastion create -g $RG \
     --vnet-name $VNET
 </pre>
 
-## 9. Mount ANF as NFS 4.1
+## 9. Login on SUSE via Bastion
+- Login as root `sudo su -` or `sudo -i`
+- Verify login as root `whoami`
+
+## 10. Mount ANF as NFS 4.1
 - Mount path: /mnt/nfsvol1/
 - Follow **Mount Instruction**
 Note) Not necesssry to install NFS utilities
 
-## 10. Install fio
+## 11. Install fio
 `zypper install fio`
 
-## 11. Run fio command to measure realtime throughput
+## 12. Run fio command to measure realtime throughput
 `fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=180 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=FioDiskThroughputTest`
 
-## 12. Change size of volume to 2TiB
+## 13. Change size of volume to 2TiB
 - Expected value: Thougthput to be changed to 32Mbps from 16Mbps
 
-## 13. One-time Snapshot and volume-based restration
+## 14. One-time Snapshot and volume-based restration
 - Create a test file named test.txt under /mnt/nfsvol1/ `echo "this is the test" > text.txt`
 - Create one-time snapshot: *snapshot01*
 - Create clone volume from the snapshot
 - Revert
 - Create one-time snapshot: *snapshot01*
 
-## 14. Snapshot: file-based restoration
+## 15. Snapshot: file-based restoration
 - `cd /mnt/nfsvol1/`
 - `ls -la`
 - `cd .snapshot`
@@ -115,13 +119,13 @@ Note) Not necesssry to install NFS utilities
 - Restore text.txt as `text2.txt: cp text.txt ../../text2.txt`
 - Verify: `cd ../../` and `cat text2.txt`
 
-## 15. Snapshot policy
+## 16. Snapshot policy
 
-## 16. Manual QoS
+## 17. Manual QoS
 
-## 17. Extend pool size to increase throughput further
+## 18. Extend pool size to increase throughput further
 
-## 18. Change Service Level to increase throughput furthermore
+## 19. Change Service Level to increase throughput furthermore
 
 ## 19. Cross Region Replication
 
