@@ -122,6 +122,7 @@ Note) Not necesssry to install NFS utilities
 
 ## 13. Change size of volume to 2TiB
 - Expected value: Thougthput to be changed to 32Mbps from 16Mbps
+- See realtime change of throughput
 
 ## 14. One-time Snapshot and volume-based restration
 - Create a test file named test.txt under /mnt/nfsvol1/ `echo "this is the test" > text.txt`
