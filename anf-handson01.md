@@ -47,9 +47,9 @@ az netappfiles pool create \
     --size 4 \
     --service-level Standard
 </pre>
-Note) 
-<p>Maximum size of a single capacity pool: 500 TiB</p>
-<p>Maximum number of capacity pools per NetApp account: 25</p>
+Note)</br>
+Maximum size of a single capacity pool: 500 TiB</br>
+Maximum number of capacity pools per NetApp account: 25</br>
 
 ## 6. Create volume
 - Volume name: nfsvol1
@@ -69,9 +69,9 @@ az netappfiles volume create \
     --file-path nfsvol1 \
     --protocol-types NFSv3
 </pre>
-Note) 
-<p>Maximum size of a single volume: 100 TiB</p>
-<p>Maximum number of volumes per capacity pool: 500</p>
+Note)</br>
+Maximum size of a single volume: 100 TiB</br>
+Maximum number of volumes per capacity pool: 500</br>
 
 ## 7. Create SUSE linux 15 VM
 ### **Considering to set ARM template**
