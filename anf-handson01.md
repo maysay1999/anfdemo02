@@ -6,8 +6,7 @@
 - Unix permission: `az feature register --namespace Microsoft.NetApp --name ANFUnixPermissions`
 - Unix chown: `az feature register --namespace Microsoft.NetApp --name ANFChownMode`
 
-<a href="./blob/main/211202_hands-on_diagram_linux_nfs_sap_nfs41.pdf" target="_top"> Donload Diagram</a>
-
+[Download Diagram](https://github.com/maysay1999/anfdemo02/blob/main/211202_hands-on_diagram_linux_nfs_sap_nfs41.pdf)
 
 ## 1. Create Resouce Group named *anfdemo01-rg* located *Japan East*
 `az group create -n anfdemo-rg -l japaneast`
