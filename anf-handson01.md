@@ -121,7 +121,12 @@ Note) Not necesssry to install NFS utilities
 
 ## 16. Snapshot policy
 
-## 17. Manual QoS
+## 17. Change QoS type to Manual from Auto
+<pre>
+az netappfiles pool update -g anfdemo-rg \
+    --account-name anfjpe --name pool1 \
+    --qos-type Manual
+</pre>
 
 ## 18. Extend pool size to increase throughput further
 
