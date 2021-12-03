@@ -63,7 +63,7 @@ az netappfiles volume create \
     --pool-name mypool1 \
     --name nfsvol1 \
     --service-level Standard \
-    --vnet $MCVNET \
+    --vnet anfjpe-vnet \
     --subnet anf-sub \
     --usage-threshold 1024 \
     --file-path nfsvol1 \
@@ -177,6 +177,21 @@ az netappfiles pool update -g anfdemo-rg \
 </pre>
 
 ## 19. Change Service Level to increase throughput furthermore
+- Create 4TiB one more pool **pool2** as Premium Service Level
+- Move the current volumes to **pool2**
+- Remove pool1
+<pre>
+az netappfiles pool create \
+    --resource-group anfdemo-rg \
+    --location japaneast \
+    --account-name anfjpe \
+    --pool-name pool2 \
+    --size 4 \
+    --qos-type Manual \
+    --service-level Premium
+</pre>
+And after moving all volumes to pool2, delete pool1
+`az netappfiles pool delete -g anfdemo-rg -a anfjpe -n pool1`
 
 ## 19. Cross Region Replication
 
