@@ -208,7 +208,7 @@ az netappfiles pool create \
 And after moving all volumes to pool2, delete pool1</br>
 `az netappfiles pool delete -g anfdemo-rg -a anfjpe -n pool1`
 
-## 19. Cross Region Replication
+## 20. Cross Region Replication
 ### CRR process to be done in the GUI
 - Briefing on Cross Region Replicaiton (DR)
 - Create a new VNet, **anfjpw-vnet**  
