@@ -52,6 +52,21 @@ az netappfiles pool create \
 - Volume name: nfsvol1
 - NFS 4.1
 Note) It take around 4 minutes
+<pre>
+az netappfiles volume create \
+    --resource-group anfdemo-rg \
+    --location japaneast \
+    --account-name anfjpe \
+    --pool-name mypool1 \
+    --name nfsvol1 \
+    --service-level Standard \
+    --vnet $MCVNET \
+    --subnet anf-sub \
+    --usage-threshold 1024 \
+    --file-path nfsvol1 \
+    --protocol-types NFSv3
+</pre>
+
 
 ## 7. Create SUSE linux 15 VM
 ### **Considering to set ARM template**
