@@ -210,15 +210,15 @@ And after moving all volumes to pool2, delete pool1</br>
 ## 19. Cross Region Replication
 ### CRR process to be done in the GUI
 - Briefing on Cross Region Replicaiton (DR)
-- Create a new VNet, anfjpw-vnet  
-- Address space is 172.21.0.0/16
-- Location: Japan West (pair region). 
-- Create a new subnet, vm-sub.  172.21.0.0/24
-- Create a new subnet, anf-sub.  172.21.1.0/26
-- ANF netapp account: anfjpw (location: Japan West)
-- Capacity pool name: pooldr (4TiB, Standard)
-- Replication volume name: voldr (througput 16Mbps)
-- Replication frequency: once a day
+- Create a new VNet, **anfjpw-vnet**  
+- Address space is **172.21.0.0/16**
+- Location: **Japan West** (pair region). 
+- Create a new subnet, **vm-sub**.  172.21.0.0/24
+- Create a new subnet, **anf-sub**.  172.21.1.0/26
+- ANF netapp account: **anfjpw** (location: Japan West)
+- Capacity pool name: **pooldr** (4TiB, Standard)
+- Replication volume name: **voldr** (througput 16Mbps)
+- Replication frequency: **once a day**
 
 Reference
 - [Price of Cross Region Replication](https://azure.microsoft.com/en-us/pricing/details/netapp/)</br>
