@@ -9,7 +9,12 @@
 ## 1. Create Resouce Group named *anfdemo01-rg* located *Japan East*
 `az group create -n anfdemo-rg -l japaneast`
 
-## 2. Create VNet *anfjpe-vnet*
+## 2. Create VNet anfjpe-vnet
+- VNet name: anfjpe-vnet
+- Location: Japan East
+- Address Space: 172.20.0.0/16
+- Subnet name: vm-subnet
+- Subnet: 172.20.0.0/24
 <pre>
 az network vnet create -g anfdemo-rg -n anfjpe-vnet \
     --address-prefix 172.20.0.0/16 \
@@ -17,11 +22,13 @@ az network vnet create -g anfdemo-rg -n anfjpe-vnet \
 </pre>
 
 ## 3. Create ANF subnet 172.20.1.0/26 delegated to ANF
+- ANF subnet name: anf-subnet
+- ANF subnet: 172.20.1.0/26
 <pre>
 az network vnet subnet create \
     --resource-group anfdemo-rg \
     --vnet-name anfjpe-vnet \
-    --name anf-sub \
+    --name anf-subnet \
     --delegations "Microsoft.NetApp/volumes" \
     --address-prefixes 172.20.1.0/26
 </pre>
@@ -202,5 +209,10 @@ And after moving all volumes to pool2, delete pool1</br>
 `az netappfiles pool delete -g anfdemo-rg -a anfjpe -n pool1`
 
 ## 19. Cross Region Replication
+### CRR process to be done in the GUI
+- Briefing on Cross Region Replicaiton (DR)
+- Create a new VNet.  Address space is 172.21.0.0/16 and Location should be Japan West (pair region). 
+- Create a new subnet, vm-sub.  172.21.0.0/24
+- Create a new subnet, anf-sub.  172.21.1.0/26
 
 ---
