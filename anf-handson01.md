@@ -67,7 +67,7 @@ az netappfiles volume create \
     --resource-group anfdemo-rg \
     --location japaneast \
     --account-name anfjpe \
-    --pool-name mypool1 \
+    --pool-name pool1 \
     --name nfsvol1 \
     --service-level Standard \
     --vnet anfjpe-vnet \
