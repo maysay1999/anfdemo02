@@ -10,6 +10,7 @@
 
 ## 1. Create Resouce Group named *anfdemo01-rg* located *Japan East*
 `az group create -n anfdemo-rg -l japaneast`
+![GUI: Create Resource Group](images/resource-group.png)
 
 ## 2. Create VNet anfjpe-vnet
 - VNet name: anfjpe-vnet
