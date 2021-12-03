@@ -175,6 +175,13 @@ az netappfiles pool update -g anfdemo-rg \
     --name pool1 \
     --size 8
 </pre>
+And change throughput manually to 80Mbps
+<pre>
+az netappfiles volume update -g anfdemo-rg \
+    --account-name anfjpe --pool-name pool1 \
+    --name nfsvol1 --service-level standard \
+    --throughput-mibps 80
+</pre>
 
 ## 19. Change Service Level to increase throughput furthermore
 - Create 4TiB one more pool **pool2** as Premium Service Level
