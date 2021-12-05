@@ -29,9 +29,10 @@ az network vnet create -g anfdemo-rg -n anfjpe-vnet \
 [GUI: Create VNet](images/create-vnet.png)</br>
 [GUI: Create VNet and Subnet](images/create-vnet2.png)
 
-## 3. Create ANF subnet 172.20.1.0/26 delegated to ANF
+## 3. Create ANF subnet
 - ANF subnet name: anf-subnet
 - ANF subnet: 172.20.1.0/26
+- ANF delegation: Microsoft.Netapp/volumes
 <pre>
 az network vnet subnet create \
     --resource-group anfdemo-rg \
@@ -43,7 +44,9 @@ az network vnet subnet create \
 [GUI: Create VNet](images/create-subnet.png)</br>
 [GUI: Create VNet and Subnet](images/create-subnet2.png)
 
-## 4. Create NetApp account *anfjpe* located *Japan East*
+## 4. Create NetApp account
+- ANF account name: anfjpe
+- Location: Japan East
 <pre>
 az netappfiles account create \
     -g anfdemo-rg \
