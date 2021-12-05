@@ -40,6 +40,8 @@ az network vnet subnet create \
     --delegations "Microsoft.NetApp/volumes" \
     --address-prefixes 172.20.1.0/26
 </pre>
+[GUI: Create VNet](images/create-subnet.png)</br>
+[GUI: Create VNet and Subnet](images/create-subnet2.png)
 
 ## 4. Create NetApp account *anfjpe* located *Japan East*
 <pre>
