@@ -26,6 +26,8 @@ az network vnet create -g anfdemo-rg -n anfjpe-vnet \
     --address-prefix 172.20.0.0/16 \
     --subnet-name vm-subnet --subnet-prefix 172.20.0.0/24
 </pre>
+[GUI: Create VNet](images/create-vnet.png)
+[GUI: Create VNet and Subnet](images/create-vnet2.png)
 
 ## 3. Create ANF subnet 172.20.1.0/26 delegated to ANF
 - ANF subnet name: anf-subnet
