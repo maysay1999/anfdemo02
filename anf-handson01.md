@@ -95,9 +95,9 @@ Note)</br>
 Maximum size of a single volume: 100 TiB</br>
 Maximum number of volumes per capacity pool: 500</br>
 
-## 7. Create SUSE linux 15 VM
-- VM type: **Standard B2S**
-- Image: **SUSE linux 15**
+## 7. Create SUSE linux VM
+- VM type: **Standard_D2s_v3**
+- Image: **SUSE linux 15 SP3**
 - Authentication type: **password**
 - Username: **anfadmin**
 - Password: ----
