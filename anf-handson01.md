@@ -86,7 +86,7 @@ az netappfiles volume create \
     --name nfsvol1 \
     --service-level Standard \
     --vnet anfjpe-vnet \
-    --subnet anf-sub \
+    --subnet anf-subnet \
     --usage-threshold 1024 \
     --file-path nfsvol1 \
     --protocol-types NFSv4.1
@@ -103,7 +103,7 @@ Maximum number of volumes per capacity pool: 500</br>
 - Password: ----
 - OS disk type: **Standard HDD**
 - VNet: **anfjpe-vnet**
-- Subnet: **vm-sub**
+- Subnet: **vm-subnet**
 - Public IP: **None** (security reason)
 
 ## 8. Configure Bastion
