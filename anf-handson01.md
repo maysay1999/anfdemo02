@@ -46,24 +46,12 @@ az network vnet subnet create \
 [GUI: Create VNet](images/create-subnet.png)</br>
 [GUI: Create VNet and Subnet](images/create-subnet2.png)
 
-## 4. Configure Bastion
-Simply insert these lines on Cloud Shell Bash
-<pre>
-az network vnet subnet create \
-    --resource-group anfdemo-rg \
-    --name AzureBastionSubnet \
-    --vnet-name anfjpe-vnet \
-    --address-prefixes 172.20.3.0/26
-
-az network public-ip create --resource-group anfdemo-rg \
-    --name bastionpublic-ip \
-    --sku Standard 
-
-az network bastion create -g anfdemo-rg \
-    --name MyBastionHost \
-    --public-ip-address bastionpublic-ip \
-    --vnet-name anfjpe-vnet
-</pre>
+## 4. Create Bastion
+- Name: anfjpe-vnet-bastion
+- Tier: Standard
+- Virtual Network: anfjpe-vnet
+- New public IP name : anfjpe-vnet-ip
+- Public IP address SKU: Standard
 
 ## 5. Create NetApp account
 - ANF account name: anfjpe
@@ -127,26 +115,26 @@ Maximum number of volumes per capacity pool: 500</br>
 - Subnet: **vm-subnet**
 - Public IP: **None** 
 
-## 9. Login on SUSE via Bastion
+## 10. Login on SUSE via Bastion
 - Login as root `sudo su -` or `sudo -i`
 - Verify login as root `whoami`
 
-## 10. Mount ANF as NFS 4.1
+## 11. Mount ANF as NFS 4.1
 - Mount path: /mnt/nfsvol1/
 - Follow **Mount Instruction**
 Note) Not necesssry to install NFS utilities
 
-## 11. Install fio
+## 12. Install fio
 `zypper install fio`
 
-## 12. Run fio command to measure realtime throughput
+## 13. Run fio command to measure realtime throughput
 `fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=180 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=FioDiskThroughputTest`
 
-## 13. Change size of volume to 2TiB
+## 14. Change size of volume to 2TiB
 - Expected value: Thougthput to be changed to 32Mbps from 16Mbps
 - See realtime change of throughput
 
-## 14. One-time Snapshot and volume-based restration
+## 15. One-time Snapshot and volume-based restration
 - Create a test file named test.txt under /mnt/nfsvol1/ `echo "this is the test" > text.txt`
 - Create one-time snapshot: *snapshot01*
 - Create clone volume from the snapshot
@@ -154,7 +142,7 @@ Note) Not necesssry to install NFS utilities
 - Create one-time snapshot: *snapshot01*
 Note) Max number of snapshot per volume is 255
 
-## 15. Snapshot: file-based restoration
+## 16. Snapshot: file-based restoration
 - `cd /mnt/nfsvol1/`
 - `ls -la`
 - `cd .snapshot`
@@ -163,7 +151,7 @@ Note) Max number of snapshot per volume is 255
 - Restore text.txt as `text2.txt: cp text.txt ../../text2.txt`
 - Verify: `cd ../../` and `cat text2.txt`
 
-## 16. Snapshot policy
+## 17. Snapshot policy
 Note) Timezone is UTC.  Japan Standard time is UTC +9 
 <pre>
 az netappfiles snapshot policy create -g anfdemo-rg \
@@ -175,7 +163,7 @@ az netappfiles snapshot policy create -g anfdemo-rg \
     --enabled true
 </pre>
 
-## 17. Change QoS type to Manual from Auto
+## 18. Change QoS type to Manual from Auto
 <pre>
 az netappfiles pool update -g anfdemo-rg \
     --account-name anfjpe --name pool1 \
@@ -190,7 +178,7 @@ az netappfiles volume update -g anfdemo-rg \
     --throughput-mibps 50
 </pre>
 
-## 18. Extend pool size to increase throughput further
+## 19. Extend pool size to increase throughput further
 Extend pool size to 8 TiB
 <pre>
 az netappfiles pool update -g anfdemo-rg \
@@ -206,7 +194,7 @@ az netappfiles volume update -g anfdemo-rg \
     --throughput-mibps 80
 </pre>
 
-## 19. Change Service Level to increase throughput furthermore
+## 20. Change Service Level to increase throughput furthermore
 - Create 4TiB one more pool **pool2** as Premium Service Level
 - Move the current volumes to **pool2**
 - Remove pool1
@@ -223,7 +211,7 @@ az netappfiles pool create \
 And after moving all volumes to pool2, delete pool1</br>
 `az netappfiles pool delete -g anfdemo-rg -a anfjpe -n pool1`
 
-## 20. Cross Region Replication
+## 21. Cross Region Replication
 ### CRR process to be done in the GUI
 - Briefing on Cross Region Replicaiton (DR)
 - Create a new VNet, **anfjpw-vnet**  
