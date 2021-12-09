@@ -46,7 +46,26 @@ az network vnet subnet create \
 [GUI: Create VNet](images/create-subnet.png)</br>
 [GUI: Create VNet and Subnet](images/create-subnet2.png)
 
-## 4. Create NetApp account
+## 4. Configure Bastion
+Simply insert these lines on Cloud Shell Bash
+<pre>
+az network vnet subnet create \
+    --resource-group anfdemo-rg \
+    --name AzureBastionSubnet \
+    --vnet-name anfjpe-vnet \
+    --address-prefixes 172.20.3.0/28
+
+az network public-ip create --resource-group anfdemo-rg \
+    --name bastionpublic-ip \
+    --sku Standard 
+
+az network bastion create -g anfdemo-rg \
+    --name MyBastionHost \
+    --public-ip-address bastionpublic-ip \
+    --vnet-name anfjpe-vnet
+</pre>
+
+## 5. Create NetApp account
 - ANF account name: anfjpe
 - Location: Japan East
 <pre>
@@ -55,7 +74,7 @@ az netappfiles account create \
     --name anfjpe -l japaneast
 </pre>
 
-## 5. Create Capacity Pool
+## 6. Create Capacity Pool
 - Capacity pool: pool1
 - Service level: standard
 - Size: 4TiB
@@ -73,7 +92,7 @@ Note)</br>
 Maximum size of a single capacity pool: 500 TiB</br>
 Maximum number of capacity pools per NetApp account: 25</br>
 
-## 6. Create volume
+## 7. Create volume
 - Volume name: nfsvol1
 - NFS 4.1
 Note) It take around 4 minutes
@@ -95,7 +114,7 @@ Note)</br>
 Maximum size of a single volume: 100 TiB</br>
 Maximum number of volumes per capacity pool: 500</br>
 
-## 7. Create SUSE linux VM
+## 8. Create SUSE linux VM
 - Virtual machine name: suse01
 - Region: Japan East
 - Image: **SUSE linux 15 SP3**
@@ -107,24 +126,6 @@ Maximum number of volumes per capacity pool: 500</br>
 - VNet: **anfjpe-vnet**
 - Subnet: **vm-subnet**
 - Public IP: **None** 
-
-## 8. Configure Bastion
-<pre>
-az network vnet subnet create \
-    --resource-group anfdemo-rg \
-    --name AzureBastionSubnet \
-    --vnet-name anfjpe-vnet \
-    --address-prefixes 172.20.3.0/28
-
-az network public-ip create --resource-group anfdemo-rg \
-    --name bastionpublic-ip \
-    --sku Standard 
-
-az network bastion create -g anfdemo-rg \
-    --name MyBastionHost \
-    --public-ip-address bastionpublic-ip \
-    --vnet-name anfjpe-vnet
-</pre>
 
 ## 9. Login on SUSE via Bastion
 - Login as root `sudo su -` or `sudo -i`
