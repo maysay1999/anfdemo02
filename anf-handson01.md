@@ -96,35 +96,34 @@ Maximum size of a single volume: 100 TiB</br>
 Maximum number of volumes per capacity pool: 500</br>
 
 ## 7. Create SUSE linux VM
-- VM type: **Standard_D2s_v3**
+- Virtual machine name: suse01
+- Region: Japan East
 - Image: **SUSE linux 15 SP3**
-- Authentication type: **password**
+- VM type: **Standard_D2s_v3**
+- Authentication type: **Password**
 - Username: **anfadmin**
-- Password: ----
+- Password: ---- (min length is 12)
 - OS disk type: **Standard HDD**
 - VNet: **anfjpe-vnet**
 - Subnet: **vm-subnet**
-- Public IP: **None** (security reason)
+- Public IP: **None** 
 
 ## 8. Configure Bastion
 <pre>
-RG=anfdemo-rg
-VNET=anfjpe-vnet
-
 az network vnet subnet create \
-    --resource-group $RG \
+    --resource-group anfdemo-rg \
     --name AzureBastionSubnet \
-    --vnet-name $VNET \
+    --vnet-name anfjpe-vnet \
     --address-prefixes 172.20.3.0/28
 
-az network public-ip create --resource-group $RG \
+az network public-ip create --resource-group anfdemo-rg \
     --name bastionpublic-ip \
     --sku Standard 
 
-az network bastion create -g $RG \
+az network bastion create -g anfdemo-rg \
     --name MyBastionHost \
     --public-ip-address bastionpublic-ip \
-    --vnet-name $VNET
+    --vnet-name anfjpe-vnet
 </pre>
 
 ## 9. Login on SUSE via Bastion
