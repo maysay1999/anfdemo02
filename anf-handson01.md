@@ -53,7 +53,7 @@ az network vnet subnet create \
     --resource-group anfdemo-rg \
     --name AzureBastionSubnet \
     --vnet-name anfjpe-vnet \
-    --address-prefixes 172.20.3.0/28
+    --address-prefixes 172.20.3.0/26
 
 az network public-ip create --resource-group anfdemo-rg \
     --name bastionpublic-ip \
