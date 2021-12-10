@@ -122,6 +122,7 @@ Maximum size of a single volume: 100 TiB</br>
 Maximum number of volumes per capacity pool: 500</br>
 
 [GUI: Volume](images/create-volume.png)
+[GUI: Set NFS 4.1](images/create-volume2.png)
 
 ## 8. Create SUSE linux VM
 - Virtual machine name: suse01
