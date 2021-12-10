@@ -183,7 +183,7 @@ Note) Max number of snapshot per volume is 255
 
 <pre>
 az netappfiles snapshot create -g anfdemo-rg \
-    --account-name anfjpe01 \
+    --account-name anfjpe \
     --pool-name pool1 \
     --volume-name nfsvol1 \
     -l japaneast \
