@@ -261,6 +261,8 @@ And after moving all volumes to pool2, delete pool1</br>
 
 ## 21. Cross Region Replication
 ### CRR process to be done in the GUI
+`git clone https://github.com/maysay1999/anfdemo02.git AnfHandson`
+- `chmod 711 japanwest-create.sh`  Execute japanwest-create.sh
 - Briefing on Cross Region Replicaiton (DR)
 - Create a new VNet, **anfjpw-vnet**  
 - Address space is **172.21.0.0/16**
