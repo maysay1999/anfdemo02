@@ -77,6 +77,8 @@ az netappfiles account create \
     --name anfjpe -l japaneast
 </pre>
 
+[GUI: NetApp Account](images/create-netapp-account.png)
+
 ## 6. Create Capacity Pool
 - Capacity pool: pool1
 - Service level: standard
@@ -95,9 +97,11 @@ Note)</br>
 Maximum size of a single capacity pool: 500 TiB</br>
 Maximum number of capacity pools per NetApp account: 25</br>
 
+[GUI: Capacity Pool](images/create-pool.png)
+
 ## 7. Create volume
 - Volume name: nfsvol1
-- NFS 4.1
+- NFS 4.1\
 Note) It take around 4 minutes
 <pre>
 az netappfiles volume create \
@@ -116,6 +120,8 @@ az netappfiles volume create \
 Note)</br>
 Maximum size of a single volume: 100 TiB</br>
 Maximum number of volumes per capacity pool: 500</br>
+
+[GUI: Volume](images/create-volume.png)
 
 ## 8. Create SUSE linux VM
 - Virtual machine name: suse01
