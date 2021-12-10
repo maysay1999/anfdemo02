@@ -52,6 +52,19 @@ az network vnet subnet create \
 - Virtual Network: anfjpe-vnet
 - New public IP name : anfjpe-vnet-ip
 - Public IP address SKU: Standard
+- Procedure: Execute these command lines and create bastion on GUI portal
+
+<pre>
+az network vnet subnet create \
+    --resource-group anfdemo-rg \
+    --name AzureBastionSubnet \
+    --vnet-name anfjpe-vnet \
+    --address-prefixes 172.20.3.0/26
+
+az network public-ip create --resource-group anfdemo-rg \
+    --name anfjpe-vnet-ip \
+    --sku Standard 
+</pre>
 
 ## 5. Create NetApp account
 - ANF account name: anfjpe
