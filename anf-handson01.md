@@ -204,7 +204,7 @@ Note) Timezone is UTC.  Japan Standard time is UTC +9
 <pre>
 az netappfiles snapshot policy create -g anfdemo-rg \
     --account-name anfjpe \
-    --snapshot-policy-name policy01 \
+    --snapshot-policy-name hourly-pol01 \
     -l japaneast \
     --hourly-snapshots 8 \
     --hourly-minute 59 \
@@ -227,12 +227,12 @@ az netappfiles volume update -g anfdemo-rg \
 </pre>
 
 ## 18. Extend pool size to increase throughput further
-Extend pool size to 8 TiB
+Extend pool size to 6 TiB
 <pre>
 az netappfiles pool update -g anfdemo-rg \
     --account-name anfjpe \
     --name pool1 \
-    --size 8
+    --size 6
 </pre>
 And change throughput manually to 80Mbps
 <pre>
