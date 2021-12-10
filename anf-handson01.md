@@ -174,7 +174,7 @@ az netappfiles volume update -g anfdemo-rg \
 </pre>
 
 ## 14. One-time Snapshot and volume-based restration
-- Create a test file named test.txt under /mnt/nfsvol1/ `echo "this is the test" > text.txt`
+- Create a test file named test.txt under /mnt/nfsvol1/ `echo "this is the test" > test.txt`
 - Create one-time snapshot: *snapshot01*
 - Create clone volume from the snapshot
 - Revert
@@ -196,8 +196,8 @@ az netappfiles snapshot create -g anfdemo-rg \
 - `cd .snapshot`
 - `ls -la`
 - `cd snapshot01`
-- Restore text.txt as `text2.txt: cp text.txt ../../text2.txt`
-- Verify: `cd ../../` and `cat text2.txt`
+- Restore test.txt as `test2.txt: cp test.txt ../../test2.txt`
+- Verify: `cd ../../` and `cat test2.txt`
 
 ## 16. Snapshot policy
 Note) Timezone is UTC.  Japan Standard time is UTC +9 
