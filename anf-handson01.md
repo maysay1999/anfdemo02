@@ -120,7 +120,7 @@ Note) It take around 4 minutes
 az netappfiles volume create \
     --resource-group anfdemo-rg \
     --location japaneast \
-    --account-name anfjpe \
+    --account-name anfjpe01 \
     --pool-name pool1 \
     --name nfsvol1 \
     --service-level Standard \
@@ -129,6 +129,7 @@ az netappfiles volume create \
     --usage-threshold 1024 \
     --file-path nfsvol1 \
     --allowed-clients 0.0.0.0/0 \
+    --rule-index 1 \
     --protocol-types NFSv4.1
 </pre>
 Note)</br>
