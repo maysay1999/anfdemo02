@@ -120,7 +120,7 @@ Note) It take around 4 minutes
 az netappfiles volume create \
     --resource-group anfdemo-rg \
     --location japaneast \
-    --account-name anfjpe01 \
+    --account-name anfjpe \
     --pool-name pool1 \
     --name nfsvol1 \
     --service-level Standard \
