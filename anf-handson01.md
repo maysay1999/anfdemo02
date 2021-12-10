@@ -68,7 +68,20 @@ az network public-ip create --resource-group anfdemo-rg \
 
 [GUI: Bastion](images/create-bastion.png)
 
-## 5. Create NetApp account
+## 5. Create SUSE linux VM
+- Virtual machine name: suse01
+- Region: Japan East
+- Image: **SUSE linux 15 SP3**
+- VM type: **Standard_D2s_v3**
+- Authentication type: **Password**
+- Username: **anfadmin**
+- Password: ---- (min length is 12)
+- OS disk type: **Standard HDD**
+- VNet: **anfjpe-vnet**
+- Subnet: **vm-subnet**
+- Public IP: **None** 
+
+## 6. Create NetApp account
 - ANF account name: anfjpe
 - Location: Japan East
 <pre>
@@ -79,7 +92,7 @@ az netappfiles account create \
 
 [GUI: NetApp Account](images/create-netapp-account.png)
 
-## 6. Create Capacity Pool
+## 7. Create Capacity Pool
 - Capacity pool: pool1
 - Service level: standard
 - Size: 4TiB
@@ -99,7 +112,7 @@ Maximum number of capacity pools per NetApp account: 25</br>
 
 [GUI: Capacity Pool](images/create-pool.png)
 
-## 7. Create volume
+## 8. Create volume
 - Volume name: nfsvol1
 - NFS 4.1\
 Note) It take around 4 minutes
@@ -124,39 +137,34 @@ Maximum number of volumes per capacity pool: 500</br>
 [GUI: Volume](images/create-volume.png)
 [GUI: Set NFS 4.1](images/create-volume2.png)
 
-## 8. Create SUSE linux VM
-- Virtual machine name: suse01
-- Region: Japan East
-- Image: **SUSE linux 15 SP3**
-- VM type: **Standard_D2s_v3**
-- Authentication type: **Password**
-- Username: **anfadmin**
-- Password: ---- (min length is 12)
-- OS disk type: **Standard HDD**
-- VNet: **anfjpe-vnet**
-- Subnet: **vm-subnet**
-- Public IP: **None** 
-
-## 10. Login on SUSE via Bastion
+## 9. Login on SUSE via Bastion
 - Login as root `sudo su -` or `sudo -i`
 - Verify login as root `whoami`
 
-## 11. Mount ANF as NFS 4.1
+## 10. Mount ANF as NFS 4.1
 - Mount path: /mnt/nfsvol1/
-- Follow **Mount Instruction**
+- Follow **Mount Instruction**\
 Note) Not necesssry to install NFS utilities
 
-## 12. Install fio
+Verification
+- `df -h` 
+- `mount`
+
+Change to ANF mounted directory and create test file
+- `cd nfsvol1`
+- `echo "aaaaa" > test.txt`
+
+## 11. Install fio
 `zypper install fio`
 
-## 13. Run fio command to measure realtime throughput
+## 12. Run fio command to measure realtime throughput
 `fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=180 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=FioDiskThroughputTest`
 
-## 14. Change size of volume to 2TiB
+## 13. Change size of volume to 2TiB
 - Expected value: Thougthput to be changed to 32Mbps from 16Mbps
 - See realtime change of throughput
 
-## 15. One-time Snapshot and volume-based restration
+## 14. One-time Snapshot and volume-based restration
 - Create a test file named test.txt under /mnt/nfsvol1/ `echo "this is the test" > text.txt`
 - Create one-time snapshot: *snapshot01*
 - Create clone volume from the snapshot
@@ -164,7 +172,7 @@ Note) Not necesssry to install NFS utilities
 - Create one-time snapshot: *snapshot01*
 Note) Max number of snapshot per volume is 255
 
-## 16. Snapshot: file-based restoration
+## 15. Snapshot: file-based restoration
 - `cd /mnt/nfsvol1/`
 - `ls -la`
 - `cd .snapshot`
@@ -173,7 +181,7 @@ Note) Max number of snapshot per volume is 255
 - Restore text.txt as `text2.txt: cp text.txt ../../text2.txt`
 - Verify: `cd ../../` and `cat text2.txt`
 
-## 17. Snapshot policy
+## 16. Snapshot policy
 Note) Timezone is UTC.  Japan Standard time is UTC +9 
 <pre>
 az netappfiles snapshot policy create -g anfdemo-rg \
@@ -185,7 +193,7 @@ az netappfiles snapshot policy create -g anfdemo-rg \
     --enabled true
 </pre>
 
-## 18. Change QoS type to Manual from Auto
+## 17. Change QoS type to Manual from Auto
 <pre>
 az netappfiles pool update -g anfdemo-rg \
     --account-name anfjpe --name pool1 \
@@ -200,7 +208,7 @@ az netappfiles volume update -g anfdemo-rg \
     --throughput-mibps 50
 </pre>
 
-## 19. Extend pool size to increase throughput further
+## 18. Extend pool size to increase throughput further
 Extend pool size to 8 TiB
 <pre>
 az netappfiles pool update -g anfdemo-rg \
@@ -216,7 +224,7 @@ az netappfiles volume update -g anfdemo-rg \
     --throughput-mibps 80
 </pre>
 
-## 20. Change Service Level to increase throughput furthermore
+## 19. Change Service Level to increase throughput furthermore
 - Create 4TiB one more pool **pool2** as Premium Service Level
 - Move the current volumes to **pool2**
 - Remove pool1
