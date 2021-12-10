@@ -166,6 +166,13 @@ Change to ANF mounted directory and create test file
 - Expected value: Thougthput to be changed to 32Mbps from 16Mbps
 - See realtime change of throughput
 
+<pre>
+az netappfiles volume update -g anfdemo-rg \
+   --account-name anfjpe --pool-name pool1 \
+   --name nfsvol1 --service-level Standard \
+    --usage-threshold 2048
+</pre>
+
 ## 14. One-time Snapshot and volume-based restration
 - Create a test file named test.txt under /mnt/nfsvol1/ `echo "this is the test" > text.txt`
 - Create one-time snapshot: *snapshot01*
@@ -173,6 +180,15 @@ Change to ANF mounted directory and create test file
 - Revert
 - Create one-time snapshot: *snapshot01*
 Note) Max number of snapshot per volume is 255
+
+<pre>
+az netappfiles snapshot create -g anfdemo-rg \
+    --account-name anfjpe01 \
+    --pool-name pool1 \
+    --volume-name nfsvol1 \
+    -l japaneast \
+    --name snapshot01
+</pre>
 
 ## 15. Snapshot: file-based restoration
 - `cd /mnt/nfsvol1/`
