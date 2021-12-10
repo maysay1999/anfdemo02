@@ -128,6 +128,7 @@ az netappfiles volume create \
     --subnet anf-subnet \
     --usage-threshold 1024 \
     --file-path nfsvol1 \
+    --allowed-clients 0.0.0.0/0 \
     --protocol-types NFSv4.1
 </pre>
 Note)</br>
