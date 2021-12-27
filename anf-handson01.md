@@ -174,9 +174,9 @@ Change to ANF mounted directory and create test file
 - `echo "this is a test file" > test.txt`
 
 ## 11. Install fio
-fio - Flexible I/O tester
+fio - Flexible I/O tester is introduced on [Microsoft website](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-benchmarks#fio) as a tool to get maximum throughput.  
 
-`zypper install -y fio`
+- Install fio: `zypper install -y fio`
 
 ## 12. Run fio command to measure realtime throughput
 `fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=180 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=FioDiskThroughputTest`
