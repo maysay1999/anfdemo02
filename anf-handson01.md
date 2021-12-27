@@ -11,8 +11,8 @@
 [View hands-on diagram](https://github.com/maysay1999/anfdemo02/blob/main/211202_hands-on_diagram_linux_nfs_sap_nfs41.pdf)
 
 ## 1. Create Resouce Group
-- Resource Group name: anfdemo01-rg
-- Location: Japan East
+- Resource Group name: **anfdemo-rg**
+- Location: **Japan East**
 
 `az group create -n anfdemo-rg -l japaneast`</br></br>
 [GUI: Create Resource Group](images/resource-group.png)
@@ -71,12 +71,12 @@ az network public-ip create --resource-group anfdemo-rg \
 ## 5. Create SUSE linux VM
 - Virtual machine name: **suse01**
 - Region: **Japan East**
-- Image: **SUSE linux 15 SP3**
-- VM type: **Standard_D2s_v3**
+- Image: **SUSE Enterprise linux for SAP 15 SP3 + 24x7 Support**
+- VM type: **Standard_D2s_v4**
 - Authentication type: **Password**
 - Username: **anfadmin**
 - Password: ---- (min length is 12)
-- OS disk type: **Standard HDD**
+- OS disk type: **Premium SSD**
 - VNet: **anfjpe-vnet**
 - Subnet: **vm-subnet**
 - Public IP: **None** 
