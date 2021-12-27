@@ -140,12 +140,13 @@ Maximum number of volumes per capacity pool: 500</br>
 [GUI: Set NFS 4.1](images/create-volume2.png)
 
 ## 9. Login on SUSE via Bastion
-<p>Create Bastion on GUI</p>
+Create Bastion on GUI
 - Bastion name: anfjpe-vnet-bastion
 - Bastion tier: Standard
 - Virtual Network: anfjpe-vnet
 - Bastion public IP name : anfjpe-vnet-ip
-<p>Login on SUSE via Bastion</p>
+
+Login on SUSE via Bastion
 - Login as root `sudo su -` or `sudo -i`
 - Verify login as root `whoami`
 
