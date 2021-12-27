@@ -3,7 +3,7 @@
 az network vnet create -g anfdemo-rg -n anfjpw-vnet \
     --address-prefix 172.21.0.0/16 \
     --subnet-name vm-subnet \
-    -l japanwest
+    -l japanwest \
     --subnet-prefix 172.21.0.0/24
 
 az network vnet subnet create \
