@@ -156,20 +156,27 @@ Login on SUSE via Bastion
 - Verify login as root `whoami`
 
 ## 10. Mount ANF as NFS 4.1
-- Mount path: /mnt/nfsvol1/
+- Mount path: **/mnt/nfsvol1/**
 - Follow **Mount Instruction**\
 Note) Not necesssry to install NFS utilities
 
-Verification
+1. Install NFS client: not necessary (already installed)
+2. Change the path to /mnt: `cd /mnt`
+3. Create a new directory to mount ANF volume: `mkdir nfsvol1`
+4. Mount: `mount -t nfs -o rw,hard,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.20.1.4:/nfsvol1 nfsvol1`
+
+Verificate mounting ANF volunme
 - `df -h` 
-- `mount`
+- `mount`: for the details
 
 Change to ANF mounted directory and create test file
-- `cd nfsvol1`
-- `echo "aaaaa" > test.txt`
+- `cd /mnt/nfsvol1`
+- `echo "this is a test file" > test.txt`
 
 ## 11. Install fio
-`zypper install fio`
+fio - Flexible I/O tester
+
+`zypper install -y fio`
 
 ## 12. Run fio command to measure realtime throughput
 `fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=180 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=FioDiskThroughputTest`
