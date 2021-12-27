@@ -46,7 +46,7 @@ az network vnet subnet create \
 [GUI: Create VNet](images/create-subnet.png)</br>
 [GUI: Create VNet and Subnet](images/create-subnet2.png)
 
-## 4. Create Bastion
+## 4. Create Bastion (run bash only)
 - Name: anfjpe-vnet-bastion
 - Tier: Standard
 - Virtual Network: anfjpe-vnet
@@ -140,6 +140,12 @@ Maximum number of volumes per capacity pool: 500</br>
 [GUI: Set NFS 4.1](images/create-volume2.png)
 
 ## 9. Login on SUSE via Bastion
+Create Bastion on GUI
+- Bastion name: anfjpe-vnet-bastion
+- Bastion tier: Standard
+- Virtual Network: anfjpe-vnet
+- Bastion public IP name : anfjpe-vnet-ip
+Login on SUSE via Bastion
 - Login as root `sudo su -` or `sudo -i`
 - Verify login as root `whoami`
 
