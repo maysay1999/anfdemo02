@@ -81,8 +81,8 @@ az network public-ip create --resource-group anfdemo-rg \
 - Subnet: **vm-subnet**
 - Public IP: **None** 
 
-[GUI: How to choose the correct image](images/suse-marketplace.png.png)\
-[GUI: SUSE VM setups](images/use-create-vm01.png)
+[GUI: How to choose the correct image](images/suse-marketplace.png)\
+[GUI: SUSE VM setups](images/suse-create-vm01.png)
 
 ## 6. Create NetApp account
 - ANF account name: **anfjpe**
