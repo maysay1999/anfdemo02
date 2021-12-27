@@ -117,7 +117,8 @@ Maximum number of capacity pools per NetApp account: 25</br>
 
 ## 8. Create volume
 - Volume name: **nfsvol1**
-- NFS **4.1**\
+- NFS **4.1**
+- Quota: **1024** GiB\
 Note) It take around 4 minutes
 <pre>
 az netappfiles volume create \
@@ -133,7 +134,8 @@ az netappfiles volume create \
     --file-path nfsvol1 \
     --allowed-clients 0.0.0.0/0 \
     --rule-index 1 \
-    --protocol-types NFSv4.1
+    --protocol-types NFSv4.1 \
+    --unix-read-write true
 </pre>
 Note)</br>
 Maximum size of a single volume: 100 TiB</br>
