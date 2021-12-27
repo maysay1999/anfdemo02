@@ -181,7 +181,7 @@ fio - Flexible I/O tester is introduced on [Microsoft website](https://docs.micr
 - Install fio: `zypper install -y fio`
 
 ## 12. Run fio command to measure realtime throughput
-`fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=180 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=FioDiskThroughputTest`
+`fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=600 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=FioDiskThroughputTest`
 
 ## 13. Change size of volume to 2TiB
 - Expected value: Thougthput to be changed to 32Mbps from 16Mbps
