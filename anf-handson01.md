@@ -18,11 +18,11 @@
 [GUI: Create Resource Group](images/resource-group.png)
 
 ## 2. Create VNet anfjpe-vnet
-- VNet name: anfjpe-vnet
-- Location: Japan East
-- Address Space: 172.20.0.0/16
-- Subnet name: vm-subnet
-- Subnet: 172.20.0.0/24
+- VNet name: **anfjpe-vnet**
+- Location: **Japan East**
+- Address Space: **172.20.0.0/16**
+- Subnet name: **vm-subnet**
+- Subnet: **172.20.0.0/24**
 <pre>
 az network vnet create -g anfdemo-rg -n anfjpe-vnet \
     --address-prefix 172.20.0.0/16 \
@@ -32,9 +32,9 @@ az network vnet create -g anfdemo-rg -n anfjpe-vnet \
 [GUI: Create VNet and Subnet](images/create-vnet2.png)
 
 ## 3. Create ANF subnet
-- ANF subnet name: anf-subnet
-- ANF subnet: 172.20.1.0/26
-- ANF delegation: Microsoft.Netapp/volumes
+- ANF subnet name: **anf-subnet**
+- ANF subnet: **172.20.1.0/26**
+- ANF delegation: **Microsoft.Netapp/volumes**
 <pre>
 az network vnet subnet create \
     --resource-group anfdemo-rg \
