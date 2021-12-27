@@ -71,7 +71,7 @@ az network public-ip create --resource-group anfdemo-rg \
 ## 5. Create SUSE linux VM
 - Virtual machine name: **suse01**
 - Region: **Japan East**
-- Image: **SUSE Enterprise linux for SAP 15 SP3 + 24x7 Support**
+- Image: **SUSE Enterprise linux for SAP 15 SP3 + 24x7 Support Gen 2**
 - VM type: **Standard_D2s_v4**
 - Authentication type: **Password**
 - Username: **anfadmin**
@@ -82,6 +82,7 @@ az network public-ip create --resource-group anfdemo-rg \
 - Public IP: **None** 
 
 [GUI: How to choose the correct image](images/suse-marketplace.png.png)
+[GUI: SUSE VM setups](images/use-create-vm01.png)
 
 ## 6. Create NetApp account
 - ANF account name: **anfjpe**
