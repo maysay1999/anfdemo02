@@ -46,7 +46,7 @@ az network vnet subnet create \
 [GUI: Create VNet](images/create-subnet.png)</br>
 [GUI: Create VNet and Subnet](images/create-subnet2.png)
 
-## 4. Create Bastion (run bash only)
+## 4. Create Bastion (CLI is recommended)
 - Name: anfjpe-vnet-bastion
 - Tier: Standard
 - Virtual Network: anfjpe-vnet
@@ -81,9 +81,11 @@ az network public-ip create --resource-group anfdemo-rg \
 - Subnet: **vm-subnet**
 - Public IP: **None** 
 
+[GUI: How to choose the correct image](images/suse-marketplace.png.png)
+
 ## 6. Create NetApp account
-- ANF account name: anfjpe
-- Location: Japan East
+- ANF account name: **anfjpe**
+- Location: **Japan East**
 <pre>
 az netappfiles account create \
     -g anfdemo-rg \
@@ -93,8 +95,8 @@ az netappfiles account create \
 [GUI: NetApp Account](images/create-netapp-account.png)
 
 ## 7. Create Capacity Pool
-- Capacity pool: pool1
-- Service level: standard
+- Capacity pool: **pool1**
+- Service level: **standard**
 - Size: 4TiB
 - QoS Type: auto (default)
 <pre>
@@ -113,8 +115,8 @@ Maximum number of capacity pools per NetApp account: 25</br>
 [GUI: Capacity Pool](images/create-pool.png)
 
 ## 8. Create volume
-- Volume name: nfsvol1
-- NFS 4.1\
+- Volume name: **nfsvol1**
+- NFS **4.1**\
 Note) It take around 4 minutes
 <pre>
 az netappfiles volume create \
@@ -141,10 +143,10 @@ Maximum number of volumes per capacity pool: 500</br>
 
 ## 9. Login on SUSE via Bastion
 Create Bastion on GUI
-- Bastion name: anfjpe-vnet-bastion
-- Bastion tier: Standard
-- Virtual Network: anfjpe-vnet
-- Bastion public IP name : anfjpe-vnet-ip
+- Bastion name: **anfjpe-vnet-bastion**
+- Bastion tier: **Standard**
+- Virtual Network: **anfjpe-vnet**
+- Bastion public IP name : **anfjpe-vnet-ip**
 
 [GUI: Bastion setup](images/bastion.png)
 
