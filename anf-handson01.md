@@ -69,8 +69,8 @@ az network public-ip create --resource-group anfdemo-rg \
 [GUI: Bastion](images/create-bastion.png)
 
 ## 5. Create SUSE linux VM
-- Virtual machine name: suse01
-- Region: Japan East
+- Virtual machine name: **suse01**
+- Region: **Japan East**
 - Image: **SUSE linux 15 SP3**
 - VM type: **Standard_D2s_v3**
 - Authentication type: **Password**
