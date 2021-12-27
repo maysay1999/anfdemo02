@@ -145,6 +145,7 @@ Create Bastion on GUI
 - Bastion tier: Standard
 - Virtual Network: anfjpe-vnet
 - Bastion public IP name : anfjpe-vnet-ip
+
 [GUI: Bastion setup](images/bastion.png)
 
 Login on SUSE via Bastion
