@@ -225,7 +225,7 @@ Note) Timezone is UTC.  Japan Standard time is UTC +9
 <pre>
 az netappfiles snapshot policy create -g anfdemo-rg \
     --account-name anfjpe \
-    --snapshot-policy-name hourly-pol01 \
+    --snapshot-policy-name policy01 \
     -l japaneast \
     --hourly-snapshots 8 \
     --hourly-minute 59 \
