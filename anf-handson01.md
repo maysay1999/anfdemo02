@@ -221,6 +221,10 @@ az netappfiles snapshot create -g anfdemo-rg \
 - Verify: `cd ../../` and `cat test2.txt`
 
 ## 16. Snapshot policy
+- Snapshot policy name:  **policy01**
+- Number of snapshot to keep: **8**
+- Hourly minute: current time
+
 Note) Timezone is UTC.  Japan Standard time is UTC +9 
 <pre>
 az netappfiles snapshot policy create -g anfdemo-rg \
