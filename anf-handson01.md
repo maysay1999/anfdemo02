@@ -287,7 +287,7 @@ And after moving all volumes to pool2, delete pool1</br>
 ## 21. Cross Region Replication
 ### CRR process to be done in the GUI
 
-[View Cross Region Replication diagram](https://github.com/maysay1999/anfdemo02/blob/main/211227_anf_crr.pdf)
+[View Cross Region Replication diagram](https://github.com/maysay1999/anfdemo02/blob/main/211227_anf_crr.pdf)\
 [CRR tier and price](https://azure.microsoft.com/en-us/pricing/details/netapp/)
 
 1. Download japanwest-create.sh  `git clone https://github.com/maysay1999/anfdemo02.git AnfHandson`
