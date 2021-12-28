@@ -282,7 +282,10 @@ And after moving all volumes to pool2, delete pool1</br>
 
 ## 21. Cross Region Replication
 ### CRR process to be done in the GUI
-`git clone https://github.com/maysay1999/anfdemo02.git AnfHandson`
+
+[View Cross Region Replication diagram](https://github.com/maysay1999/anfdemo02/blob/main/211227_anf_crr.pdf)
+
+Download sh file.  `git clone https://github.com/maysay1999/anfdemo02.git AnfHandson`
 - `chmod 711 japanwest-create.sh`  Execute japanwest-create.sh
 - Briefing on Cross Region Replicaiton (DR)
 - Create a new VNet, **anfjpw-vnet**  
