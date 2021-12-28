@@ -288,19 +288,23 @@ And after moving all volumes to pool2, delete pool1</br>
 ### CRR process to be done in the GUI
 
 [View Cross Region Replication diagram](https://github.com/maysay1999/anfdemo02/blob/main/211227_anf_crr.pdf)
+[CRR tier and price](https://azure.microsoft.com/en-us/pricing/details/netapp/)
 
-Download sh file.  `git clone https://github.com/maysay1999/anfdemo02.git AnfHandson`
-- `chmod 711 japanwest-create.sh`  Execute japanwest-create.sh
-- Briefing on Cross Region Replicaiton (DR)
-- Create a new VNet, **anfjpw-vnet**  
-- Address space is **172.21.0.0/16**
+1. Download japanwest-create.sh  `git clone https://github.com/maysay1999/anfdemo02.git AnfHandson`
+2. Change permision to execute the shell `chmod 711 japanwest-create.sh`
+3. Excute `./japanwest-create.sh`
+The shell will create new Vnet, subnets, netapp account and capacity pool in Japan West region. \
+- Japan West VNet: **anfjpw-vnet**  
+- Address spaceL  **172.21.0.0/16**
 - Location: **Japan West** (pair region). 
-- Create a new subnet, **vm-sub**.  172.21.0.0/24
-- Create a new subnet, **anf-sub**.  172.21.1.0/26
+- Subnet #1: **vm-sub**.  172.21.0.0/24
+- Subnet #2: **anf-sub**.  172.21.1.0/26
 - ANF netapp account: **anfjpw** (location: Japan West)
 - Capacity pool name: **pooldr** (4TiB, Standard)
+
+
 - Replication volume name: **voldr** (througput 16Mbps)
-- Replication frequency: **once a day**
+- Replication frequency: **every 1 hour**
 
 Reference
 - [Price of Cross Region Replication](https://azure.microsoft.com/en-us/pricing/details/netapp/)</br>
