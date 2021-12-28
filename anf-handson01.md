@@ -27,11 +27,12 @@
 - Subnet name: **vm-subnet**
 - Subnet: **172.20.0.0/24**
 
-<pre>
+```bash
 az network vnet create -g anfdemo-rg -n anfjpe-vnet \
     --address-prefix 172.20.0.0/16 \
     --subnet-name vm-subnet --subnet-prefix 172.20.0.0/24
-</pre>
+```
+
 [GUI: Create VNet](images/create-vnet.png)</br>
 [GUI: Create VNet and Subnet](images/create-vnet2.png)
 
@@ -41,14 +42,15 @@ az network vnet create -g anfdemo-rg -n anfjpe-vnet \
 - ANF subnet: **172.20.1.0/26**
 - ANF delegation: **Microsoft.Netapp/volumes**
 
-<pre>
+```bash
 az network vnet subnet create \
     --resource-group anfdemo-rg \
     --vnet-name anfjpe-vnet \
     --name anf-subnet \
     --delegations "Microsoft.NetApp/volumes" \
     --address-prefixes 172.20.1.0/26
-</pre>
+```
+
 [GUI: Create VNet](images/create-subnet.png)</br>
 [GUI: Create VNet and Subnet](images/create-subnet2.png)
 
@@ -61,7 +63,7 @@ az network vnet subnet create \
 - Public IP address SKU: Standard
 - Procedure: Execute these command lines and create bastion on GUI portal
 
-<pre>
+```bash
 az network vnet subnet create \
     --resource-group anfdemo-rg \
     --name AzureBastionSubnet \
@@ -71,7 +73,7 @@ az network vnet subnet create \
 az network public-ip create --resource-group anfdemo-rg \
     --name anfjpe-vnet-ip \
     --sku Standard
-</pre>
+```
 
 [GUI: Bastion](images/create-bastion.png)
 
@@ -114,11 +116,11 @@ Login on SUSE via Bastion
 - ANF account name: **anfjpe**
 - Location: **Japan East**
 
-<pre>
+```bash
 az netappfiles account create \
     -g anfdemo-rg \
     --name anfjpe -l japaneast
-</pre>
+```
 
 [GUI: NetApp Account](images/create-netapp-account.png)
 
@@ -129,7 +131,7 @@ az netappfiles account create \
 - Size: 4TiB
 - QoS Type: auto (default)
 
-<pre>
+```bash
 az netappfiles pool create \
     --resource-group anfdemo-rg \
     --location japaneast \
@@ -137,7 +139,8 @@ az netappfiles pool create \
     --pool-name pool1 \
     --size 4 \
     --service-level Standard
-</pre>
+```
+
 Note)</br>
 Maximum size of a single capacity pool: 500 TiB</br>
 Maximum number of capacity pools per NetApp account: 25</br>
@@ -151,7 +154,7 @@ Maximum number of capacity pools per NetApp account: 25</br>
 - Quota: **1024** GiB\
 Note) It take around 4 minutes
 
-<pre>
+```bash
 az netappfiles volume create \
     --resource-group anfdemo-rg \
     --location japaneast \
@@ -167,7 +170,8 @@ az netappfiles volume create \
     --rule-index 1 \
     --protocol-types NFSv4.1 \
     --unix-read-write true
-</pre>
+```
+
 Note)</br>
 Maximum size of a single volume: 100 TiB</br>
 Maximum number of volumes per capacity pool: 500</br>
@@ -211,12 +215,12 @@ fio - Flexible I/O tester is introduced on [Microsoft website](https://docs.micr
 - Expected value: Thougthput to be changed to 32Mbps from 16Mbps
 - See realtime change of throughput
 
-<pre>
+```bash
 az netappfiles volume update -g anfdemo-rg \
    --account-name anfjpe --pool-name pool1 \
    --name nfsvol1 --service-level Standard \
     --usage-threshold 2048
-</pre>
+```
 
 ## 14. One-time Snapshot and volume-based restration
 
@@ -227,14 +231,14 @@ az netappfiles volume update -g anfdemo-rg \
 - Create one-time snapshot: *snapshot01*
 Note) Max number of snapshot per volume is 255
 
-<pre>
+```bash
 az netappfiles snapshot create -g anfdemo-rg \
     --account-name anfjpe \
     --pool-name pool1 \
     --volume-name nfsvol1 \
     -l japaneast \
     --name snapshot01
-</pre>
+```
 
 ## 15. Snapshot: file-based restoration
 
@@ -253,7 +257,8 @@ az netappfiles snapshot create -g anfdemo-rg \
 - Hourly minute: current time
 
 Note) Timezone is UTC.  Japan Standard time is UTC +9
-<pre>
+
+```bash
 az netappfiles snapshot policy create -g anfdemo-rg \
     --account-name anfjpe \
     --snapshot-policy-name policy01 \
@@ -261,40 +266,44 @@ az netappfiles snapshot policy create -g anfdemo-rg \
     --hourly-snapshots 8 \
     --hourly-minute 59 \
     --enabled true
-</pre>
+```
 
 ## 17. Change QoS type to Manual from Auto
 
-<pre>
+```bash
 az netappfiles pool update -g anfdemo-rg \
     --account-name anfjpe --name pool1 \
     --qos-type Manual
-</pre>
+```
 
 And change throughput manually to 50Mbps
-<pre>
+
+```bash
 az netappfiles volume update -g anfdemo-rg \
     --account-name anfjpe --pool-name pool1 \
     --name nfsvol1 --service-level standard \
     --throughput-mibps 50
-</pre>
+```
 
 ## 18. Extend pool size to increase throughput further
 
 Extend pool size to 6 TiB
-<pre>
+
+```bash
 az netappfiles pool update -g anfdemo-rg \
     --account-name anfjpe \
     --name pool1 \
     --size 6
-</pre>
+```
+
 And change throughput manually to 80Mbps
-<pre>
+
+```bash
 az netappfiles volume update -g anfdemo-rg \
     --account-name anfjpe --pool-name pool1 \
     --name nfsvol1 --service-level standard \
     --throughput-mibps 80
-</pre>
+```
 
 ## 19. Change Service Level to increase throughput furthermore
 
