@@ -1,6 +1,7 @@
 # Azure NetApp Files Hands-on Session: NFS4.1 mount on SUSE Linux
 
 ### **Prerequisites**
+
 - Register provider: `az provider register --namespace Microsoft.NetApp`
 - Dynamic tier change: `az feature register --namespace Microsoft.NetApp --name ANFTierChange`
 - Unix permission: `az feature register --namespace Microsoft.NetApp --name ANFUnixPermissions`
@@ -11,6 +12,7 @@
 [View hands-on diagram](https://github.com/maysay1999/anfdemo02/blob/main/211202_hands-on_diagram_linux_nfs_sap_nfs41.pdf)
 
 ## 1. Create Resouce Group
+
 - Resource Group name: **anfdemo-rg**
 - Location: **Japan East**
 
@@ -18,11 +20,13 @@
 [GUI: Create Resource Group](images/resource-group.png)
 
 ## 2. Create VNet anfjpe-vnet
+
 - VNet name: **anfjpe-vnet**
 - Location: **Japan East**
 - Address Space: **172.20.0.0/16**
 - Subnet name: **vm-subnet**
 - Subnet: **172.20.0.0/24**
+
 <pre>
 az network vnet create -g anfdemo-rg -n anfjpe-vnet \
     --address-prefix 172.20.0.0/16 \
@@ -32,9 +36,11 @@ az network vnet create -g anfdemo-rg -n anfjpe-vnet \
 [GUI: Create VNet and Subnet](images/create-vnet2.png)
 
 ## 3. Create ANF subnet
+
 - ANF subnet name: **anf-subnet**
 - ANF subnet: **172.20.1.0/26**
 - ANF delegation: **Microsoft.Netapp/volumes**
+
 <pre>
 az network vnet subnet create \
     --resource-group anfdemo-rg \
@@ -47,6 +53,7 @@ az network vnet subnet create \
 [GUI: Create VNet and Subnet](images/create-subnet2.png)
 
 ## 4. Create Bastion (CLI is recommended)
+
 - Name: anfjpe-vnet-bastion
 - Tier: Standard
 - Virtual Network: anfjpe-vnet
@@ -63,12 +70,13 @@ az network vnet subnet create \
 
 az network public-ip create --resource-group anfdemo-rg \
     --name anfjpe-vnet-ip \
-    --sku Standard 
+    --sku Standard
 </pre>
 
 [GUI: Bastion](images/create-bastion.png)
 
 ## 5. Create SUSE linux VM
+
 - Virtual machine name: **suse01**
 - Region: **Japan East**
 - Image: **SUSE Enterprise linux for SAP 15 SP3 + 24x7 Support Gen 2**
@@ -79,14 +87,33 @@ az network public-ip create --resource-group anfdemo-rg \
 - OS disk type: **Premium SSD**
 - VNet: **anfjpe-vnet**
 - Subnet: **vm-subnet**
-- Public IP: **None** 
+- Public IP: **None**
 
 [GUI: How to choose the correct image](images/suse-marketplace.png)\
 [GUI: SUSE VM setups](images/suse-create-vm01.png)
 
-## 6. Create NetApp account
+## 6. Login on SUSE via Bastion
+
+Create Bastion on GUI
+
+- Bastion name: **anfjpe-vnet-bastion**
+- Bastion tier: **Standard**
+- Virtual Network: **anfjpe-vnet**
+- Bastion public IP name : **anfjpe-vnet-ip**
+Note) It takes approx. 5 mins.
+
+[GUI: Bastion setup](images/bastion.png)
+
+Login on SUSE via Bastion
+
+- Login as root `sudo su -` or `sudo -i`
+- Verify login as root `whoami`
+
+## 7. Create NetApp account
+
 - ANF account name: **anfjpe**
 - Location: **Japan East**
+
 <pre>
 az netappfiles account create \
     -g anfdemo-rg \
@@ -95,11 +122,13 @@ az netappfiles account create \
 
 [GUI: NetApp Account](images/create-netapp-account.png)
 
-## 7. Create Capacity Pool
+## 8. Create Capacity Pool
+
 - Capacity pool: **pool1**
 - Service level: **standard**
 - Size: 4TiB
 - QoS Type: auto (default)
+
 <pre>
 az netappfiles pool create \
     --resource-group anfdemo-rg \
@@ -115,11 +144,13 @@ Maximum number of capacity pools per NetApp account: 25</br>
 
 [GUI: Capacity Pool](images/create-pool.png)
 
-## 8. Create volume
+## 9. Create volume
+
 - Volume name: **nfsvol1**
 - NFS **4.1**
 - Quota: **1024** GiB\
 Note) It take around 4 minutes
+
 <pre>
 az netappfiles volume create \
     --resource-group anfdemo-rg \
@@ -144,20 +175,8 @@ Maximum number of volumes per capacity pool: 500</br>
 [GUI: Volume](images/create-volume.png)
 [GUI: Set NFS 4.1](images/create-volume2.png)
 
-## 9. Login on SUSE via Bastion
-Create Bastion on GUI
-- Bastion name: **anfjpe-vnet-bastion**
-- Bastion tier: **Standard**
-- Virtual Network: **anfjpe-vnet**
-- Bastion public IP name : **anfjpe-vnet-ip**
+## 9. Mount ANF as NFS 4.1
 
-[GUI: Bastion setup](images/bastion.png)
-
-Login on SUSE via Bastion
-- Login as root `sudo su -` or `sudo -i`
-- Verify login as root `whoami`
-
-## 10. Mount ANF as NFS 4.1
 - Mount path: **/mnt/nfsvol1/**
 - Follow **Mount Instruction**\
 Note) Not necesssry to install NFS utilities
@@ -168,22 +187,27 @@ Note) Not necesssry to install NFS utilities
 4. Mount: `mount -t nfs -o rw,hard,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.20.1.4:/nfsvol1 nfsvol1`
 
 Verificate mounting ANF volunme
-- `df -h` 
+
+- `df -h`
 - `mount`: for the details
 
 Change to ANF mounted directory and create test file
+
 - `cd /mnt/nfsvol1`
 - `echo "this is a test file" > test.txt`
 
-## 11. Install fio
+## 10. Install fio
+
 fio - Flexible I/O tester is introduced on [Microsoft website](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-benchmarks#fio) as a tool to get maximum throughput.  
 
 - Install fio: `zypper install -y fio`
 
 ## 12. Run fio command to measure realtime throughput
+
 `fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=600 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=FioDiskThroughputTest`
 
 ## 13. Change size of volume to 2TiB
+
 - Expected value: Thougthput to be changed to 32Mbps from 16Mbps
 - See realtime change of throughput
 
@@ -195,6 +219,7 @@ az netappfiles volume update -g anfdemo-rg \
 </pre>
 
 ## 14. One-time Snapshot and volume-based restration
+
 - Create a test file named test.txt under /mnt/nfsvol1/ `echo "this is the test" > test.txt`
 - Create one-time snapshot: *snapshot01*
 - Create clone volume from the snapshot
@@ -212,6 +237,7 @@ az netappfiles snapshot create -g anfdemo-rg \
 </pre>
 
 ## 15. Snapshot: file-based restoration
+
 - `cd /mnt/nfsvol1/`
 - `ls -la`
 - `cd .snapshot`
@@ -221,11 +247,12 @@ az netappfiles snapshot create -g anfdemo-rg \
 - Verify: `cd ../../` and `cat test2.txt`
 
 ## 16. Snapshot policy
+
 - Snapshot policy name:  **policy01**
 - Number of snapshot to keep: **8**
 - Hourly minute: current time
 
-Note) Timezone is UTC.  Japan Standard time is UTC +9 
+Note) Timezone is UTC.  Japan Standard time is UTC +9
 <pre>
 az netappfiles snapshot policy create -g anfdemo-rg \
     --account-name anfjpe \
@@ -237,6 +264,7 @@ az netappfiles snapshot policy create -g anfdemo-rg \
 </pre>
 
 ## 17. Change QoS type to Manual from Auto
+
 <pre>
 az netappfiles pool update -g anfdemo-rg \
     --account-name anfjpe --name pool1 \
@@ -252,6 +280,7 @@ az netappfiles volume update -g anfdemo-rg \
 </pre>
 
 ## 18. Extend pool size to increase throughput further
+
 Extend pool size to 6 TiB
 <pre>
 az netappfiles pool update -g anfdemo-rg \
@@ -268,10 +297,12 @@ az netappfiles volume update -g anfdemo-rg \
 </pre>
 
 ## 19. Change Service Level to increase throughput furthermore
+
 - Create 4TiB one more pool **pool2** as Premium Service Level
 - Move the current volumes to **pool2**
 - Remove pool1
-<pre>
+
+```bash
 az netappfiles pool create \
     --resource-group anfdemo-rg \
     --location japaneast \
@@ -280,11 +311,13 @@ az netappfiles pool create \
     --size 4 \
     --qos-type Manual \
     --service-level Premium
-</pre>
+```
+
 And after moving all volumes to pool2, delete pool1</br>
 `az netappfiles pool delete -g anfdemo-rg -a anfjpe -n pool1`
 
-## 21. Cross Region Replication
+## 20. Cross Region Replication
+
 ### CRR process to be done in the GUI
 
 [View Cross Region Replication diagram](https://github.com/maysay1999/anfdemo02/blob/main/211227_anf_crr.pdf)\
@@ -302,11 +335,11 @@ Subnet #2: **anf-sub**.  172.21.1.0/26\
 ANF netapp account: **anfjpw** (location: Japan West)\
 Capacity pool name: **pooldr** (4TiB, Standard)
 
-
 - Replication volume name: **voldr** (througput 16Mbps)
 - Replication frequency: **every 1 hour**
 
 Reference
+
 - [Price of Cross Region Replication](https://azure.microsoft.com/en-us/pricing/details/netapp/)</br>
 [Price of Cross Region Replication (Japanese)](https://azure.microsoft.com/ja-jp/pricing/details/netapp/)
 - [Limitatoin of ANF](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits)</br>
