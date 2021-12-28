@@ -295,8 +295,8 @@ And after moving all volumes to pool2, delete pool1</br>
 3. Excute `./japanwest-create.sh`
 The shell will create new Vnet, subnets, netapp account and capacity pool in Japan West region. \
 Japan West VNet: **anfjpw-vnet**\
-Address spaceL  **172.21.0.0/16**\
-Location: **Japan West** (pair region).\ 
+Address space:  **172.21.0.0/16**\
+Location: **Japan West**(pair region)\
 Subnet #1: **vm-sub**.  172.21.0.0/24\
 Subnet #2: **anf-sub**.  172.21.1.0/26\
 ANF netapp account: **anfjpw** (location: Japan West)\
