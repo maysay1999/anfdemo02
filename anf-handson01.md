@@ -179,7 +179,7 @@ Maximum number of volumes per capacity pool: 500</br>
 [GUI: Volume](images/create-volume.png)
 [GUI: Set NFS 4.1](images/create-volume2.png)
 
-## 9. Mount ANF as NFS 4.1
+## 10. Mount ANF as NFS 4.1
 
 - Mount path: **/mnt/nfsvol1/**
 - Follow **Mount Instruction**\
@@ -200,19 +200,19 @@ Change to ANF mounted directory and create test file
 - `cd /mnt/nfsvol1`
 - `echo "this is a test file" > test.txt`
 
-## 10. Install fio
+## 11. Install fio
 
 fio - Flexible I/O tester is introduced on [Microsoft website](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-benchmarks#fio) as a tool to get maximum throughput.  
 
 - Install fio: `zypper install -y fio`
 
-## 11. Run fio command to measure realtime throughput
+## 12. Run fio command to measure realtime throughput
 
 <p>Execute this command line. </p>
 
 `fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=600 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=ANFThroughputTest`
 
-## 12. Change size of volume to 2TiB
+## 13. Change size of volume to 2TiB
 
 - Expected value: Thougthput to be changed to 32Mbps from 16Mbps
 - See realtime change of throughput
@@ -224,7 +224,7 @@ az netappfiles volume update -g anfdemo-rg \
     --usage-threshold 2048
 ```
 
-## 13. One-time Snapshot and volume-based restration
+## 14. One-time Snapshot and volume-based restration
 
 - Create a test file named test.txt under /mnt/nfsvol1/ `echo "this is the test" > test.txt`
 - Create one-time snapshot: *snapshot01*
@@ -242,7 +242,7 @@ az netappfiles snapshot create -g anfdemo-rg \
     --name snapshot01
 ```
 
-## 14. Snapshot: file-based restoration
+## 15. Snapshot: file-based restoration
 
 - `cd /mnt/nfsvol1/`
 - `ls -la`
@@ -252,7 +252,7 @@ az netappfiles snapshot create -g anfdemo-rg \
 - Restore test.txt as `test2.txt: cp test.txt ../../test2.txt`
 - Verify: `cd ../../` and `cat test2.txt`
 
-## 15. Snapshot policy
+## 16. Snapshot policy
 
 - Snapshot policy name:  **policy01**
 - Number of snapshot to keep: **8**
@@ -270,7 +270,7 @@ az netappfiles snapshot policy create -g anfdemo-rg \
     --enabled true
 ```
 
-## 16. Change QoS type to Manual from Auto
+## 17. Change QoS type to Manual from Auto
 
 ```bash
 az netappfiles pool update -g anfdemo-rg \
@@ -287,7 +287,7 @@ az netappfiles volume update -g anfdemo-rg \
     --throughput-mibps 50
 ```
 
-## 17. Extend pool size to increase throughput further
+## 18. Extend pool size to increase throughput further
 
 Extend pool size to 6 TiB
 
@@ -307,7 +307,7 @@ az netappfiles volume update -g anfdemo-rg \
     --throughput-mibps 80
 ```
 
-## 18. Change Service Level to increase throughput furthermore
+## 19. Change Service Level to increase throughput furthermore
 
 - Create 4TiB one more pool **pool2** as Premium Service Level
 - Move the current volumes to **pool2**
@@ -327,11 +327,11 @@ az netappfiles pool create \
 And after moving all volumes to pool2, delete pool1</br>
 `az netappfiles pool delete -g anfdemo-rg -a anfjpe -n pool1`
 
-## 19. Cross Region Replication
+## 20. Cross Region Replication
 
 ### CRR process to be done in the GUI
 
-[View Cross Region Replication diagram](https://github.com/maysay1999/anfdemo02/blob/main/211227_anf_crr.pdf)\
+[View Cross Region Replication diagram](https://github.com/maysay1999/anfdemo02/blob/main/220107_crr_diagram.pdf)\
 [CRR tier and price](https://azure.microsoft.com/en-us/pricing/details/netapp/)
 
 1. Download japanwest-create.sh  `git clone https://github.com/maysay1999/anfdemo02.git AnfHandson`
