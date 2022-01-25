@@ -353,7 +353,7 @@ Capacity pool name: **pooldr** (4TiB, Standard)
 - リソースグループ anfdemo-rg にある他リソースを全部削除
 
 
-Reference
+## Reference
 - [Price of Cross Region Replication](https://azure.microsoft.com/en-us/pricing/details/netapp/)</br>
 [Price of Cross Region Replication (Japanese)](https://azure.microsoft.com/ja-jp/pricing/details/netapp/)
 - [Limitatoin of ANF](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits)</br>
