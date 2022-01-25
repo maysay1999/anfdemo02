@@ -11,8 +11,6 @@
 
 [View hands-on diagram](https://github.com/maysay1999/anfdemo02/blob/main/211202_hands-on_diagram_linux_nfs_sap_nfs41.pdf)
 
-<div style="text-align: left"><img src="/images/Handson_general_diagram.png" ></div>
-<br>
 
 ## 1. リソースグループ作成
 
@@ -326,9 +324,6 @@ az netappfiles pool create \
 
 [View Cross Region Replication diagram](https://github.com/maysay1999/anfdemo02/blob/main/220107_crr_diagram.pdf)\
 [CRR tier and price](https://azure.microsoft.com/en-us/pricing/details/netapp/)
-
-<div style="text-align: left"><img src="/images/Handson_crr_diagram.png" ></div>
-<br>
 
 1. Download japanwest-create.sh  `git clone https://github.com/maysay1999/anfdemo02.git AnfHandson`
 2. Change permision to execute the shell `chmod 711 japanwest-create.sh`
