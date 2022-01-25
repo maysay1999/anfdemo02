@@ -326,6 +326,8 @@ az netappfiles pool create \
 [View Cross Region Replication diagram](https://github.com/maysay1999/anfdemo02/blob/main/220107_crr_diagram.pdf)\
 [CRR tier and price](https://azure.microsoft.com/en-us/pricing/details/netapp/)
 
+![CRR jpeg](https://github.com/maysay1999/anfdemo02/blob/main/images/220107_crr_diagram.jpg)
+
 1. Download japanwest-create.sh  `git clone https://github.com/maysay1999/anfdemo02.git AnfHandson`
 2. Change permision to execute the shell `chmod 711 japanwest-create.sh`
 3. Excute `./japanwest-create.sh`
