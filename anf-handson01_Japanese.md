@@ -11,6 +11,7 @@
 
 [View hands-on diagram](https://github.com/maysay1999/anfdemo02/blob/main/211202_hands-on_diagram_linux_nfs_sap_nfs41.pdf)
 
+![diagram jpeg](https://github.com/maysay1999/anfdemo02/blob/main/images/211202_hands-on_diagram_linux_nfs_sap_nfs41.jpg)
 
 ## 1. リソースグループ作成
 
