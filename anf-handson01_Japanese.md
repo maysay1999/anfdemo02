@@ -352,6 +352,7 @@ Capacity pool name: **pooldr** (4TiB, Standard)
 - ボリューム nfsvol1、 容量プール pool2、 ANF アカウント anfjpe を削除
 - リソースグループ anfdemo-rg にある他リソースを全部削除
 
+
 Reference
 - [Price of Cross Region Replication](https://azure.microsoft.com/en-us/pricing/details/netapp/)</br>
 [Price of Cross Region Replication (Japanese)](https://azure.microsoft.com/ja-jp/pricing/details/netapp/)
