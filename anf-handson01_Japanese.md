@@ -321,7 +321,7 @@ az netappfiles pool create \
 
 ## 20. クロスリージョンレプリケーション
 
-### 操作はGUIで実施する予定
+### 操作はGUIで実施
 
 [View Cross Region Replication diagram](https://github.com/maysay1999/anfdemo02/blob/main/220107_crr_diagram.pdf)\
 [CRR tier and price](https://azure.microsoft.com/en-us/pricing/details/netapp/)
@@ -329,8 +329,7 @@ az netappfiles pool create \
 ![CRR jpeg](https://github.com/maysay1999/anfdemo02/blob/main/images/220107_crr_diagram.jpg)
 
 1. Download japanwest-create.sh  `git clone https://github.com/maysay1999/anfdemo02.git AnfHandson`
-2. Change permision to execute the shell `chmod 711 japanwest-create.sh`
-3. Excute `./japanwest-create.sh`
+2. Excute `./japanwest-create.sh`
 The shell will create new Vnet, subnets, netapp account and capacity pool in Japan West region. \
 Japan West VNet: **anfjpw-vnet**\
 Address space:  **172.21.0.0/16**\
