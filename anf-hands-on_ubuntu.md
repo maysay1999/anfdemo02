@@ -57,7 +57,7 @@
   * Password: ---- (min length is 12)
   * OS disk type: **Premium SSD** (default)
   * VNet: **anfjpe-vnet**
-  * Subnet: **client-sub**
+  * Subnet: **vm-sub**
   * Public IP: **None**
 
 ## 5. Bastionを構成する (GUI作業)
@@ -153,7 +153,7 @@ Bastion で Ubuntu にログイン
       --name nfsvol1 \
       --service-level Standard \
       --vnet anfjpe-vnet \
-      --subnet client-sub \
+      --subnet vm-sub \
       --usage-threshold 1024 \
       --file-path nfsvol1 \
       --allowed-clients 0.0.0.0/0 \
