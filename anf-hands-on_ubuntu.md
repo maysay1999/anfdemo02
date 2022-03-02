@@ -218,7 +218,7 @@ Bastion で Ubuntu にログイン
 * 以下のコマンドを実行
 
   ```bash
-  fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=600 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=ANFThroughputTest`
+  fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=600 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=ANFThroughputTest
   ```
 
 ## 13. ボリュームサイズを　2TiB　に変更
