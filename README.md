@@ -22,7 +22,7 @@ ANF で作成した NFS volume を Windows 10 にマウントします
 
 ANF で作成した NFS volume を Ubuntu と Windows 10 の両方からアクセスできるようにします
 
-## [Azure NetApp Files ハンズオン Cross Region Replicaiton 編](https://github.com/maysay1999/anfdemo02/blob/main/anf-handson01_Japanese.md#20-%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%AA%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%AC%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
+## [Azure NetApp Files ハンズオン DR 編](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_crr.md)
 
 ANF で作成した NFS volume を リモートサイト に replicate します
 
