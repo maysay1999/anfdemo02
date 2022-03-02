@@ -6,10 +6,13 @@
 
 * レプリケート先のリージョンを選択。リージョン ペアは[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/cross-region-replication-introduction#azure-regional-pairs)をご覧ください
 * Azure NetApp Files ボリューム (ソース) はが既に作成されている必要があります
+* その他は、こちらの[事前準備サイト](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)をご参照下さい
 
 ## ダイアグラム
 
-![View Cross Region Replication diagram](https://github.com/maysay1999/anfdemo02/blob/main/images/220107_crr_diagram.jpg)
+![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-diagram.png)
+
+> **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220302_hands-on_diagram_crr.pdf)から
 
 ## 料金
 
