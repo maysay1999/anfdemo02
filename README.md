@@ -1,6 +1,6 @@
 # Azure NetApp Files ハンズオン プログラム
 
-> こちらの手順を日通り終えれば、問題なく Azure NetApp Files を使いこなせるようになります
+> こちらの手順を一通り終えれば、問題なく Azure NetApp Files を使いこなせるようになります
 
 ## [Azure NetApp Files ラボ環境作成と事前準備](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)
 
