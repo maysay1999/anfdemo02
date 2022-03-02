@@ -17,7 +17,7 @@
   * Location: **Japan East**  
   * Address Space: **172.28.80.0/22**  
   * Subnet name: **vm-subnet**  
-  * Subnet: **172.28.81.0/24**
+  * Subnet: **172.28.81.0/24**  
 
   > **AZ CLI**:  AZ CLI で実行した場合
 
@@ -32,7 +32,7 @@
 * パラメータ
   * ANF subnet name: **anf-subnet**  
   * ANF subnet: **172.28.80.0/26**  
-  * ANF delegation: **Microsoft.Netapp/volumes**
+  * ANF delegation: **Microsoft.Netapp/volumes**  
 
   > **AZ CLI**:  AZ CLI で実行した場合
 
