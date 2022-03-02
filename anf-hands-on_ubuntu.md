@@ -22,7 +22,7 @@
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
-  az network vnet create -g anfdemo-rg -n anfjpe-vnet \
+  az network vnet create -g anfdemolab-rg -n anfjpe-vnet \
       --address-prefix 172.28.80.0/22 \
       --subnet-name vm-subnet --subnet-prefix 172.28.81.0/24
   ```
@@ -38,7 +38,7 @@
 
   ```bash
   az network vnet subnet create \
-      --resource-group anfdemo-rg \
+      --resource-group anfdemolab-rg \
       --vnet-name anfjpe-vnet \
       --name anf-subnet \
       --delegations "Microsoft.NetApp/volumes" \
@@ -74,12 +74,12 @@
 
   ```bash
   az network vnet subnet create \
-      --resource-group anfdemo-rg \
+      --resource-group anfdemolab-rg \
       --name AzureBastionSubnet \
       --vnet-name anfjpe-vnet \
       --address-prefixes 172.28.82.0/26
 
-  az network public-ip create --resource-group anfdemo-rg \
+  az network public-ip create --resource-group anfdemolab-rg \
       --name anfjpe-vnet-ip \
       --sku Standard
   ```
@@ -105,7 +105,7 @@ Bastion で Ubuntu にログイン
 
   ```bash
   az netappfiles account create \
-      -g anfdemo-rg \
+      -g anfdemolab-rg \
       --name anfjpe -l japaneast
   ```
 
@@ -121,7 +121,7 @@ Bastion で Ubuntu にログイン
 
   ```bash
   az netappfiles pool create \
-      --resource-group anfdemo-rg \
+      --resource-group anfdemolab-rg \
       --location japaneast \
       --account-name anfjpe \
       --pool-name pool1 \
@@ -146,7 +146,7 @@ Bastion で Ubuntu にログイン
 
   ```bash
   az netappfiles volume create \
-      --resource-group anfdemo-rg \
+      --resource-group anfdemolab-rg \
       --location japaneast \
       --account-name anfjpe \
       --pool-name pool1 \
@@ -220,7 +220,7 @@ Bastion で Ubuntu にログイン
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
-  az netappfiles volume update -g anfdemo-rg \
+  az netappfiles volume update -g anfdemolab-rg \
      --account-name anfjpe --pool-name pool1 \
      --name nfsvol1 --service-level Standard \
       --usage-threshold 2048
@@ -245,7 +245,7 @@ Bastion で Ubuntu にログイン
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
-  az netappfiles snapshot create -g anfdemo-rg \
+  az netappfiles snapshot create -g anfdemolab-rg \
       --account-name anfjpe \
       --pool-name pool1 \
       --volume-name nfsvol1 \
@@ -276,7 +276,7 @@ Bastion で Ubuntu にログイン
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
-  az netappfiles snapshot policy create -g anfdemo-rg \
+  az netappfiles snapshot policy create -g anfdemolab-rg \
       --account-name anfjpe \
       --snapshot-policy-name policy01 \
       -l japaneast \
@@ -294,7 +294,7 @@ Bastion で Ubuntu にログイン
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
-  az netappfiles pool update -g anfdemo-rg \
+  az netappfiles pool update -g anfdemolab-rg \
       --account-name anfjpe --name pool1 \
       --qos-type Manual
   ```
@@ -302,7 +302,7 @@ Bastion で Ubuntu にログイン
   スループットを50M/sec に変更
   
   ```bash
-  az netappfiles volume update -g anfdemo-rg \
+  az netappfiles volume update -g anfdemolab-rg \
       --account-name anfjpe --pool-name pool1 \
       --name nfsvol1 --service-level standard \
       --throughput-mibps 50
@@ -317,7 +317,7 @@ Bastion で Ubuntu にログイン
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
-  az netappfiles pool update -g anfdemo-rg \
+  az netappfiles pool update -g anfdemolab-rg \
       --account-name anfjpe \
       --name pool1 \
       --size 6
@@ -326,7 +326,7 @@ Bastion で Ubuntu にログイン
   ボリュームスループットを 80M/sec　に変更  
 
   ```bash
-    az netappfiles volume update -g anfdemo-rg \
+    az netappfiles volume update -g anfdemolab-rg \
       --account-name anfjpe --pool-name pool1 \
       --name nfsvol1 --service-level standard \
       --throughput-mibps 80
@@ -343,7 +343,7 @@ Bastion で Ubuntu にログイン
 
   ```bash
   az netappfiles pool create \
-      --resource-group anfdemo-rg \
+      --resource-group anfdemolab-rg \
       --location japaneast \
       --account-name anfjpe \
       --pool-name pool2 \
@@ -355,6 +355,6 @@ Bastion で Ubuntu にログイン
   ボリューム移動完了後、pool1を削除  
 
   ```bash
-  az netappfiles pool delete -g anfdemo-rg -a anfjpe -n pool1
+  az netappfiles pool delete -g anfdemolab-rg -a anfjpe -n pool1
   ```
   
