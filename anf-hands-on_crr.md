@@ -11,9 +11,15 @@
 
 ![View Cross Region Replication diagram](https://github.com/maysay1999/anfdemo02/blob/main/images/220107_crr_diagram.jpg)
 
-[CRR tier and price](https://azure.microsoft.com/en-us/pricing/details/netapp/)
+## 料金
 
-![CRR jpeg]()
+* [こちら](https://azure.microsoft.com/ja-jp/pricing/details/netapp/)をご参照下さい
+
+* 要点  
+  * ネットワークの知識なしで約20分でDRの設定可能  
+  * 価格は約2倍強
+  * VPN などの設定は一切不要
+
 
 1. Download japanwest-create.sh  `git clone https://github.com/maysay1999/anfdemo02.git AnfHandson`
 2. Excute `./japanwest-create.sh`
