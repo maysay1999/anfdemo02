@@ -207,7 +207,7 @@ Bastion で Windows 10 にログイン
 
 * 手順  
   1. Microsoft Edge を開いて、`https://osdn.net/projects/crystaldiskmark/downloads/75540/CrystalDiskMark8_0_4.zip/`にアクセス  
-  2. CrystalDiskMarkをダウンロード 
+  2. CrystalDiskMarkをダウンロード  
   3. Zドライブで展開
   4. DiskMark64.exe を Zドライブの直下にコピー
 
