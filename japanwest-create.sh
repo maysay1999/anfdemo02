@@ -1,17 +1,17 @@
 #!/bin/bash
 
 az network vnet create -g anfdemolab-rg -n anfjpw-vnet \
-    --address-prefix 172.21.0.0/16 \
-    --subnet-name vm-subnet \
+    --address-prefix 172.29.80.0/22 \
+    --subnet-name vm-sub \
     -l japanwest \
-    --subnet-prefix 172.21.0.0/24
+    --subnet-prefix 172.29.81.0/24
 
 az network vnet subnet create \
     --resource-group anfdemolab-rg \
     --vnet-name anfjpw-vnet \
-    --name anf-subnet \
+    --name anf-sub \
     --delegations "Microsoft.NetApp/volumes" \
-    --address-prefixes 172.21.1.0/26
+    --address-prefixes 172.29.80.0/26
 
 az netappfiles account create \
     -g anfdemolab-rg \
