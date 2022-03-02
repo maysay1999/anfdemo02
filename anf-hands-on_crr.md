@@ -22,20 +22,20 @@
 
 ## 手順
 
-1. japanwest-create.sh をダウンロードする
+1 japanwest-create.sh をダウンロードする
 
 * Cloud Shell でダウンロード
 
-  ```git
-  git clone https://github.com/maysay1999/anfdemo02.git AnfCrr
-  ```
+```git
+git clone https://github.com/maysay1999/anfdemo02.git AnfCrr
+```
 
-2. ダウンロードしたシェルを実行
+2 ダウンロードしたシェルを実行
 
 * Cloud Shell
 
 ```bash
-  ./japanwest-create.sh
+./japanwest-create.sh
 ```
 
 * こちらが自動作成されます
@@ -47,14 +47,14 @@
   * ANF netapp account: **anfjpw** (location: Japan West)  
   * Capacity pool name: **pooldr** (4TiB, Standard)  
 
-3. レプリケーション ボリュームを作成
+3 レプリケーション ボリュームを作成
 
 * Replication volume name: **voldr** (througput 16Mbps)
 * Replication frequency: **every 1 hour**
 
-4. Azure NetApp Files ボリューム (ソース)のリソースID を Azure NetApp Files ボリューム (コピー先)に貼り付ける
+4 Azure NetApp Files ボリューム (ソース)のリソースID を Azure NetApp Files ボリューム (コピー先)に貼り付ける
 
-5. Azure NetApp Files ボリューム (コピー先)のリソースID を Azure NetApp Files ボリューム (ソース)に貼り付ける
+5 Azure NetApp Files ボリューム (コピー先)のリソースID を Azure NetApp Files ボリューム (ソース)に貼り付ける
 
 ## ハンズオンの環境の削除手順  
 
