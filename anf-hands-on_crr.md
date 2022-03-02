@@ -27,6 +27,7 @@
 * Cloud Shell でダウンロード
 
 ```git
+cd ~/
 git clone https://github.com/maysay1999/anfdemo02.git AnfCrr
 ```
 
@@ -35,7 +36,7 @@ git clone https://github.com/maysay1999/anfdemo02.git AnfCrr
 * Cloud Shell
 
 ```bash
-./japanwest-create.sh
+ ~/AnfCrr/japanwest-create.sh
 ```
 
 * こちらが自動作成されます
@@ -62,7 +63,7 @@ git clone https://github.com/maysay1999/anfdemo02.git AnfCrr
 2. ボリュームvoldrの「レプリケーション」メニューにて、「削除」をクリックし、レプリケーション関係を削除  
 3. ボリューム voldr、容量プール pooldr、ANF アカウント anfjpw を削除  
 4. ボリューム nfsvol1、 容量プール pool2、 ANF アカウント anfjpe を削除  
-5. リソースグループ anfdemo-rg にある他リソースを全部削除
+5. リソースグループ anfdemolab-rg にある他リソースを全部削除
 
 ## Reference
 
