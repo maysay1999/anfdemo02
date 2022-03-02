@@ -6,7 +6,7 @@
 
 まずは laboratory の環境を作成します。コピペでの作業と20分弱の待ち時間です
 
-## [Azure NetApp Files ハンズオン NFS 編 スタンダード](https://github.com/maysay1999/anfdemo02/blob/main/anf-handson01_Japanese.md)
+## [Azure NetApp Files ハンズオン NFS 編 スタンダード](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_ubuntu.md)
 
 ANF で作成した NFS volume を Ubuntu にマウントします
 
