@@ -26,7 +26,7 @@
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
-  az network vnet create -g anfdemo-rg -n anfjpe-vnet \
+  az network vnet create -g anfdemolab-rg -n anfjpe-vnet \
       --address-prefix 172.28.80.0/22 \
       --subnet-name vm-subnet --subnet-prefix 172.28.81.0/24
   ```
@@ -42,7 +42,7 @@
 
   ```bash
   az network vnet subnet create \
-      --resource-group anfdemo-rg \
+      --resource-group anfdemolab-rg \
       --vnet-name anfjpe-vnet \
       --name anf-subnet \
       --delegations "Microsoft.NetApp/volumes" \
@@ -59,16 +59,16 @@
 ## 5. Windows VM作成
 
 * パラメータ
-  * Virtual machine name: **ubuntu01**
+  * Virtual machine name: **Win10-01**
   * Region: **Japan East**
-  * Image: **Ububtu Server 20.04 LTS - Gen 2**
+  * Image: **Windows 10 Pro version 20H2 - Gen 2**
   * VM type: **Standard_D2s_v4**
   * Authentication type: **Password**
   * Username: **anfadmin**
   * Password: ---- (min length is 12)
   * OS disk type: **Premium SSD** (default)
   * VNet: **anfjpe-vnet**
-  * Subnet: **client-sub**
+  * Subnet: **vm-sub**
   * Public IP: **None**
 
 ## 5. Bastionを構成する (GUI作業)
@@ -85,26 +85,19 @@
 
   ```bash
   az network vnet subnet create \
-      --resource-group anfdemo-rg \
+      --resource-group anfdemolab-rg \
       --name AzureBastionSubnet \
       --vnet-name anfjpe-vnet \
       --address-prefixes 172.28.82.0/26
 
-  az network public-ip create --resource-group anfdemo-rg \
+  az network public-ip create --resource-group anfdemolab-rg \
       --name anfjpe-vnet-ip \
       --sku Standard
   ```
 
-## 6. Bastionで Ubuntu にログイン
+## 6. Bastionで Windows 10 にログイン
 
-Bastion で Ubuntu にログイン
-
-* Root にてログイン
-  * sudo su - または sudo -i を使う
-
-  ```bash
-   sudo -i
-  ```
+Bastion で Windows 10 にログイン
 
 ## 7. Azure NetApp Files アカウント作成
 
@@ -116,7 +109,7 @@ Bastion で Ubuntu にログイン
 
   ```bash
   az netappfiles account create \
-      -g anfdemo-rg \
+      -g anfdemolab-rg \
       --name anfjpe -l japaneast
   ```
 
@@ -132,7 +125,7 @@ Bastion で Ubuntu にログイン
 
   ```bash
   az netappfiles pool create \
-      --resource-group anfdemo-rg \
+      --resource-group anfdemolab-rg \
       --location japaneast \
       --account-name anfjpe \
       --pool-name pool1 \
@@ -142,14 +135,35 @@ Bastion で Ubuntu にログイン
 
 * 豆知識  
   * 容量プールの最大サイズ: 500 TiB  
-  * ANFアカウントあたり作成可能な容量プールの数の上限値: 25TiB  
+  * ANFアカウントあたり作成可能な容量プールの数の上限値: 25個  
 
-## 9. ボリューム作成
+## 9. Active Directory 接続
 
 * パラメータ
-  * Volume 名: **nfsvol1**
-  * NFS バージョン **3**
-  * クオータ: **1024** GiB
+  * ドメイン名: **azureisfun.local**
+  * プライマリDNS: **192.168.81.4**
+  * SNBサーバーprefix: **shared**
+  * ユーザー: **anfadmin**
+  * パスワード: {depends}
+
+> **コマンド**:  AZ CLI で実行した場合
+
+  ```bash
+  az netappfiles account ad add -g anfdemolab-rg \
+  --name anfjpe \
+  --username anfadmin \
+  --password null \
+  --smb-server-name shared \
+  --dns 192.168.81.4 \
+  --domain azureisfun.local
+  ```
+
+## 10. ボリューム作成
+
+* パラメータ
+  * Volume 名: **smbvol1**
+  * クオータ: **1024** GiB  
+  * プロトコルタイプ: SMB  
 
   Note) デプロイに約 4 分
 
@@ -157,19 +171,19 @@ Bastion で Ubuntu にログイン
 
   ```bash
   az netappfiles volume create \
-      --resource-group anfdemo-rg \
+      --resource-group anfdemolab-rg \
       --location japaneast \
       --account-name anfjpe \
       --pool-name pool1 \
-      --name nfsvol1 \
+      --name smbvol1 \
       --service-level Standard \
       --vnet anfjpe-vnet \
-      --subnet client-sub \
+      --subnet vm-sub \
       --usage-threshold 1024 \
-      --file-path nfsvol1 \
+      --file-path smbvol1 \
       --allowed-clients 0.0.0.0/0 \
       --rule-index 1 \
-      --protocol-types NFSv3 \
+      --protocol-types CIFS \
       --unix-read-write true
   ```
 
@@ -177,52 +191,34 @@ Bastion で Ubuntu にログイン
   * ボリュームサイズ最大値: 100 TiB  
   * 容量プールあたり作成可能なボリュームの数の最大値: 500  
 
-## 10. ボリュームを VM にマウント
+## 11. ボリュームを Windows10 VM にマップ
 
 * パラメータ
-  * マウントパス: **/mnt/nfsvol1/**
   * **Mount Instruction** の指示通りに設定
 
 * 手順  
-  1. NFS client をインストール  
-  2. ディレクトリを変更`cd /mnt`  
-  3. 新しくディレクトリを作成 `mkdir nfsvol1`  
-  4. マウントする: `mount -t nfs -o rw,hard,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.20.1.4:/nfsvol1 nfsvol1`
-
-* ボリュームのマウント状態を確認  
-  `df -h` or `mount`
-
-  ```bash
-  df -h
-  ```
+  1. This PC Map で右クリック Map Network Device... をクリック  
+  2. Zドライブにマップ
 
 * テストファイルを作成  
+  Zドライブ上にtext.txtを作成
 
-  ```bash
-  cd /mnt/nfsvol1
-  echo "this is a test file" > test.txt
-  ```
+## 12.　ベンチマークツール CrystalDiskMark インストール
 
-## 11.　ベンチマークツール fio インストール
+* 手順  
+  1. Microsoft Edge を開いて、`https://osdn.net/projects/crystaldiskmark/downloads/75540/CrystalDiskMark8_0_4.zip/`にアクセス  
+  2. CrystalDiskMarkをダウンロード 
+  3. Zドライブで展開
+  4. DiskMark64.exe を Zドライブの直下にコピー
 
-* fio - Flexible I/O テスター は [Microsoft website](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-benchmarks#fio) サイトでも紹介されているベンチマークツールです
+## 13. CrystalDiskMark でボリュームのスループットを確認
 
-* fio をインストールする
-  
-  ```bash
-  apt update
-  apt install -y fio
-  ```
+* 手順  
+  1. DiskMark64.exe を開く
+  2. テスト回数: **3**, テストサイズ: **64MiB**, テストドライブ: **Z** に変更
+  3. **SEQ1M** Q8T1 のみクリックして計測
 
-## 12. fio でボリュームのスループットをリアルタイムに確認
-
-* 以下のコマンドを実行
-
-  ```bash
-  fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=600 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=ANFThroughputTest`
-  ```
-
-## 13. ボリュームサイズを　2TiB　に変更
+## 14. ボリュームサイズを　2TiB　に変更
 
 * 予測値  
   * スループットが 16Mbpsから 32Mbps になる  
@@ -231,48 +227,32 @@ Bastion で Ubuntu にログイン
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
-  az netappfiles volume update -g anfdemo-rg \
+  az netappfiles volume update -g anfdemolab-rg \
      --account-name anfjpe --pool-name pool1 \
-     --name nfsvol1 --service-level Standard \
+     --name smbvol1 --service-level Standard \
       --usage-threshold 2048
   ```
 
-## 14. One-time スナップショット と volume-based 復元
+## 15. One-time スナップショット と volume-based 復元
 
-* GUI にて実行  
+* 手順 GUI にて実行  
   1. test.txt という名のテストファイルを作成  
-  2. *snapshot01*  の名でスナップショットを作成
-  3. スナップショットからクローンを作成
-  4. 復元してみる (optional)
-
-  ```bash
-    cd /mnt/nfsvol1/ 
-    echo "this is the test" > test.txt"
-  ```
+  2. *snapshot01*  の名でスナップショットを作成  
+  3. test.txtを開き内容を書き換える  
+  4. *snapshot02*  の名でスナップショットを作成  
+  5. test.txtを開き内容を書き換える  
+  6. *snapshot03*  の名でスナップショットを作成  
+  7. test.txtで右クリック、`Restore previous version` から復元可能  
+  8. File Explorer で View をクリックし、Hidden items にティックをいれる。ここからも復元可能
 
 * 豆知識
   * 保存できる snapshot の最大値は 255
 
-> **コマンド**:  AZ CLI で実行した場合
-
-  ```bash
-  az netappfiles snapshot create -g anfdemo-rg \
-      --account-name anfjpe \
-      --pool-name pool1 \
-      --volume-name nfsvol1 \
-      -l japaneast \
-      --name snapshot01
-  ```
-
 ## 15. スナップショット: file-based 復元
 
-* 手順  
-  1. `cd /mnt/nfsvol1/`
-  2. `ls -la`
-  3. `cd .snapshot`
-  4. `ls -la`
-  5. `cd snapshot01`
-  6. ファイル test.txt をリストアしてみる  `test2.txt: cp test.txt ../../test2.txt`
+* 手順 GUI にて実行  
+  1. test.txtで右クリック、`Restore previous version` から復元可能  
+  2. File Explorer で View をクリックし、Hidden items にティックをいれる。ここからも復元可能
 
 ## 16. スナップショット ポリシー
 
@@ -284,38 +264,18 @@ Bastion で Ubuntu にログイン
 * 豆知識
   * タイムゾーンは UTC で表記されているので、+9 する必要あり
 
-> **コマンド**:  AZ CLI で実行した場合
-
-  ```bash
-  az netappfiles snapshot policy create -g anfdemo-rg \
-      --account-name anfjpe \
-      --snapshot-policy-name policy01 \
-      -l japaneast \
-      --hourly-snapshots 8 \
-      --hourly-minute 59 \
-      --enabled true
-  ```
-
 ## 17. QoS 種類を自動から手動に変更
 
 * 手順  
   1. 容量プールでQoS 種類を自動から手動に変更
   2. スループットを50M/sec に変更
 
-> **コマンド**:  AZ CLI で実行した場合
-
-  ```bash
-  az netappfiles pool update -g anfdemo-rg \
-      --account-name anfjpe --name pool1 \
-      --qos-type Manual
-  ```
-
   スループットを50M/sec に変更
   
   ```bash
-  az netappfiles volume update -g anfdemo-rg \
+  az netappfiles volume update -g anfdemolab-rg \
       --account-name anfjpe --pool-name pool1 \
-      --name nfsvol1 --service-level standard \
+      --name smbvol1 --service-level standard \
       --throughput-mibps 50
   ```
 
@@ -328,7 +288,7 @@ Bastion で Ubuntu にログイン
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
-  az netappfiles pool update -g anfdemo-rg \
+  az netappfiles pool update -g anfdemolab-rg \
       --account-name anfjpe \
       --name pool1 \
       --size 6
@@ -337,9 +297,9 @@ Bastion で Ubuntu にログイン
   ボリュームスループットを 80M/sec　に変更  
 
   ```bash
-    az netappfiles volume update -g anfdemo-rg \
+    az netappfiles volume update -g anfdemolab-rg \
       --account-name anfjpe --pool-name pool1 \
-      --name nfsvol1 --service-level standard \
+      --name smbvol1 --service-level standard \
       --throughput-mibps 80
   ```
 
@@ -354,7 +314,7 @@ Bastion で Ubuntu にログイン
 
   ```bash
   az netappfiles pool create \
-      --resource-group anfdemo-rg \
+      --resource-group anfdemolab-rg \
       --location japaneast \
       --account-name anfjpe \
       --pool-name pool2 \
@@ -366,6 +326,5 @@ Bastion で Ubuntu にログイン
   ボリューム移動完了後、pool1を削除  
 
   ```bash
-  az netappfiles pool delete -g anfdemo-rg -a anfjpe -n pool1
+  az netappfiles pool delete -g anfdemolab-rg -a anfjpe -n pool1
   ```
-  
