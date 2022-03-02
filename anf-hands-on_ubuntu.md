@@ -169,14 +169,14 @@ Bastion で Ubuntu にログイン
 ## 10. ボリュームを VM にマウント
 
 * パラメータ
-  * Mount path: **/mnt/nfsvol1/**
-  * Follow **Mount Instruction**
+  * マウントパス: **/mnt/nfsvol1/**
+  * **Mount Instruction** の指示通りに設定
 
 * 手順  
-  1. Install NFS client
-  2. Change the path to /mnt: `cd /mnt`
-  3. Create a new directory to mount ANF volume: `mkdir nfsvol1`
-  4. Mount: `mount -t nfs -o rw,hard,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.20.1.4:/nfsvol1 nfsvol1`
+  1. NFS client をインストール  
+  2. ディレクトリを変更`cd /mnt`  
+  3. 新しくディレクトリを作成 `mkdir nfsvol1`  
+  4. マウントする: `mount -t nfs -o rw,hard,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.20.1.4:/nfsvol1 nfsvol1`
 
 * ボリュームのマウント状態を確認  
   `df -h` or `mount`
@@ -256,30 +256,34 @@ Bastion で Ubuntu にログイン
 ## 15. スナップショット: file-based 復元
 
 * 手順  
-  1. `cd /mnt/nfsvol1/`
-  2. `ls -la`
-  3. `cd .snapshot`
-  4. `ls -la`
-  5. `cd snapshot01`
-  6. ファイル test.txt をリストアしてみる  `test2.txt: cp test.txt ../../test2.txt`
+  1) `cd /mnt/nfsvol1/`
+  2) `ls -la`
+  3) `cd .snapshot`
+  4) `ls -la`
+  5) `cd snapshot01`
+  6) ファイル test.txt をリストアしてみる  `test2.txt: cp test.txt ../../test2.txt`
 
 ## 16. スナップショット ポリシー
 
-- Snapshot policy name:  **policy01**
-- Number of snapshot to keep: **8**
-- Hourly minute: current time
+* パラメータ  
+  * スナップショットポリシー名:  **policy01**
+  * 保存するスナップショットの数: **8**
+  * 毎時何分に実行: (好みの時間)
 
-Note) Timezone is UTC.  Japan Standard time is UTC +9
+* 豆知識
+  * タイムゾーンは UTC で表記されているので、+9 する必要あり
 
-```bash
-az netappfiles snapshot policy create -g anfdemo-rg \
-    --account-name anfjpe \
-    --snapshot-policy-name policy01 \
-    -l japaneast \
-    --hourly-snapshots 8 \
-    --hourly-minute 59 \
-    --enabled true
-```
+> **コマンド**:  AZ CLI で実行した場合
+
+  ```bash
+  az netappfiles snapshot policy create -g anfdemo-rg \
+      --account-name anfjpe \
+      --snapshot-policy-name policy01 \
+      -l japaneast \
+      --hourly-snapshots 8 \
+      --hourly-minute 59 \
+      --enabled true
+  ```
 
 ## 17. QoS 種類を自動から手動に変更
 
