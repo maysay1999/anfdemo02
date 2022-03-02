@@ -19,7 +19,7 @@
   * Subnet name: **vm-subnet**  
   * Subnet: **172.28.81.0/24**  
 
-> **AZ CLI**:  AZ CLI で実行した場合
+> **コマンド**:  AZ CLI で実行した場合
 
   ```bash
   az network vnet create -g anfdemo-rg -n anfjpe-vnet \
@@ -34,7 +34,7 @@
   * ANF subnet: **172.28.80.0/26**  
   * ANF delegation: **Microsoft.Netapp/volumes**  
 
-> **AZ CLI**:  AZ CLI で実行した場合
+> **コマンド**:  AZ CLI で実行した場合
 
   ```bash
   az network vnet subnet create \
@@ -70,7 +70,7 @@
   * Public IP address SKU: Standard
   * Procedure: Execute these command lines and create bastion on GUI portal
 
-> **AZ CLI**:  AZ CLI で実行した場合
+> **コマンド**:  AZ CLI で実行した場合
 
   ```bash
   az network vnet subnet create \
@@ -101,7 +101,7 @@ Bastion で Ubuntu にログイン
   * ANF アカウント名: **anfjpe**  
   * ロケーション: **Japan East**  
 
-> **AZ CLI**:  AZ CLI で実行した場合
+> **コマンド**:  AZ CLI で実行した場合
 
   ```bash
   az netappfiles account create \
@@ -117,7 +117,7 @@ Bastion で Ubuntu にログイン
   * サイズ: 4TiB
   * QoS タイプ: auto (default)
 
-> **AZ CLI**:  AZ CLI で実行した場合
+> **コマンド**:  AZ CLI で実行した場合
 
   ```bash
   az netappfiles pool create \
@@ -135,56 +135,62 @@ Bastion で Ubuntu にログイン
 
 ## 9. ボリューム作成
 
-- Volume name: **nfsvol1**
-- NFS **4.1**
-- Quota: **1024** GiB\
-Note) It take around 4 minutes
+* パラメータ
+  * Volume name: **nfsvol1**
+  * NFS **3**
+  * Quota: **1024** GiB\
 
-```bash
-az netappfiles volume create \
-    --resource-group anfdemo-rg \
-    --location japaneast \
-    --account-name anfjpe \
-    --pool-name pool1 \
-    --name nfsvol1 \
-    --service-level Standard \
-    --vnet anfjpe-vnet \
-    --subnet anf-subnet \
-    --usage-threshold 1024 \
-    --file-path nfsvol1 \
-    --allowed-clients 0.0.0.0/0 \
-    --rule-index 1 \
-    --protocol-types NFSv4.1 \
-    --unix-read-write true
-```
+  Note) デプロイに約 4 分
 
-Note)</br>
-ボリュームサイズ最大値: 100 TiB</br>
-容量プールあたり作成可能なボリュームの数の最大値: 500</br>
+> **コマンド**:  AZ CLI で実行した場合
 
-[GUI: Volume](images/create-volume.png)
-[GUI: Set NFS 4.1](images/create-volume2.png)
+  ```bash
+  az netappfiles volume create \
+      --resource-group anfdemo-rg \
+      --location japaneast \
+      --account-name anfjpe \
+      --pool-name pool1 \
+      --name nfsvol1 \
+      --service-level Standard \
+      --vnet anfjpe-vnet \
+      --subnet client-sub \
+      --usage-threshold 1024 \
+      --file-path nfsvol1 \
+      --allowed-clients 0.0.0.0/0 \
+      --rule-index 1 \
+      --protocol-types NFSv3 \
+      --unix-read-write true
+  ```
+
+* Note  
+  * ボリュームサイズ最大値: 100 TiB  
+  * 容量プールあたり作成可能なボリュームの数の最大値: 500  
 
 ## 10. ボリュームを VM にマウント
 
-- Mount path: **/mnt/nfsvol1/**
-- Follow **Mount Instruction**\
-Note) NFS utilitiesのインストールが不要
+* パラメータ
+  * Mount path: **/mnt/nfsvol1/**
+  * Follow **Mount Instruction**
 
-1. Install NFS client: not necessary (already installed)
-2. Change the path to /mnt: `cd /mnt`
-3. Create a new directory to mount ANF volume: `mkdir nfsvol1`
-4. Mount: `mount -t nfs -o rw,hard,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.20.1.4:/nfsvol1 nfsvol1`
+* 手順  
+  1. Install NFS client
+  2. Change the path to /mnt: `cd /mnt`
+  3. Create a new directory to mount ANF volume: `mkdir nfsvol1`
+  4. Mount: `mount -t nfs -o rw,hard,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.20.1.4:/nfsvol1 nfsvol1`
 
-ボリュームのマウント状態を確認
+* ボリュームのマウント状態を確認  
+  `df -h` or `mount`
 
-- `df -h`
-- `mount`: for the details
+  ```bash
+  df -h
+  ```
 
-テストファイルを作成
+* テストファイルを作成  
 
-- `cd /mnt/nfsvol1`
-- `echo "this is a test file" > test.txt`
+  ```bash
+  cd /mnt/nfsvol1
+  echo "this is a test file" > test.txt
+  ```
 
 ## 11.　ベンチマークツール fio インストール
 
