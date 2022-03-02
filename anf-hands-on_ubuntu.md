@@ -47,86 +47,91 @@
 
 ## 4. Ubuntu VM作成
 
-- Virtual machine name: **suse01**
-- Region: **Japan East**
-- Image: **SUSE Enterprise linux for SAP 15 SP3 + 24x7 Support Gen 2**
-- VM type: **Standard_D2s_v4**
-- Authentication type: **Password**
-- Username: **anfadmin**
-- Password: ---- (min length is 12)
-- OS disk type: **Premium SSD**
-- VNet: **anfjpe-vnet**
-- Subnet: **vm-subnet**
-- Public IP: **None**
+* パラメータ
+  * Virtual machine name: **ubuntu01**
+  * Region: **Japan East**
+  * Image: **Ububtu Server 20.04 LTS - Gen 2**
+  * VM type: **Standard_D2s_v4**
+  * Authentication type: **Password**
+  * Username: **anfadmin**
+  * Password: ---- (min length is 12)
+  * OS disk type: **Premium SSD** (default)
+  * VNet: **anfjpe-vnet**
+  * Subnet: **client-sub**
+  * Public IP: **None**
 
-[GUI: How to choose the correct image](images/suse-marketplace.png)\
-[GUI: SUSE VM setups](images/suse-create-vm01.png)
+## 5. Bastionを構成する (GUI作業)
 
-## 5. Bastionを構成する (GUI はおすすめ)
+* パラメータ
+  * Name: anfjpe-vnet-bastion
+  * Tier: Standard
+  * Virtual Network: anfjpe-vnet
+  * New public IP name : anfjpe-vnet-ip
+  * Public IP address SKU: Standard
+  * Procedure: Execute these command lines and create bastion on GUI portal
 
-- Name: anfjpe-vnet-bastion
-- Tier: Standard
-- Virtual Network: anfjpe-vnet
-- New public IP name : anfjpe-vnet-ip
-- Public IP address SKU: Standard
-- Procedure: Execute these command lines and create bastion on GUI portal
+> **AZ CLI**:  AZ CLI で実行した場合
 
-```bash
-az network vnet subnet create \
-    --resource-group anfdemo-rg \
-    --name AzureBastionSubnet \
-    --vnet-name anfjpe-vnet \
-    --address-prefixes 172.20.3.0/26
+  ```bash
+  az network vnet subnet create \
+      --resource-group anfdemo-rg \
+      --name AzureBastionSubnet \
+      --vnet-name anfjpe-vnet \
+      --address-prefixes 172.28.82.0/26
 
-az network public-ip create --resource-group anfdemo-rg \
-    --name anfjpe-vnet-ip \
-    --sku Standard
-```
+  az network public-ip create --resource-group anfdemo-rg \
+      --name anfjpe-vnet-ip \
+      --sku Standard
+  ```
 
-[GUI: Bastion](images/create-bastion0119.png)
+## 6. Bastionで Ubuntu にログイン
 
-## 6. Bastionで SUSEにログイン
+Bastion で Ubuntu にログイン
 
-Bastionで SUSEにログイン
+* Root にてログイン
+  * sudo su - または sudo -i を使う
 
-- Login as root `sudo su -` or `sudo -i`
-- Verify login as root `whoami`
+  ```bash
+   sudo -i
+  ```
 
 ## 7. Azure NetApp Files アカウント作成
 
-- ANF account name: **anfjpe**
-- Location: **Japan East**
+* パラメータ
+  * ANF アカウント名: **anfjpe**  
+  * ロケーション: **Japan East**  
 
-```bash
-az netappfiles account create \
-    -g anfdemo-rg \
-    --name anfjpe -l japaneast
-```
+> **AZ CLI**:  AZ CLI で実行した場合
 
-[GUI: NetApp Account](images/create-netapp-account.png)
+  ```bash
+  az netappfiles account create \
+      -g anfdemo-rg \
+      --name anfjpe -l japaneast
+  ```
 
 ## 8. 容量プールを作成
 
-- Capacity pool: **pool1**
-- Service level: **standard**
-- Size: 4TiB
-- QoS Type: auto (default)
+* パラメータ
+  * 容量プール: **pool1**
+  * サービスレベル: **標準**
+  * サイズ: 4TiB
+  * QoS タイプ: auto (default)
 
-```bash
-az netappfiles pool create \
-    --resource-group anfdemo-rg \
-    --location japaneast \
-    --account-name anfjpe \
-    --pool-name pool1 \
-    --size 4 \
-    --service-level Standard
-```
+> **AZ CLI**:  AZ CLI で実行した場合
 
-Note)</br>
-容量プールの最大サイズ: 500 TiB</br>
-ANFアカウントあたり作成可能な容量プールの数の上限値: 25TiB</br>
+  ```bash
+  az netappfiles pool create \
+      --resource-group anfdemo-rg \
+      --location japaneast \
+      --account-name anfjpe \
+      --pool-name pool1 \
+      --size 4 \
+      --service-level Standard
+  ```
 
-[GUI: Capacity Pool](images/create-pool.png)
+* Note  
+  * 容量プールの最大サイズ: 500 TiB  
+  * ANFアカウントあたり作成可能な容量プールの数の上限値: 25TiB  
 
 ## 9. ボリューム作成
 
