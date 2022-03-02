@@ -8,7 +8,7 @@
 
 ## [Azure NetApp Files 事前準備と事前テスト](https://github.com/maysay1999/aad/blob/main/prep/hands-on-prep.md)
 
-ANFを使うことができる環境であるのか確認したり、プレビューの機能をアクティベーションするためのサイトです
+ANFを使うことができる環境であるのか確認したり、プレビューの機能をアクティベーションします
 
 ## [Azure NetApp Files ハンズオン NFS 編 スタンダード](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_ubuntu.md)
 
