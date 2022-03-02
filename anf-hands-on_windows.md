@@ -4,6 +4,12 @@
 
 * ADDS または AADDS (Windows 2019 など) を準備します。こちらの[自動作成スクリプト](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)をご利用下さい
 
+## ダイアグラム
+
+![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-diagram.png)
+
+> **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220302_hands-on_diagram_smb.pdf)から
+
 ## 1. リソースグループ作成
 
 * パラメータ
@@ -34,7 +40,7 @@
 ## 3.  ANF サブネット作成
 
 * パラメータ
-  * ANF subnet name: **anf-subnet**  
+  * ANF subnet name: **anf-sub**  
   * ANF subnet: **172.28.80.0/26**  
   * ANF delegation: **Microsoft.Netapp/volumes**  
 
@@ -44,7 +50,7 @@
   az network vnet subnet create \
       --resource-group anfdemolab-rg \
       --vnet-name anfjpe-vnet \
-      --name anf-subnet \
+      --name anf-sub \
       --delegations "Microsoft.NetApp/volumes" \
       --address-prefixes 172.28.80.0/26
   ```
