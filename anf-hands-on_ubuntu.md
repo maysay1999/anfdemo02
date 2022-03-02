@@ -129,16 +129,16 @@ Bastion で Ubuntu にログイン
       --service-level Standard
   ```
 
-* Note  
+* 豆知識  
   * 容量プールの最大サイズ: 500 TiB  
   * ANFアカウントあたり作成可能な容量プールの数の上限値: 25TiB  
 
 ## 9. ボリューム作成
 
 * パラメータ
-  * Volume name: **nfsvol1**
-  * NFS **3**
-  * Quota: **1024** GiB\
+  * Volume 名: **nfsvol1**
+  * NFS バージョン **3**
+  * クオータ: **1024** GiB
 
   Note) デプロイに約 4 分
 
@@ -162,7 +162,7 @@ Bastion で Ubuntu にログイン
       --unix-read-write true
   ```
 
-* Note  
+* 豆知識  
   * ボリュームサイズ最大値: 100 TiB  
   * 容量プールあたり作成可能なボリュームの数の最大値: 500  
 
@@ -194,55 +194,74 @@ Bastion で Ubuntu にログイン
 
 ## 11.　ベンチマークツール fio インストール
 
-fio - Flexible I/O tester is introduced on [Microsoft website](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-benchmarks#fio) as a tool to get maximum throughput.  
+* fio - Flexible I/O テスター は [Microsoft website](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-benchmarks#fio) サイトでも紹介されているベンチマークツールです
 
-- Install fio: `zypper install -y fio`
+* fio をインストールする
+  
+  ```bash
+  apt update
+  apt install -y fio
+  ```
 
 ## 12. fio でボリュームのスループットをリアルタイムに確認
 
-<p>以下のコマンドを実行. </p>
+* 以下のコマンドを実行
 
-`fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=600 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=ANFThroughputTest`
+  ```bash
+  fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=600 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=ANFThroughputTest`
+  ```
 
 ## 13. ボリュームサイズを　2TiB　に変更
 
-- Expected value: Thougthput to be changed to 32Mbps from 16Mbps
-- See realtime change of throughput
+* 予測値  
+  * スループットが 16Mbpsから 32Mbps になる  
+  * ダウンタイムが発生しない  
 
-```bash
-az netappfiles volume update -g anfdemo-rg \
-   --account-name anfjpe --pool-name pool1 \
-   --name nfsvol1 --service-level Standard \
-    --usage-threshold 2048
-```
+> **コマンド**:  AZ CLI で実行した場合
+
+  ```bash
+  az netappfiles volume update -g anfdemo-rg \
+     --account-name anfjpe --pool-name pool1 \
+     --name nfsvol1 --service-level Standard \
+      --usage-threshold 2048
+  ```
 
 ## 14. One-time スナップショット と volume-based 復元
 
-- Create a test file named test.txt under /mnt/nfsvol1/ `echo "this is the test" > test.txt`
-- Create one-time snapshot: *snapshot01*
-- Create clone volume from the snapshot
-- Revert
-- Create one-time snapshot: *snapshot01*
-Note) Max number of snapshot per volume is 255
+* GUI にて実行  
+  1. test.txt という名のテストファイルを作成  
+  2. *snapshot01*  の名でスナップショットを作成
+  3. スナップショットからクローンを作成
+  4. 復元してみる (optional)
 
-```bash
-az netappfiles snapshot create -g anfdemo-rg \
-    --account-name anfjpe \
-    --pool-name pool1 \
-    --volume-name nfsvol1 \
-    -l japaneast \
-    --name snapshot01
-```
+  ```bash
+    cd /mnt/nfsvol1/ 
+    echo "this is the test" > test.txt"
+  ```
+
+* 豆知識
+  * 保存できる snapshot の最大値は 255
+
+> **コマンド**:  AZ CLI で実行した場合
+
+  ```bash
+  az netappfiles snapshot create -g anfdemo-rg \
+      --account-name anfjpe \
+      --pool-name pool1 \
+      --volume-name nfsvol1 \
+      -l japaneast \
+      --name snapshot01
+  ```
 
 ## 15. スナップショット: file-based 復元
 
-- `cd /mnt/nfsvol1/`
-- `ls -la`
-- `cd .snapshot`
-- `ls -la`
-- `cd snapshot01`
-- Restore test.txt as `test2.txt: cp test.txt ../../test2.txt`
-- Verify: `cd ../../` and `cat test2.txt`
+* 手順  
+  1. `cd /mnt/nfsvol1/`
+  2. `ls -la`
+  3. `cd .snapshot`
+  4. `ls -la`
+  5. `cd snapshot01`
+  6. ファイル test.txt をリストアしてみる  `test2.txt: cp test.txt ../../test2.txt`
 
 ## 16. スナップショット ポリシー
 
