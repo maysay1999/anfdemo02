@@ -19,6 +19,8 @@
   * Subnet name: **vm-subnet**  
   * Subnet: **172.28.81.0/24**
 
+  > **AZ CLI**:  AZ CLI で実行した場合
+
   ```bash
   az network vnet create -g anfdemo-rg -n anfjpe-vnet \
       --address-prefix 172.28.80.0/22 \
@@ -31,6 +33,8 @@
   * ANF subnet name: **anf-subnet**  
   * ANF subnet: **172.28.80.0/26**  
   * ANF delegation: **Microsoft.Netapp/volumes**
+
+  > **AZ CLI**:  AZ CLI で実行した場合
 
   ```bash
   az network vnet subnet create \
