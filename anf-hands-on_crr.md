@@ -4,7 +4,7 @@
 
 ## 事前準備
 
-* レプリケート先のリージョンを選択。[リージョン ペア](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/cross-region-replication-introduction#azure-regional-pairs)はこちらをご覧ください
+* レプリケート先のリージョンを選択。リージョン ペアは[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/cross-region-replication-introduction#azure-regional-pairs)をご覧ください
 * Azure NetApp Files ボリューム (ソース) はが既に作成されている必要があります
 
 ## ダイアグラム
