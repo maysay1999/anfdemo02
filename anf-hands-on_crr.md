@@ -47,26 +47,27 @@
   * ANF netapp account: **anfjpw** (location: Japan West)  
   * Capacity pool name: **pooldr** (4TiB, Standard)  
 
-3.
-
-The shell will create new Vnet, subnets, netapp account and capacity pool in Japan West region. \
+3. レプリケーション ボリュームを作成
 
 * Replication volume name: **voldr** (througput 16Mbps)
 * Replication frequency: **every 1 hour**
 
-# ハンズオンの環境の削除
-* ボリュームvoldrの「レプリケーション」メニューにて、「ピアリンクの中断」をクリックし、レプリケーションを停止させます
-* ボリュームvoldrの「レプリケーション」メニューにて、「削除」をクリックし、レプリケーション関係を削除
-* ボリューム voldr、容量プール pooldr、ANF アカウント anfjpw を削除
-* ボリューム nfsvol1、 容量プール pool2、 ANF アカウント anfjpe を削除
-* リソースグループ anfdemo-rg にある他リソースを全部削除
+4. Azure NetApp Files ボリューム (ソース)のリソースID を Azure NetApp Files ボリューム (コピー先)に貼り付ける
+
+5. Azure NetApp Files ボリューム (コピー先)のリソースID を Azure NetApp Files ボリューム (ソース)に貼り付ける
+
+## ハンズオンの環境の削除手順  
+
+1. ボリュームvoldrの「レプリケーション」メニューにて、「ピアリンクの中断」をクリックし、レプリケーションを停止させます  
+2. ボリュームvoldrの「レプリケーション」メニューにて、「削除」をクリックし、レプリケーション関係を削除  
+3. ボリューム voldr、容量プール pooldr、ANF アカウント anfjpw を削除  
+4. ボリューム nfsvol1、 容量プール pool2、 ANF アカウント anfjpe を削除  
+5. リソースグループ anfdemo-rg にある他リソースを全部削除
 
 ## Reference
 
-- [Price of Cross Region Replication](https://azure.microsoft.com/en-us/pricing/details/netapp/)</br>
+* [Price of Cross Region Replication](https://azure.microsoft.com/en-us/pricing/details/netapp/)
 [Price of Cross Region Replication (Japanese)](https://azure.microsoft.com/ja-jp/pricing/details/netapp/)
-* [Limitatoin of ANF](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits)</br>
+* [Limitatoin of ANF](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits)
 [Limitatoin of ANF (Japanese)](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-resource-limits)
 * [Delete volume replications or volumes](https://docs.microsoft.com/en-us/azure/azure-netapp-files/cross-region-replication-delete)
-
----
