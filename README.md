@@ -14,7 +14,7 @@ ANF で作成した NFS volume を Ubuntu にマウントします
 
 ANF で作成した NFS volume を SUSE にマウントします
 
-## [Azure NetApp Files ハンズオン SMB 編](https://github.com/maysay1999/anfdemo02/blob/main/anf-handson01_Japanese.md)
+## [Azure NetApp Files ハンズオン SMB 編](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_windows.md)
 
 ANF で作成した NFS volume を Windows 10 にマウントします
 
