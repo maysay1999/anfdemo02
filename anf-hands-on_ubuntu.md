@@ -256,12 +256,12 @@ Bastion で Ubuntu にログイン
 ## 15. スナップショット: file-based 復元
 
 * 手順  
-  1) `cd /mnt/nfsvol1/`
-  2) `ls -la`
-  3) `cd .snapshot`
-  4) `ls -la`
-  5) `cd snapshot01`
-  6) ファイル test.txt をリストアしてみる  `test2.txt: cp test.txt ../../test2.txt`
+  1. `cd /mnt/nfsvol1/`
+  2. `ls -la`
+  3. `cd .snapshot`
+  4. `ls -la`
+  5. `cd snapshot01`
+  6. ファイル test.txt をリストアしてみる  `test2.txt: cp test.txt ../../test2.txt`
 
 ## 16. スナップショット ポリシー
 
@@ -287,60 +287,76 @@ Bastion で Ubuntu にログイン
 
 ## 17. QoS 種類を自動から手動に変更
 
-```bash
-az netappfiles pool update -g anfdemo-rg \
-    --account-name anfjpe --name pool1 \
-    --qos-type Manual
-```
+* 手順  
+  1. 容量プールでQoS 種類を自動から手動に変更
+  2. スループットを50M/sec に変更
 
-And change throughput manually to 50Mbps
+> **コマンド**:  AZ CLI で実行した場合
 
-```bash
-az netappfiles volume update -g anfdemo-rg \
-    --account-name anfjpe --pool-name pool1 \
-    --name nfsvol1 --service-level standard \
-    --throughput-mibps 50
-```
+  ```bash
+  az netappfiles pool update -g anfdemo-rg \
+      --account-name anfjpe --name pool1 \
+      --qos-type Manual
+  ```
+
+  スループットを50M/sec に変更
+  
+  ```bash
+  az netappfiles volume update -g anfdemo-rg \
+      --account-name anfjpe --pool-name pool1 \
+      --name nfsvol1 --service-level standard \
+      --throughput-mibps 50
+  ```
 
 ## 18. 容量プールのサイズを増やし、ボリュームのスループットを増やす
 
-容量プールのサイズを 6 TiB　に拡張
+* 手順  
+  1. 容量プールのサイズを 6 TiB　に拡張  
+  2. スループットを50M/sec に変更  
 
-```bash
-az netappfiles pool update -g anfdemo-rg \
-    --account-name anfjpe \
-    --name pool1 \
-    --size 6
-```
+> **コマンド**:  AZ CLI で実行した場合
 
-ボリュームスループットを 80Mbps　に変更
+  ```bash
+  az netappfiles pool update -g anfdemo-rg \
+      --account-name anfjpe \
+      --name pool1 \
+      --size 6
+  ```
 
-```bash
-az netappfiles volume update -g anfdemo-rg \
-    --account-name anfjpe --pool-name pool1 \
-    --name nfsvol1 --service-level standard \
-    --throughput-mibps 80
-```
+  ボリュームスループットを 80M/sec　に変更  
+
+  ```bash
+    az netappfiles volume update -g anfdemo-rg \
+      --account-name anfjpe --pool-name pool1 \
+      --name nfsvol1 --service-level standard \
+      --throughput-mibps 80
+  ```
 
 ## 19. サービスレベルを変更
 
-- Premiumサービスレベルの4TB容量プール **pool2** を作成
-- ボリュームをそプール **pool2** に移動
-- pool1を削除
+* 手順  
+  1. Premiumサービスレベルの4TB容量プール **pool2** を作成  
+  2. ボリュームをそプール **pool2** に移動  
+  3. pool1を削除  
 
-```bash
-az netappfiles pool create \
-    --resource-group anfdemo-rg \
-    --location japaneast \
-    --account-name anfjpe \
-    --pool-name pool2 \
-    --size 4 \
-    --qos-type Manual \
-    --service-level Premium
-```
+> **コマンド**:  AZ CLI で実行した場合
 
-ボリューム移動完了後、pool1を削除</br>
-`az netappfiles pool delete -g anfdemo-rg -a anfjpe -n pool1`
+  ```bash
+  az netappfiles pool create \
+      --resource-group anfdemo-rg \
+      --location japaneast \
+      --account-name anfjpe \
+      --pool-name pool2 \
+      --size 4 \
+      --qos-type Manual \
+      --service-level Premium
+  ```
+
+  ボリューム移動完了後、pool1を削除  
+
+  ```bash
+  az netappfiles pool delete -g anfdemo-rg -a anfjpe -n pool1
+  ```
 
 ## 20. クロスリージョンレプリケーション
 
