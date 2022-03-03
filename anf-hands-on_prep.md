@@ -1,4 +1,4 @@
-# 0Azure NetApp Files を使うになる前にやるべきこと
+# Azure NetApp Files を使うになる前にやるべきこと
 
 ## 事前準備
 
