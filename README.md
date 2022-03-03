@@ -6,7 +6,7 @@
 
 まずは laboratory の環境を作成します。コピペでの作業と20分弱の待ち時間です
 
-## [Azure NetApp Files を使う前にやるべきこと](https://github.com/maysay1999/aad/blob/main/prep/hands-on-prep.md)
+## [Azure NetApp Files を使う前にやるべきこと](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_prep.md)
 
 ANFを使うことができる環境であるのか確認したり、プレビューの機能をアクティベーションします
 
