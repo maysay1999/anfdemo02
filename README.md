@@ -34,6 +34,6 @@ ANF で作成した NFS volume を リモートサイト に replicate します
 
 ANF をコンテナの永続ボリュームとして使います
 
-## [Azure ラボ環境 を削除する](https://github.com/maysay1999/anfdemo02/blob/main/anf-handson01_Japanese.md)
+## [Azure NetApp Files ラボ環境 を削除する](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_termination.md)
 
 事前準備で削除したラボ環境を削除する手順です
