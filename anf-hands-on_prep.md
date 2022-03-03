@@ -40,3 +40,10 @@
 * [SMB CA](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/enable-continuous-availability-existing-smb) と [ANF Backup](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/backup-introduction) も使えるようにすることを推奨 こちらで登録する
   * SMB CA: [ここをクリック](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2Qj2eZL0mZPv1iKUrDGvc9UQUFTUjExUDA5VU5KMUY1RllSVjNEOUVTWCQlQCN0PWcu)
   * ANF Backup: : [ここをクリック](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR2Qj2eZL0mZPv1iKUrDGvc9UMkI3NUIxVkVEVkdJMko3WllQMVRNMTdEWSQlQCN0PWcu)
+
+* プレビューの概要が知りたい場合は、このコマンドで推し量ることができる
+
+  ```bash
+  az feature list --namespace Microsoft.NetApp -o table
+  ```
+  
