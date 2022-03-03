@@ -47,8 +47,8 @@
   az feature list --namespace Microsoft.NetApp -o table
   ```
 
-* 機能を外したい場合は、`az feature register` を `az feature unregister` に変えるだけ
-  例) ANFSharedAD を無効にしたい場合
+* 機能を外したい場合は、`az feature register` を `az feature unregister` に変えるだけ  
+  例) ANFSharedAD を無効にしたい場合  
 
   ```bash
   az feature unregister --namespace Microsoft.NetApp --name ANFSharedAD
