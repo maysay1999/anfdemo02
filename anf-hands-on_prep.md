@@ -17,9 +17,9 @@
   az netappfiles account create -g test-rg -n anftest -l japaneast
   ```
   
-  > **何のため?**:  ANFはすべての環境で動作するわけではないから　上記のコマンドでエラーがあれば、[Service Request を起こす](https://docs.microsoft.com/ja-jp/azure/azure-portal/supportability/how-to-create-azure-support-request)
+  > **何のため?**:  ANFはすべての環境で動作するわけではないから　上記のコマンドでエラーがあれば、[Service Request](https://docs.microsoft.com/ja-jp/azure/azure-portal/supportability/how-to-create-azure-support-request) を起こす
 
-* エラー(赤字のアウトプット)がなければテストでつくったものを削除
+* 問題がなければテストでつくったものを削除
 
 ```bash
   az netappfiles account delete -g test-rg -n anftest
