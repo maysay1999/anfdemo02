@@ -53,5 +53,5 @@ Resource Group --> anfdemolab-rg --> 削除
 > **CLI**:  AZ CLI で実行
 
   ```bash
-  rm -rf AnfLaboCreate/
+  rm -rf ~/AnfLaboCreate/
   ```
