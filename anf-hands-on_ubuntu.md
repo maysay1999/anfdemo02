@@ -26,7 +26,7 @@
   * VNet name: **anfjpe-vnet**  
   * Location: **Japan East**  
   * Address Space: **172.28.80.0/22**  
-  * Subnet name: **vm-subnet**  
+  * Subnet name: **vm-sub**  
   * Subnet: **172.28.81.0/24**  
 
 > **コマンド**:  AZ CLI で実行した場合
@@ -34,7 +34,7 @@
   ```bash
   az network vnet create -g anfdemolab-rg -n anfjpe-vnet \
       --address-prefix 172.28.80.0/22 \
-      --subnet-name vm-subnet --subnet-prefix 172.28.81.0/24
+      --subnet-name vm-sub --subnet-prefix 172.28.81.0/24
   ```
 
 ## 3.  ANF サブネット作成
