@@ -38,6 +38,10 @@ ANF Backup の使用方法を解説します
 
 ANF をコンテナの永続ボリュームとして使います
 
+## Azure NetApp Files ハンズオン RBAC編 (undercooked)
+
+ANFアドミンユーザー、ANFリードオンリーユーザーをジョブ別で作成する方法を解説します
+
 ## [Azure NetApp Files ラボ環境 を削除する](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_termination.md)
 
 事前準備で削除したラボ環境を削除する手順です
