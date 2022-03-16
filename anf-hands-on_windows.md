@@ -8,7 +8,7 @@
 
 ![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-diagram.png)
 
-> **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220302_hands-on_diagram_smb.pdf)から
+> **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220316_hands-on_diagram_smb.pdf)から
 
 ## 1. リソースグループ作成
 
