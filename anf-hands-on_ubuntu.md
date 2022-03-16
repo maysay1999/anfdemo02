@@ -2,13 +2,14 @@
 
 ## 事前準備
 
-* こちらの[事前準備サイト](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)をご参照下さい
+* [こちら](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_prep.md)が事前に必要な作業となります
+* こちらの[事前準備サイト](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)をご参照に自動ラボ作成スクリプトを実行下さい
 
 ## ダイアグラム
 
-![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-diagram.png)
+![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images//anf-nfs-diagram.png)
 
-> **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220302_hands-on_diagram_nfs.pdf)から
+> **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220319_hands-on_diagram_nfs.pdf)から
 
 ## 1. リソースグループ作成
 
