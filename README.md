@@ -38,6 +38,10 @@ ANF Backup の使用方法を解説します
 
 ANF をコンテナの永続ボリュームとして使います
 
+## Azure NetApp Files ハンズオン Standard Network編 (undercooked)
+
+ANF Standard Network を使って複数の peering を経由した ANF volume を マウントします
+
 ## Azure NetApp Files ハンズオン RBAC編 (undercooked)
 
 ANFアドミンユーザー、ANFリードオンリーユーザーをジョブ別で作成する方法を解説します
