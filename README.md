@@ -46,6 +46,10 @@ ANF Standard Network を使って複数の peering を経由した ANF volume �
 
 ANFアドミンユーザー、ANFリードオンリーユーザーをジョブ別で作成する方法を解説します
 
+## Cloud Insights を使い、ANFのモニター, アラート, ransomwareプロテクションを設定する (undercooked)
+
+ANFはクラウド上のファイルサーバーとしても使用できます。Cloud Insightsと併せることで、モニター・アラート・ransomware対策も万全です
+
 ## [Azure NetApp Files ラボ環境 を削除する](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_termination.md)
 
 事前準備で削除したラボ環境を削除する手順です
