@@ -7,9 +7,9 @@
 
 ## ダイアグラム
 
-![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images//anf-nfs-diagram.png)
+![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images//anf-sles-diagram.png)
 
-> **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220319_hands-on_diagram_nfs.pdf)から
+> **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220323_hands-on_diagram_sles.pdf)から
 
 ## 1. リソースグループ作成
 
