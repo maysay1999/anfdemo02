@@ -161,7 +161,7 @@ Bastion で SLES / RHEL にログイン
 
 * パラメータ
   * Volume 名: **nfsvol1**
-  * NFS バージョン **3**
+  * NFS バージョン **4.1**
   * クオータ: **1024** GiB
 
   Note) デプロイに約 4 分
