@@ -5,6 +5,7 @@
 * [こちら](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_prep.md)が事前に必要な作業となります
 * こちらの[事前準備サイト](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)をご参照に自動ラボ作成スクリプトを実行下さい
 * [AzAcSnap](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azacsnap-get-started)(Azure Application Consistent Snapshot tool) については[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azacsnap-get-started)をご参照下さい
+* [Application Volume Group](https://docs.microsoft.com/en-us/azure/azure-netapp-files/application-volume-group-introduction)については[こちら](https://docs.microsoft.com/en-us/azure/azure-netapp-files/application-volume-group-introduction)をご参照下さい
 
 ## ダイアグラム
 
