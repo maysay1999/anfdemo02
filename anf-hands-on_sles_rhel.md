@@ -201,7 +201,7 @@ Bastion で SLES / RHEL にログイン
   1. NFS client をインストール  
   2. ディレクトリを変更`cd /mnt`  
   3. 新しくディレクトリを作成 `mkdir nfsvol1`  
-  4. マウントする: `mount -t nfs -o rw,hard,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.20.1.4:/nfsvol1 nfsvol1`
+  4. マウントする: `mount -t nfs -o rw,hard,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.28.80.4:/nfsvol1 nfsvol1`
 
 * ボリュームのマウント状態を確認  
   `df -h` or `mount`
@@ -292,7 +292,7 @@ Bastion で SLES / RHEL にログイン
   3. `cd .snapshot`
   4. `ls -la`
   5. `cd snapshot01`
-  6. ファイル test.txt をリストアしてみる  `test2.txt: cp test.txt ../../test2.txt`
+  6. ファイル test.txt をリストアしてみる  test2.txt: `cp test.txt ../../test2.txt`
 
 ## 16. スナップショット ポリシー
 
