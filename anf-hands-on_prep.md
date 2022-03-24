@@ -32,7 +32,7 @@
 
 ```bash
   az feature register --namespace Microsoft.NetApp --name ANFSharedAD
-  az feature register --namespace Microsoft.NetApp --name ANFTierChang
+  az feature register --namespace Microsoft.NetApp --name ANFTierChange
   az feature register --namespace Microsoft.NetApp --name ANFUnixPermissions
   az feature register --namespace Microsoft.NetApp --name ANFChownMode
   ```
