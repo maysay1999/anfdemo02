@@ -5,6 +5,19 @@
 * [こちら](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_prep.md)が事前に必要な作業となります
 * こちらの[事前準備サイト](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)をご参照に自動ラボ作成スクリプトを実行下さい
 
+## このハンズオンセッションの目的
+
+* Azureポータルを使って、**ANFアカウント**を作成できるようになる
+* Azureポータルを使って、**ANF容量プール**を作成できるようになる
+* Azureポータルを使って、**NFSボリューム**を作成できるようになる
+* Azureポータルを使って、**スナップショット**を作成できるようになる
+* Azureポータルを使って、**スナップショットポリシー（スナップショットバックアップスケジュール）**を作成できるようになる
+* 帯域が足りない場合、3つの方法で帯域を増やすことができることを理解する
+  ボリュームサイズを大きくして帯域を増やす  
+  容量プールサイズを大きくして帯域を増やす  
+  サービスレベルを変更して帯域を増やす  
+  QoSの使い方をマスターする
+
 ## ダイアグラム
 
 ![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images//anf-nfs-diagram.png)
@@ -140,6 +153,8 @@ Bastion で Ubuntu にログイン
       --name anfjpe -l japaneast
   ```
 
+> **ノート**:  アカウントは region あたり 10 まで作成可能
+
 ## 8. 容量プールを作成
 
 * パラメータ
@@ -147,6 +162,8 @@ Bastion で Ubuntu にログイン
   * サービスレベル: **標準**
   * サイズ: 4TiB
   * QoS タイプ: auto (default)
+
+  ![pool](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-pool2.png)
 
 > **コマンド**:  AZ CLI で実行した場合
 
@@ -172,6 +189,10 @@ Bastion で Ubuntu にログイン
   * クオータ: **1024** GiB
 
   Note) デプロイに約 4 分
+
+  ![volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-volume.png)
+
+  ![volume2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-volume2.png)
 
 > **コマンド**:  AZ CLI で実行した場合
 
@@ -204,23 +225,18 @@ Bastion で Ubuntu にログイン
   * **Mount Instruction** の指示通りに設定
 
 * 手順  
-  1. NFS client をインストール  
+  1. NFS client software をインストール  
+     ![nfs-common](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-anfmount.png)  
   2. ディレクトリを変更`cd /mnt`  
   3. 新しくディレクトリを作成 `mkdir nfsvol1`  
-  4. マウントする: `mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 172.28.80.4:/nfsvol1 nfsvol1`
+  4. マウントする: `mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 172.28.80.4:/nfsvol1 nfsvol1`  
+     ![mount](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-anfmount2.png)  
 
 * ボリュームのマウント状態を確認  
   `df -h` or `mount`
 
   ```bash
   df -h
-  ```
-
-* テストファイルを作成  
-
-  ```bash
-  cd /mnt/nfsvol1
-  echo "this is a test file" > test.txt
   ```
 
 ## 11.　ベンチマークツール fio インストール
@@ -241,6 +257,8 @@ Bastion で Ubuntu にログイン
   ```bash
   fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=600 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=ANFThroughputTest
   ```
+
+> **ノート**:  ベンチマークツールで実際に帯域がいくつか、ダウンタイムなしでボリュームサイズの増減が可能か確認してみよう
 
 ## 13. ボリュームサイズを　2TiB　に変更
 
