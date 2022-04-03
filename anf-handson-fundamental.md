@@ -10,7 +10,7 @@
 
 ANFを使うことができる環境であるのか確認したり、プレビューの機能をアクティベーションします
 
-## [Azure NetApp Files ハンズオン NFS 編 スタンダード](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_ubuntu.md)
+## [Azure NetApp Files ハンズオン NFS 編](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_ubuntu.md)
 
 ANF で作成した NFS volume を Ubuntu にマウントします
 
