@@ -81,6 +81,8 @@
   * Subnet: **vm-sub**
   * Public IP: **None**
 
+> **ノート**:  ラボ環境を作成済みの際はスキップ
+
 ## 5. Bastionを構成する (GUI作業)
 
 * パラメータ
@@ -105,6 +107,8 @@
       --sku Standard
   ```
 
+> **ノート**:  ラボ環境を作成済みの際はスキップ
+
 ## 6. Bastionで Ubuntu にログイン
 
 Bastion で Ubuntu にログイン
@@ -116,11 +120,17 @@ Bastion で Ubuntu にログイン
    sudo -i
   ```
 
+  ![bastion1](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-bastion.png)
+
+  ![bastion2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-bastion2.png)
+
 ## 7. Azure NetApp Files アカウント作成
 
 * パラメータ
   * ANF アカウント名: **anfjpe**  
   * ロケーション: **Japan East**  
+
+  ![anf acccount](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-anfaccount.png)
 
 > **コマンド**:  AZ CLI で実行した場合
 
@@ -197,7 +207,7 @@ Bastion で Ubuntu にログイン
   1. NFS client をインストール  
   2. ディレクトリを変更`cd /mnt`  
   3. 新しくディレクトリを作成 `mkdir nfsvol1`  
-  4. マウントする: `mount -t nfs -o rw,hard,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.20.1.4:/nfsvol1 nfsvol1`
+  4. マウントする: `mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 172.28.80.4:/nfsvol1 nfsvol1`
 
 * ボリュームのマウント状態を確認  
   `df -h` or `mount`
@@ -257,7 +267,7 @@ Bastion で Ubuntu にログイン
 
   ```bash
     cd /mnt/nfsvol1/ 
-    echo "this is the test" > test.txt"
+    echo "this is the test" > test.txt
   ```
 
 * 豆知識
