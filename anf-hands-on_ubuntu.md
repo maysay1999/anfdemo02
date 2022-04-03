@@ -403,9 +403,14 @@ Bastion で Ubuntu にログイン
 
 * 手順  
   ポイント: 容量プールをもう一つ違うサービスレベルで作成し、ボリュームを移動させ、空になった容量プールを削除  
-  1. Premiumサービスレベルの4TB容量プール **pool2** を作成  
-  2. ボリュームをそプール **pool2** に移動  
-  3. 空になったpool1を削除  
+  1. Premiumサービスレベルの4TB容量プール **pool2** を新規で作成  
+     ![new premium pool](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-pool2.png)  
+
+     ![new premium pool 2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-pool3.png)  
+  2. ボリュームをプール **pool2** に移動 (右クリックから"Change Pool")  
+     ![change pool](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-pool4.png)  
+  3. 空になったpool1を削除  (右クリックから削除)
+     ![delete unnecessary pool](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-pool5.png)  
 
 > **コマンド**:  AZ CLI で実行した場合
 
