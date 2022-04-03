@@ -7,8 +7,8 @@
 
 ## このハンズオンセッションの目的
 
-* Azureポータルを使って、**ANFアカウント**を作成できるようになる
-* Azureポータルを使って、**ANF容量プール**を作成できるようになる
+* Azureポータルを使って、**[ANF](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/)アカウント**を作成できるようになる
+* Azureポータルを使って、**[ANF](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/)容量プール**を作成できるようになる
 * Azureポータルを使って、**NFSボリューム**を作成できるようになる
 * Azureポータルを使って、**スナップショット**を作成できるようになる
 * Azureポータルを使って、**スナップショットポリシー**（スナップショットバックアップスケジュール）を作成できるようになる
@@ -435,3 +435,6 @@ Bastion で Ubuntu にログイン
   az netappfiles pool delete -g anfdemolab-rg -a anfjpe -n pool1
   ```
   
+## 推奨コンテンツ
+
+[Azure NetApp Files のドキュメント](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/)サイト
