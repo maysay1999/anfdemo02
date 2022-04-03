@@ -18,6 +18,10 @@
   **サービスレベルを変更**して帯域を増やす  
   **QoS**の使い方をマスターする
 
+## ANF のストレージ階層
+
+![storage hierarchy](https://docs.microsoft.com/ja-jp/azure/media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)
+
 ## ダイアグラム
 
 ![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images//anf-nfs-diagram.png)
