@@ -51,6 +51,8 @@
   * ANF subnet: **172.28.80.0/26**  
   * ANF delegation: **Microsoft.Netapp/volumes**  
 
+![subnet](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-subnet.png)
+
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
