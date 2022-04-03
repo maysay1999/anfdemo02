@@ -17,9 +17,13 @@
   * Resource Group name: **anfdemolab-rg**
   * Location: **Japan East**
 
+> **コマンド**:  AZ CLI で実行した場合
+
   ```bash
   az group create -n anfdemolab-rg -l japaneast
   ```
+
+> **ノート**:  ラボ環境を作成済みの際はスキップ
 
 ## 2. 仮想ネットワーク anfjpe-vnet　作成
 
