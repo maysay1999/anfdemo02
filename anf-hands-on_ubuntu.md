@@ -250,6 +250,10 @@ Bastion で Ubuntu にログイン
   apt install -y fio
   ```
 
+  ![fio 1](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-fio.png)
+
+  ![fio 2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-fio2.png)  
+
 ## 12. fio でボリュームのスループットをリアルタイムに確認
 
 * 以下のコマンドを実行
@@ -260,11 +264,13 @@ Bastion で Ubuntu にログイン
 
 > **ノート**:  ベンチマークツールで実際に帯域がいくつか、ダウンタイムなしでボリュームサイズの増減が可能か確認してみよう
 
-## 13. ボリュームサイズを　2TiB　に変更
+## 13. ボリュームサイズを　2TiB (2048)　に変更
 
 * 予測値  
   * スループットが 16Mbpsから 32Mbps になる  
   * ダウンタイムが発生しない  
+
+  ![resize volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-changevolume.png)
 
 > **コマンド**:  AZ CLI で実行した場合
 
@@ -281,7 +287,7 @@ Bastion で Ubuntu にログイン
   1. test.txt という名のテストファイルを作成  
   2. *snapshot01*  の名でスナップショットを作成
   3. スナップショットからクローンを作成
-  4. 復元してみる (optional)
+  4. 復元してみる (optional): できたスナップショットを右クリックすることで復元可能
 
   ```bash
     cd /mnt/nfsvol1/ 
@@ -310,7 +316,9 @@ Bastion で Ubuntu にログイン
   3. `cd .snapshot`
   4. `ls -la`
   5. `cd snapshot01`
-  6. ファイル test.txt をリストアしてみる  `test2.txt: cp test.txt ../../test2.txt`
+  6. ファイル test.txt を text2.txt の名前でリストアしてみる  `cp test.txt ../../test2.txt`
+
+  ![file-based restoration](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-snapshot2.png)
 
 ## 16. スナップショット ポリシー
 
@@ -319,6 +327,12 @@ Bastion で Ubuntu にログイン
   * 保存するスナップショットの数: **8**
   * 毎時何分に実行: (好みの時間)
 
+* 手順  
+  1. スナップショットポリシーを作成  
+    ![snapshot policy](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-snapshotpolicy.png)  
+  2. 作成したスナップショットポリシーをボリュームにあてる  
+    ![snapshot policy2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-snapshotpolicy2.png)  
+  
 * 豆知識
   * タイムゾーンは UTC で表記されているので、+9 する必要あり
 
@@ -338,8 +352,10 @@ Bastion で Ubuntu にログイン
 
 * 手順  
   1. 容量プールでQoS 種類を自動から手動に変更
-  2. スループットを50M/sec に変更
-
+     ![QoS](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-qos.png)  
+  2. ボリュームのスループットを50M/sec に変更 (右クリックで変更可能)  
+     ![QoS 2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-qos2.png)  
+  
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
@@ -357,11 +373,13 @@ Bastion で Ubuntu にログイン
       --throughput-mibps 50
   ```
 
-## 18. 容量プールのサイズを増やし、ボリュームのスループットを増やす
+## 18. 容量プールのサイズを増やし、ボリュームのスループットをさらに増やす
 
 * 手順  
   1. 容量プールのサイズを 6 TiB　に拡張  
-  2. スループットを50M/sec に変更  
+     ![resize pool](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-resizepool.png)  
+  2. スループットを80M/sec に変更  
+     ![resize pool2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-resizepool2.png)  
 
 > **コマンド**:  AZ CLI で実行した場合
 
@@ -381,12 +399,13 @@ Bastion で Ubuntu にログイン
       --throughput-mibps 80
   ```
 
-## 19. サービスレベルを変更
+## 19. サービスレベルを変更し、ボリュームのスループットをまたさらに増やす
 
 * 手順  
+  ポイント: 容量プールをもう一つ違うサービスレベルで作成し、ボリュームを移動させ、空になった容量プールを削除  
   1. Premiumサービスレベルの4TB容量プール **pool2** を作成  
   2. ボリュームをそプール **pool2** に移動  
-  3. pool1を削除  
+  3. 空になったpool1を削除  
 
 > **コマンド**:  AZ CLI で実行した場合
 
