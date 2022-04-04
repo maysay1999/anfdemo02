@@ -196,7 +196,7 @@
   * ユーザー: **anfadmin**
   * パスワード: 設定したパスワード
 
-  ![adds](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-ad.png)
+  ![adds](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-ad.png)
 
 > **コマンド**:  AZ CLI で実行した場合
 
