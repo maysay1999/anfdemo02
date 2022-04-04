@@ -15,7 +15,7 @@ DR宛先ボリューム --> レプリケーション --> 「ピアリンクの�
   -g anfdemolab-rg \
   --account-name anfjpw \
   --pool-name pooldr \
-  --name voldr
+  --name destination-volume
   ```
 
 ## 2. レプリケーション関係を削除
@@ -31,7 +31,7 @@ DR宛先ボリューム --> レプリケーション --> 「削除」 をクリ�
   -g anfdemolab-rg \
   --account-name anfjpw \
   --pool-name pooldr \
-  --name voldr
+  --name destination-volume
   ```
 
 ## 3. リソースグループ anfdemolab-rg を削除
