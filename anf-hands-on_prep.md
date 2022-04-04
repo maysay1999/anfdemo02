@@ -37,6 +37,8 @@
   az feature register --namespace Microsoft.NetApp --name ANFChownMode
   ```
 
+  ![anf prep bash](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-prep_bash.png)
+
 * [SMB CA](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/enable-continuous-availability-existing-smb) と [ANF Backup](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/backup-introduction) も有効にすることを推奨 こちらで登録する
   * SMB CA: [ここをクリック](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2Qj2eZL0mZPv1iKUrDGvc9UQUFTUjExUDA5VU5KMUY1RllSVjNEOUVTWCQlQCN0PWcu)
   * ANF Backup: : [ここをクリック](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR2Qj2eZL0mZPv1iKUrDGvc9UMkI3NUIxVkVEVkdJMko3WllQMVRNMTdEWSQlQCN0PWcu)
@@ -54,3 +56,7 @@
   ```bash
   az feature unregister --namespace Microsoft.NetApp --name ANFSharedAD
   ```
+
+## 次のステップ
+
+* [Azure NetApp Files ラボ環境作成と事前準備](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)
