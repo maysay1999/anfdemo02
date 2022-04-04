@@ -256,12 +256,14 @@
 * パラメータ
   * **Mount Instruction** の指示通りに設定
 
+  ![volume2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-mount.png)
+
 * 手順  
   1. This PC Map で右クリック Map Network Device... をクリック  
-  2. Zドライブにマップ
+  2. Zドライブにマップ  
+  3. Zドライブ上にtext.txtを作成
 
-* テストファイルを作成  
-  Zドライブ上にtext.txtを作成
+  ![z drive](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-zdrive.png)
 
 ## 12.　ベンチマークツール CrystalDiskMark インストール
 
@@ -269,7 +271,8 @@
   1. Microsoft Edge を開いて、`https://osdn.net/projects/crystaldiskmark/downloads/75540/CrystalDiskMark8_0_4.zip/`にアクセス  
   2. CrystalDiskMarkをダウンロード  
   3. Zドライブで展開
-  4. DiskMark64.exe を Zドライブの直下にコピー
+
+  ![z drive2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-zdrive2.png)
 
 ## 13. CrystalDiskMark でボリュームのスループットを確認
 
@@ -277,6 +280,8 @@
   1. DiskMark64.exe を開く
   2. テスト回数: **3**, テストサイズ: **64MiB**, テストドライブ: **Z** に変更
   3. **SEQ1M** Q8T1 のみクリックして計測
+
+  ![CrystalDiskMark](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-crystal.png)
 
 ## 14. ボリュームサイズを　2TiB　に変更
 
