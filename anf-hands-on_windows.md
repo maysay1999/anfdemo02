@@ -4,6 +4,24 @@
 
 * ADDS または AADDS (Windows 2019 など) を準備します。こちらの[自動作成スクリプト](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)をご利用下さい
 
+## このハンズオンセッションの目的
+
+* Azureポータルを使って、**[ANF](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/)アカウント**を作成できるようになる
+* Azureポータルを使って、**[ANF](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/)容量プール**を作成できるようになる
+* Azureポータルを使って、**Active Directory (ADDS / Azure ADDS)** の設定をできるようになる
+* Azureポータルを使って、**SMBボリューム**を作成できるようになる
+* Azureポータルを使って、**スナップショット**を作成できるようになる
+* Azureポータルを使って、**スナップショットポリシー**（スナップショットバックアップスケジュール）を作成できるようになる
+* 帯域が足りない場合、3つの方法で帯域を増やすことができることを理解する  
+  **ボリュームサイズ**を大きくして帯域を増やす  
+  **容量プールサイズ**を大きくして帯域を増やす  
+  **サービスレベルを変更**して帯域を増やす  
+  **QoS**の使い方をマスターする
+
+## ANF のストレージ階層
+
+![storage hierarchy](https://docs.microsoft.com/ja-jp/azure/media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)
+
 ## ダイアグラム
 
 ![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-diagram.png)
