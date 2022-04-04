@@ -5,7 +5,7 @@
 ## 事前準備
 
 * レプリケート先のリージョンを選択。リージョン ペアは[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/cross-region-replication-introduction#azure-regional-pairs)をご覧ください
-* Azure NetApp Files ボリューム (ソース) はが既に作成されている必要があります
+* Azure NetApp Files ボリューム (ソース) が既に作成されている必要があります
 * その他は、こちらの[事前準備サイト](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)をご参照下さい
 
 ## ダイアグラム
@@ -20,8 +20,12 @@
 
 * 要点  
   * ネットワークの知識なしで約20分でDRの設定可能  
-  * 価格は約2倍強
-  * VPN などの設定は一切不要
+  * 価格は single と比較して約2倍強
+  * VPN などの設定・保守費用は一切不要  
+
+## サポートされているリージョン間レプリケーション ペア
+
+* [こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/cross-region-replication-introduction)をご参照下さい
 
 ## 手順
 
@@ -75,3 +79,6 @@ git clone https://github.com/maysay1999/anfdemo02.git AnfCrr
 * [Limitatoin of ANF](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits)
 [Limitatoin of ANF (Japanese)](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-resource-limits)
 * [Delete volume replications or volumes](https://docs.microsoft.com/en-us/azure/azure-netapp-files/cross-region-replication-delete)
+
+推奨コンテンツ
+* [リージョン間レプリケーションを使用するための要件と考慮事項](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/cross-region-replication-requirements-considerations)
