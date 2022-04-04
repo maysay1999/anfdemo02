@@ -27,35 +27,33 @@
 
 * [こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/cross-region-replication-introduction)をご参照下さい
 
-## 手順
+## 1. japanwest-create.sh をダウンロードする
 
-1. japanwest-create.sh をダウンロードする
+* Cloud Shell の画面でダウンロード
 
-* Cloud Shell でダウンロード
+  ```git
+  cd ~/
+  git clone https://github.com/maysay1999/anfdemo02.git AnfCrr
+  ```
 
-```git
-cd ~/
-git clone https://github.com/maysay1999/anfdemo02.git AnfCrr
-```
-
-2. ダウンロードしたシェルを実行
+## 2. ダウンロードしたシェルを実行する
 
 * Cloud Shell
 
-```bash
- ~/AnfCrr/japanwest-create.sh
-```
+  ```bash
+   ~/AnfCrr/japanwest-create.sh
+  ```
 
 * こちらが自動作成されます
-  * Japan West VNet: **anfjpw-vnet**  
-  * Address space:  **172.21.0.0/16**  
-  * Location: **Japan West**(pair region)  
-  * Subnet #1: **vm-sub**.  172.21.0.0/24  
-  * Subnet #2: **anf-sub**.  172.21.1.0/26  
-  * ANF netapp account: **anfjpw** (location: Japan West)  
-  * Capacity pool name: **pooldr** (4TiB, Standard)  
+  * Japneast にソースボリューム: anfjpe/pool1/source-volume  
+  * Japnwest の Vnet: **anfjpw-vnet**  
+  * Japnwest の Address space:  **172.29.80.0/22**  
+  * Japnwest の Subnet #1: **vm-sub**.  172.29.81.0/24  
+  * Japnwest の Subnet #2: **anf-sub**.  172.29.80.0/26  
+  * Japnwest の ANF netapp account: **anfjpw**  
+  * Japnwest の Capacity pool name: **pooldr** (QoS: Manual)  
 
-3. レプリケーション ボリュームを作成
+## 3. レプリケーション ボリュームを作成
 
 * Replication volume name: **voldr** (througput 16Mbps)
 * Replication frequency: **every 1 hour**
