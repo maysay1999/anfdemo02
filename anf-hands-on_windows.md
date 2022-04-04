@@ -192,9 +192,11 @@
 * パラメータ
   * ドメイン名: **azureisfun.local**
   * プライマリDNS: **192.168.81.4**
-  * SNBサーバーprefix: **shared**
+  * SNBサーバーprefix: **shared** (shared-XXXX の名前で SMBボリュームが作成される)
   * ユーザー: **anfadmin**
-  * パスワード: {depends}
+  * パスワード: 設定したパスワード
+
+  ![adds](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-ad.png)
 
 > **コマンド**:  AZ CLI で実行した場合
 
@@ -207,6 +209,10 @@
   --dns 192.168.81.4 \
   --domain azureisfun.local
   ```
+
+> **ノート**:  今回はADDSを使う。仮に、**Azure ADDS** を使う場合は、**organizational unit** path を `OU=AADDC Computers` と設定
+
+  ![aadds](https://github.com/MicrosoftDocs/azure-docs/raw/main/articles/media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
 
 ## 10. ボリューム作成
 
