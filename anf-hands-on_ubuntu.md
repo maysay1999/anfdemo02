@@ -435,6 +435,13 @@ Bastion で Ubuntu にログイン
   az netappfiles pool delete -g anfdemolab-rg -a anfjpe -n pool1
   ```
   
+## 次のステップ
+
+* [Azure NetApp Files ハンズオン SMB 編](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_windows.md)
+
+* [Azure NetApp Files ハンズオン DR 編](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_crr.md)
+
 ## 推奨コンテンツ
 
 [Azure NetApp Files のドキュメント](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/)サイト
+
