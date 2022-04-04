@@ -144,11 +144,17 @@
 
 ## Reference
 
-* [Price of Cross Region Replication](https://azure.microsoft.com/en-us/pricing/details/netapp/)
-[Price of Cross Region Replication (Japanese)](https://azure.microsoft.com/ja-jp/pricing/details/netapp/)
-* [Limitatoin of ANF](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits)
-[Limitatoin of ANF (Japanese)](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-resource-limits)
-* [Delete volume replications or volumes](https://docs.microsoft.com/en-us/azure/azure-netapp-files/cross-region-replication-delete)
+* [クロスリージョンレプリケーションの価格](https://azure.microsoft.com/ja-jp/pricing/details/netapp/)
+* [ANFの制限事項)](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-resource-limits)
 
-推奨コンテンツ
+## 推奨コンテンツ
+
 * [リージョン間レプリケーションを使用するための要件と考慮事項](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/cross-region-replication-requirements-considerations)
+
+## 次のステップ
+
+* [Azure NetApp Files ハンズオン Backup 編](https://github.com/maysay1999/tipstricks/blob/main/anf-backup.md)
+
+* [Azure NetApp Files ハンズオン Azure Kubenertes Service 編](https://github.com/maysay1999/anfdemo01/blob/main/README.md)
+
+* [Azure NetApp Files ハンズオン dual-ptotocol 編](https://github.com/maysay1999/tipstricks/blob/main/anf-dual-protocol.md)
