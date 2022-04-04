@@ -67,6 +67,7 @@
     ![protection volume Replication](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-replication_volume4.png)  
 
 > **ノート**:  ソースボリュームIDは Pool (pool1) --> volume (source-volume) --> properties から取得  
+
    ![resource of source volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-volumeid_src.png)  
   
   あるいはこのコマンド  
