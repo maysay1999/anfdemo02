@@ -24,6 +24,7 @@ az netappfiles pool create \
     --account-name anfjpw \
     --pool-name pooldr \
     --size 4 \
+    --qos-type Manual \
     --service-level Standard
 
 # create a source volume
@@ -38,7 +39,7 @@ az netappfiles volume create \
     --subnet anf-sub \
     --allowed-clients 0.0.0.0/0 \
     --rule-index 1 \
-    --usage-threshold 100 \
+    --throughput-mibps 100 \
     --file-path sourcevolumepath \
     --protocol-types NFSv3
 
