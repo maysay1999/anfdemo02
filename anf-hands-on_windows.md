@@ -223,6 +223,10 @@
 
   Note) デプロイに約 4 分
 
+  ![volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-volume.png)
+
+  ![volume2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-volume2.png)
+
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
