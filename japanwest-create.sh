@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# create a destination account and pool
 az network vnet create -g anfdemolab-rg -n anfjpw-vnet \
     --address-prefix 172.29.80.0/22 \
     --subnet-name vm-sub \
@@ -24,5 +25,22 @@ az netappfiles pool create \
     --pool-name pooldr \
     --size 4 \
     --service-level Standard
+
+# create a source volume
+az netappfiles volume create \
+    --resource-group anfdemolab-rg \
+    --location japaneast \
+    --account-name anfjpe \
+    --pool-name pool1 \
+    --name source-volume \
+    --service-level Standard \
+    --vnet anfjpe-vnet \
+    --subnet anf-sub \
+    --allowed-clients 0.0.0.0/0 \
+    --rule-index 1 \
+    --usage-threshold 100 \
+    --file-path sourcevolumepath \
+    --protocol-types NFSv3
+
 
 
