@@ -289,6 +289,12 @@
   * スループットが 16Mbpsから 32Mbps になる  
   * ダウンタイムが発生しない  
 
+* 手順  
+  1. Volume --> Overview
+  2. Quota (GiB):  2048 に変更
+
+  ![Resize Volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-resizevolume.png)
+
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
@@ -307,8 +313,12 @@
   4. *snapshot02*  の名でスナップショットを作成  
   5. test.txtを開き内容を書き換える  
   6. *snapshot03*  の名でスナップショットを作成  
+     ![snapshot](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshot.png)  
+     ![snapshot 2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshot2.png)  
   7. test.txtで右クリック、`Restore previous version` から復元可能  
-  8. File Explorer で View をクリックし、Hidden items にティックをいれる。ここからも復元可能
+     ![snapshot 3](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshot3.png)  
+  8. File Explorer で View をクリックし、Hidden items にティックをいれる。ここからも復元可能  
+     ![snapshot 4](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshot4.png)  
 
 * 豆知識
   * 保存できる snapshot の最大値は 255
