@@ -53,7 +53,7 @@
 * パラメータ
   * Replication volume name: **destination-volume**  
   * Througput: **16Mbps**  
-  * Replication frequency: **hourly**  
+  * Replication frequency: **daily**  
   * Source volume ID: `az netappfiles volume show -g anfdemolab-rg --account-name anfjpe --pool-name pool1 --name source-volume  --query id -o tsv`  
 
 * 手順  
@@ -67,6 +67,8 @@
     ![protection volume Replication](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-replication_volume4.png)  
 
 > **ノート**:  ソースボリュームIDは Pool (pool1) --> volume (source-volume) --> properties から取得  
+   ![resource of source volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-volumeid_src.png)  
+  
   あるいはこのコマンド  
 
   ```bash
@@ -91,21 +93,53 @@
   --protocol-types NFSv3 \
   --endpoint-type "dst" \
   --remote-volume-resource-id $(az netappfiles volume show -g anfdemolab-rg --account-name anfjpe --pool-name pool1 --name source-volume  --query id -o tsv) \
-  --replication-schedule "hourly" \
+  --replication-schedule "daily" \
   --volume-type "DataProtection"
   ```
 
-4. Azure NetApp Files ボリューム (ソース)のリソースID を Azure NetApp Files ボリューム (コピー先)に貼り付ける
+## 4. ディスティネーションボリューム (destination-volume) のリソースID を ソースボリューム (destination-volume)に貼り付ける
 
-5. Azure NetApp Files ボリューム (コピー先)のリソースID を Azure NetApp Files ボリューム (ソース)に貼り付ける
+* 手順  
+  1. ディスティネーションボリューム (destination-volume) のリソースID をコピー  
+     ![resource of destination volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-volumeid_dst.png)  
+     あるいはこのコマンド
 
-## ハンズオンの環境の削除手順  
+  ```bash
+  az netappfiles volume show -g anfdemolab-rg \
+  --account-name anfjpw --pool-name pooldr \
+  --name destination-volume  --query id -o tsv
+  ```
 
-1. ボリュームvoldrの「レプリケーション」メニューにて、「ピアリンクの中断」をクリックし、レプリケーションを停止させます  
-2. ボリュームvoldrの「レプリケーション」メニューにて、「削除」をクリックし、レプリケーション関係を削除  
-3. ボリューム voldr、容量プール pooldr、ANF アカウント anfjpw を削除  
-4. ボリューム nfsvol1、 容量プール pool2、 ANF アカウント anfjpe を削除  
-5. リソースグループ anfdemolab-rg にある他リソースを全部削除
+  2. Pool (pool1) --> volume (source-volume) --> Replication に貼る  
+    あるいはこのコマンド
+
+  ```bash
+  az netappfiles volume replication approve --account-name anfjpe \
+  --name source-volume \
+  --pool-name pool1 \
+  --remote-volume-resource-id $(az netappfiles volume show -g anfdemolab-rg --account-name anfjpw --pool-name pooldr --name destination-volume  --query id -o tsv) \
+  --resource-group anfdemolab-rg
+  ```
+
+## 5. Mirror state が "Mirrored" になれば完成
+
+  ![Mirrored](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-mirrored.png)  
+
+## 6. Replication の中断
+
+* "Break peering" をクリック
+
+  ![Break peering](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-suspend.png)  
+
+> **コマンド**:  AZ CLI で Replication の中断を実行した場合
+
+  ```bash
+  az netappfiles volume replication suspend \
+  -g anfdemolab-rg \
+  --account-name anfjpw \
+  --pool-name pooldr \
+  --name destination-volume
+  ```
 
 ## Reference
 
