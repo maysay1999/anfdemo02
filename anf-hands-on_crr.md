@@ -5,7 +5,6 @@
 ## 事前準備
 
 * レプリケート先のリージョンを選択。リージョン ペアは[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/cross-region-replication-introduction#azure-regional-pairs)をご覧ください
-* Azure NetApp Files ボリューム (ソース) が既に作成されている必要があります
 * その他は、こちらの[事前準備サイト](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)をご参照下さい
 
 ## ダイアグラム
@@ -22,10 +21,6 @@
   * ネットワークの知識なしで約20分でDRの設定可能  
   * 価格は single と比較して約2倍強
   * VPN などの設定・保守費用は一切不要  
-
-## サポートされているリージョン間レプリケーション ペア
-
-* [こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/cross-region-replication-introduction)をご参照下さい
 
 ## 1. japanwest-create.sh をダウンロードする
 
@@ -55,8 +50,50 @@
 
 ## 3. レプリケーション ボリュームを作成
 
-* Replication volume name: **voldr** (througput 16Mbps)
-* Replication frequency: **every 1 hour**
+* パラメータ
+  * Replication volume name: **destination-volume**  
+  * Througput: **16Mbps**  
+  * Replication frequency: **hourly**  
+  * Source volume ID: `az netappfiles volume show -g anfdemolab-rg --account-name anfjpe --pool-name pool1 --name source-volume  --query id -o tsv`  
+
+* 手順  
+  1. Capital Pool (pooldr) --> Volumes --> **Add data replication**を選択  
+     ![Add data replication](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-replication_volume.png)  
+  2. Create a new protection volume --> Basics  
+     ![protection volume Basics](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-replication_volume2.png)  
+  3. Create a new protection volume --> Protocol  
+     ![protection volume Protocol](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-replication_volume3.png)  
+  4. Create a new protection volume --> Replication
+    ![protection volume Replication](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-replication_volume4.png)  
+
+> **ノート**:  ソースボリュームIDは Pool (pool1) --> volume (source-volume) --> properties から取得  
+  あるいはこのコマンド  
+
+  ```bash
+  az netappfiles volume show -g anfdemolab-rg \
+  --account-name anfjpe --pool-name pool1 \
+  --name source-volume  --query id -o tsv
+  ```
+
+> **コマンド**:  AZ CLI で実行した場合
+
+  ```bash
+  az netappfiles volume create --resource-group anfdemolab-rg \
+  --account-name anfjpw \
+  --file-path destination-volume \
+  --pool-name pooldr \
+  --name destination-volume \
+  --location japanwest \
+  --service-level Standard \
+  --usage-threshold 100 \
+  --vnet anfjpw-vnet \
+  --subnet anf-sub \
+  --protocol-types NFSv3 \
+  --endpoint-type "dst" \
+  --remote-volume-resource-id $(az netappfiles volume show -g anfdemolab-rg --account-name anfjpe --pool-name pool1 --name source-volume  --query id -o tsv) \
+  --replication-schedule "hourly" \
+  --volume-type "DataProtection"
+  ```
 
 4. Azure NetApp Files ボリューム (ソース)のリソースID を Azure NetApp Files ボリューム (コピー先)に貼り付ける
 
