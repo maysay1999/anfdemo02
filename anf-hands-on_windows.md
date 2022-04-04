@@ -34,9 +34,13 @@
   * Resource Group name: **anfdemolab-rg**
   * Location: **Japan East**
 
+> **コマンド**:  AZ CLI で実行した場合
+
   ```bash
   az group create -n anfdemolab-rg -l japaneast
   ```
+
+> **ノート**:  ラボ環境を作成済みの際はスキップ
 
 ## 2. 仮想ネットワーク anfjpe-vnet　作成
 
@@ -55,12 +59,16 @@
       --subnet-name vm-sub --subnet-prefix 172.28.81.0/24
   ```
 
+> **ノート**:  ラボ環境を作成済みの際はスキップ
+
 ## 3.  ANF サブネット作成
 
 * パラメータ
   * ANF subnet name: **anf-sub**  
   * ANF subnet: **172.28.80.0/26**  
   * ANF delegation: **Microsoft.Netapp/volumes**  
+
+  ![subnet](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-subnet.png)
 
 > **コマンド**:  AZ CLI で実行した場合
 
@@ -73,12 +81,16 @@
       --address-prefixes 172.28.80.0/26
   ```
 
+> **ノート**:  ANF用のサブネットは /26 を推奨 (/28, /26, /24 が推奨値)
+
 ## 4. Peering で Domain Controller がある VNet と繋ぐ
 
 * パラメータ
   * Peering link name: **Anf-to-Ad**
   * Peering link name: **Ad-to-Anf**
   * Virtual network: *{対応先}*
+
+> **ノート**:  ラボ環境を作成済みの際はスキップ
 
 ## 5. Windows VM作成
 
@@ -94,6 +106,8 @@
   * VNet: **anfjpe-vnet**
   * Subnet: **vm-sub**
   * Public IP: **None**
+
+> **ノート**:  ラボ環境を作成済みの際はスキップ
 
 ## 5. Bastionを構成する (GUI作業)
 
@@ -119,12 +133,14 @@
       --sku Standard
   ```
 
+> **ノート**:  ラボ環境を作成済みの際はスキップ
+
 ## 6. Bastionで Windows 10 にログイン
 
 * Bastion で Windows 10 にログイン
   * ユーザー名: anfadmin@azureisfun.local
   * パスワード: main.tf につけたパスワード
-  * 注意) Bastionでは {ドメイン名}\\{ユーザ名} は使用できない。ドメインメンバーとしてログインするときは、{ユーザ名}@{ドメイン名}
+  * 注意) Bastionでは **{ドメイン名}\\{ユーザ名}** は使用できない。ドメインメンバーとしてログインするときは、**{ユーザ名}@{ドメイン名}**
 
 ## 7. Azure NetApp Files アカウント作成
 
