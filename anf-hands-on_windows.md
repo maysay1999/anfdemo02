@@ -138,9 +138,12 @@
 ## 6. Bastionで Windows 10 にログイン
 
 * Bastion で Windows 10 にログイン
-  * ユーザー名: anfadmin@azureisfun.local
+  * ユーザー名: `anfadmin@azureisfun.local`
   * パスワード: main.tf につけたパスワード
-  * 注意) Bastionでは **{ドメイン名}\\{ユーザ名}** は使用できない。ドメインメンバーとしてログインするときは、**{ユーザ名}@{ドメイン名}**
+  * 注意) Bastionでは **{ドメイン名}\\{ユーザ名}** は使用できない。  
+    ドメインメンバーとしてログインするときは、**{ユーザ名}@{ドメイン名}**  
+
+  ![bastion1](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-bastion.png)
 
 ## 7. Azure NetApp Files アカウント作成
 
