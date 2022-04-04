@@ -39,7 +39,8 @@ az netappfiles volume create \
     --subnet anf-sub \
     --allowed-clients 0.0.0.0/0 \
     --rule-index 1 \
-    --throughput-mibps 100 \
+    --throughput-mibps 2 \
+    --usage-threshold 100 \
     --file-path sourcevolumepath \
     --protocol-types NFSv3
 
