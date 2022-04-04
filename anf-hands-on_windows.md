@@ -151,6 +151,8 @@
   * ANF アカウント名: **anfjpe**  
   * ロケーション: **Japan East**  
 
+  ![anf acccount](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-anfaccount.png)
+
 > **コマンド**:  AZ CLI で実行した場合
 
   ```bash
@@ -166,6 +168,8 @@
   * サービスレベル: **標準**
   * サイズ: 4TiB
   * QoS タイプ: auto (default)
+
+  ![pool](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-pool2.png)
 
 > **コマンド**:  AZ CLI で実行した場合
 
