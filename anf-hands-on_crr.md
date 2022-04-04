@@ -145,7 +145,7 @@
 ## Reference
 
 * [クロスリージョンレプリケーションの価格](https://azure.microsoft.com/ja-jp/pricing/details/netapp/)
-* [ANFの制限事項)](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-resource-limits)
+* [ANFの制限事項](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-resource-limits)
 
 ## 推奨コンテンツ
 
