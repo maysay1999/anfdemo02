@@ -315,10 +315,8 @@
   6. *snapshot03*  の名でスナップショットを作成  
      ![snapshot](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshot.png)  
      ![snapshot 2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshot2.png)  
-  7. test.txtで右クリック、`Restore previous version` から復元可能  
-     ![snapshot 3](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshot3.png)  
-  8. File Explorer で View をクリックし、Hidden items にティックをいれる。ここからも復元可能  
-     ![snapshot 4](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshot4.png)  
+  7. snapshot 上で右クリックで、復元可能  
+     ![restoration](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-restore.png)  
 
 * 豆知識
   * 保存できる snapshot の最大値は 255
@@ -327,14 +325,22 @@
 
 * 手順 GUI にて実行  
   1. test.txtで右クリック、`Restore previous version` から復元可能  
+     ![snapshot 3](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshot3.png)  
   2. File Explorer で View をクリックし、Hidden items にティックをいれる。ここからも復元可能
+     ![snapshot 4](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshot4.png)  
 
 ## 17. スナップショット ポリシー
 
 * パラメータ  
-  * スナップショットポリシー名:  **policy01**
+  * スナップショットポリシー名:  **policy02**
   * 保存するスナップショットの数: **8**
   * 毎時何分に実行: (好みの時間)
+
+* 手順 GUI にて実行  
+  1. NetApp Account --> Snapshot policies で Snapshot policy を作成
+     ![snapshot policy creation](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshotpolicy.png)  
+  2. 1で作成した Snapshot policy を特定の volume にアサイン
+     ![snapshot policy assignment](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshotpolicy2.png)  
 
 * 豆知識
   * タイムゾーンは UTC で表記されているので、+9 する必要あり
@@ -343,10 +349,14 @@
 
 * 手順  
   1. 容量プールでQoS 種類を自動から手動に変更
-  2. スループットを50M/sec に変更
+     ![Change QoS](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-qos.png)  
+  2. ボリュームのスループットを手動で 50M/sec に変更  
+     ![Manually change throughput](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-throughput50.png)  
 
   スループットを50M/sec に変更
   
+> **コマンド**:  AZ CLI で実行した場合
+
   ```bash
   az netappfiles volume update -g anfdemolab-rg \
       --account-name anfjpe --pool-name pool1 \
@@ -354,13 +364,17 @@
       --throughput-mibps 50
   ```
 
-## 19. 容量プールのサイズを増やし、ボリュームのスループットを増やす
+## 19. 容量プールのサイズを増やし、ボリュームのスループットをさらに増やす
 
 * 手順  
   1. 容量プールのサイズを 6 TiB　に拡張  
-  2. スループットを50M/sec に変更  
+     ![Resize pool](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-resizepool.png)  
+  2. スループットを80M/sec に変更  
+     ![Manually change throughput](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-throughput80.png)  
 
 > **コマンド**:  AZ CLI で実行した場合
+
+  容量プールを 6TB に変更  
 
   ```bash
   az netappfiles pool update -g anfdemolab-rg \
@@ -382,7 +396,9 @@
 
 * 手順  
   1. Premiumサービスレベルの4TB容量プール **pool2** を作成  
-  2. ボリュームをそプール **pool2** に移動  
+     ![Create pool2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-servicelevel.png)  
+  2. ボリュームを容量プール **pool2** に移動  
+     ![Move volume to pool2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-servicelevel2.png)  
   3. pool1を削除  
 
 > **コマンド**:  AZ CLI で実行した場合
@@ -403,3 +419,13 @@
   ```bash
   az netappfiles pool delete -g anfdemolab-rg -a anfjpe -n pool1
   ```
+
+## 次のステップ
+
+* [Azure NetApp Files ハンズオン NFS 編 スタンダード](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_ubuntu.md)
+
+* [Azure NetApp Files ハンズオン DR 編](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_crr.md)
+
+## 推奨コンテンツ
+
+[Azure NetApp Files のドキュメント](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/)サイト
