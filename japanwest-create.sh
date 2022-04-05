@@ -28,6 +28,15 @@ az netappfiles pool create \
     --service-level Standard
 
 # create a source volume
+az netappfiles pool create \
+    --resource-group anfdemolab-rg \
+    --location japaneast \
+    --account-name anfjpe \
+    --pool-name pool1 \
+    --size 4 \
+    --qos-type Manual \
+    --service-level Standard
+
 az netappfiles volume create \
     --resource-group anfdemolab-rg \
     --location japaneast \
