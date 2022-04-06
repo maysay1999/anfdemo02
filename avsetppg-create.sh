@@ -35,12 +35,12 @@ az vm availability-set create -g anfdemolab-rg \
 
 ## RHEL VM
 az vm create -g  anfdemolab-rg \
-  --name RHEL1 \
+  --name SLES1 \
   --ppg ppg-japaneast \
   --size Standard_D4as_v4  \
   --vnet-name anfjpe-vnet \
   --subnet vm-sub \
-  --image RHEL \
+  --image SLES \
   --public-ip-address "" \
   --admin-username anfadmin \
   --admin-password ""
