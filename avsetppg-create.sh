@@ -38,6 +38,5 @@ az vm create -g  anfdemolab-rg \
   --image UbuntuLTS \
   --public-ip-address "" \
   --admin-username anfadmin \
-# Put password here
   --admin-password ""
 done
