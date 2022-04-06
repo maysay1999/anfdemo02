@@ -2,9 +2,7 @@
 
 ## ダイアグラム
 
-![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images//anf-nfs-diagram.png)
-
-> **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220319_hands-on_diagram_nfs.pdf)から
+![AVG diagram](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-avg_diagram.png)
 
 ## 事前準備
 
