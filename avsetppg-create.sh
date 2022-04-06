@@ -17,7 +17,7 @@ az network public-ip create --resource-group anfdemolab-rg \
 
 az network bastion create --name AnfBastion \
   --public-ip-address anfjpe-vnet-ip \
-  -g MyResourceGroup --vnet-name anfjpe-vnet \
+  -g anfdemolab-rg --vnet-name anfjpe-vnet \
   -l japaneast
 
 #PPG
