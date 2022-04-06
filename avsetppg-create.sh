@@ -33,10 +33,10 @@ az vm availability-set create -g anfdemolab-rg \
   --platform-update-domain-count 2 \
   --ppg ppg-japaneast
 
-for i in `seq 1 2`; do
+## VM
 az vm create -g  anfdemolab-rg \
-  --name ubuntu$i \
-  --availability-set AVSet-JapanEast \
+  --name ubuntu1 \
+  --ppg ppg-japaneast \
   --size Standard_D4as_v4  \
   --vnet-name anfjpe-vnet \
   --subnet vm-sub \
@@ -44,4 +44,4 @@ az vm create -g  anfdemolab-rg \
   --public-ip-address "" \
   --admin-username anfadmin \
   --admin-password ""
-done
+
