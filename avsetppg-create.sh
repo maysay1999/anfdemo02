@@ -39,5 +39,5 @@ az vm create -g  anfdemolab-rg \
   --public-ip-address "" \
   --admin-username anfadmin \
 # Put password here
-  --admin-password "Password123#"
+  --admin-password ""
 done
