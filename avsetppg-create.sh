@@ -33,14 +33,14 @@ az vm availability-set create -g anfdemolab-rg \
   --platform-update-domain-count 2 \
   --ppg ppg-japaneast
 
-## VM
+## RHEL VM
 az vm create -g  anfdemolab-rg \
-  --name ubuntu1 \
+  --name RHEL1 \
   --ppg ppg-japaneast \
   --size Standard_D4as_v4  \
   --vnet-name anfjpe-vnet \
   --subnet vm-sub \
-  --image UbuntuLTS \
+  --image RHEL \
   --public-ip-address "" \
   --admin-username anfadmin \
   --admin-password ""
