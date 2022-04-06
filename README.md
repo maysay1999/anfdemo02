@@ -38,6 +38,10 @@ ANF Backup の使用方法を解説します
 
 ANF をコンテナの永続ボリュームとして使います
 
+## [Azure NetApp Files ハンズオン Applicatioin Volume Group 編 for SAP HANA](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_avg.md)
+
+SAP HANA を設定するにあたり、SAP HANA <--> ANF 間のlatency を最短化します
+
 ## Azure NetApp Files ハンズオン Standard Network編 (undercooked)
 
 ANF Standard Network を使って複数の peering を経由した ANF volume を マウントします
