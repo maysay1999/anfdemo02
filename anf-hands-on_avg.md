@@ -33,7 +33,7 @@
 
   ```git
   cd AnfCrr
-  code avsetppg-create.sh
+  vim avsetppg-create.sh
   ```
 
 * 実行
@@ -77,5 +77,3 @@
 ## 5. 完成したらこちらに登録
 
 [SAP HANA VM Pinning Requirements Form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)
-
-
