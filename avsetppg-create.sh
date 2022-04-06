@@ -6,14 +6,19 @@ az network vnet create -g anfdemolab-rg -n anfjpe-vnet \
 
 ### Bastion
 az network vnet subnet create \
-    --resource-group anfdemolab-rg \
-    --name AzureBastionSubnet \
+    -g anfdemolab-rg \
+    -n AzureBastionSubnet \
     --vnet-name anfjpe-vnet \
     --address-prefixes 172.28.82.0/26
 
 az network public-ip create --resource-group anfdemolab-rg \
     --name anfjpe-vnet-ip \
     --sku Standard
+
+az network bastion create --name AnfBastion \
+  --public-ip-address anfjpe-vnet-ip \
+  -g MyResourceGroup --vnet-name anfjpe-vnet \
+  -l japaneast
 
 #PPG
 az ppg create -n ppg-japaneast \
