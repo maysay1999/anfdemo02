@@ -45,6 +45,7 @@
 * 豆知識
   * ANF は Mシリーズ と物理的に近いため、Mシリーズを選ぶと更にlatencyを短くできる  
   [M シリーズ](https://docs.microsoft.com/ja-jp/azure/virtual-machines/m-series)  
+  [参考サイト](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/azure-netapp-files/application-volume-group-considerations.md)
 
 ## 3. ANF subnet アカウント 容量プールを作成
 
