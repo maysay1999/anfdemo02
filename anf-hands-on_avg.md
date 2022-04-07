@@ -20,7 +20,7 @@
   az group create -n anfdemolab-rg -l japaneast
   ```
 
-## 2. Shell を実行して、PPG(proximity placement group), Availability Set を作成
+## 2. Shell を実行して、PPG(proximity placement group), Availability Set, SLES を作成
 
 * shell をダウンロード
 
@@ -41,6 +41,10 @@
   ```git
   ./avsetppg-create.sh
   ```
+
+* 豆知識
+  * ANF は Mシリーズ と物理的に近いため、Mシリーズを選ぶと更にlatencyを短くできる  
+  [M シリーズ](https://docs.microsoft.com/ja-jp/azure/virtual-machines/m-series)  
 
 ## 3. ANF subnet アカウント 容量プールを作成
 
