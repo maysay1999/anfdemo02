@@ -76,4 +76,15 @@
 
 ## 5. 完成したらこちらに登録
 
-[SAP HANA VM Pinning Requirements Form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)
+  [SAP HANA VM Pinning Requirements Form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)  
+
+## 推奨コンテンツ
+
+[Understand Azure NetApp Files application volume group for SAP HANA](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/azure-netapp-files/application-volume-group-introduction.md)  
+[Requirements and considerations for application volume group for SAP HANA](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/azure-netapp-files/application-volume-group-introduction.md)  
+[Add volumes for an SAP HANA system as a secondary database in HSR](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/azure-netapp-files/application-volume-group-add-volume-secondary.md)  
+[Add volumes for an SAP HANA system as a DR system using cross-region replication](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/azure-netapp-files/application-volume-group-disaster-recovery.md)  
+[Deploy the first SAP HANA host using application volume group for SAP HANA](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/azure-netapp-files/application-volume-group-deploy-first-host.md)  
+[Add hosts to a multiple-host SAP HANA system using application volume group for SAP HANA](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/azure-netapp-files/application-volume-group-add-hosts.md)  
+[Manage volumes in an application volume group](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/azure-netapp-files/application-volume-group-manage-volumes.md)  
+[Delete an application volume group](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/azure-netapp-files/application-volume-group-delete.md)  
