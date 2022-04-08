@@ -52,14 +52,6 @@ az vm create -g  anfdemolab-rg \
   --admin-username anfadmin \
   --admin-password ""
 
-# 1st account
-az netappfiles account create \
-    -g anfdemolab-rg \
-    --name account1 -l japaneast
 
-# 2nd account
-az netappfiles account create \
-    -g anfdemolab-rg \
-    --name account2 -l japaneast
 
   
