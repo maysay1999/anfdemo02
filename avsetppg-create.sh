@@ -4,6 +4,13 @@ az network vnet create -g anfdemolab-rg -n anfjpe-vnet \
     --address-prefix 172.28.80.0/22 \
     --subnet-name vm-sub --subnet-prefix 172.28.81.0/24
 
+az network vnet subnet create \
+    --resource-group anfdemolab-rg \
+    --vnet-name anfjpe-vnet \
+    --name anf-sub \
+    --delegations "Microsoft.NetApp/volumes" \
+    --address-prefixes 172.28.80.0/26
+
 ### Bastion
 az network vnet subnet create \
     -g anfdemolab-rg \
