@@ -33,7 +33,7 @@ az vm availability-set create -g anfdemolab-rg \
   --platform-update-domain-count 2 \
   --ppg ppg-japaneast
 
-## RHEL VM
+## SLES VM
 az vm create -g  anfdemolab-rg \
   --name SLES1 \
   --ppg ppg-japaneast \
@@ -45,3 +45,14 @@ az vm create -g  anfdemolab-rg \
   --admin-username anfadmin \
   --admin-password ""
 
+# 1st account
+az netappfiles account create \
+    -g anfdemolab-rg \
+    --name account1 -l japaneast
+
+# 2nd account
+az netappfiles account create \
+    -g anfdemolab-rg \
+    --name account2 -l japaneast
+
+  
