@@ -16,7 +16,8 @@
   **ボリュームサイズ**を大きくして帯域を増やす  
   **容量プールサイズ**を大きくして帯域を増やす  
   **サービスレベルを変更**して帯域を増やす  
-  **QoS**の使い方をマスターする
+  **QoS**の使い方をマスターする  
+* ANFでボリューム作成後は仮想サーバにマウントし、fioにて性能を確認します。さらに、業務利用でより高いスループットが必要となったことを想定し、ボリュームサイズを変更します  
 
 ## ANF のストレージ階層
 
@@ -27,6 +28,15 @@
 ![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-diagram.png)
 
 > **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220316_hands-on_diagram_smb.pdf)から
+
+## ANF の用語
+
+* [NetApp アカウント](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-understand-storage-hierarchy#azure_netapp_files_account): 構成容量プールの管理グループ  
+* [容量プール](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-understand-storage-hierarchy#capacity_pools): NetApp アカウントの配下にあるボリュームの管理グループ  
+* [ボリューム](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-understand-storage-hierarchy#volumes): NFS (NFSv3 または NFSv4.1)、SMB3、またはデュアル プロトコル (NFSv3 と SMB、または NFSv4.1 と SMB)を対応  
+* [QoS](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-understand-storage-hierarchy#qos_types): QoS の種類は容量プールの属性です。 Azure NetApp Files では、"自動 (既定)" と "手動" の 2 種類の QoS 容量プールが提供されます  
+
+## ここからハンズオンセッションを始めます。CLIの記載もありますが、GUIでの作業を推奨します
 
 ## 1. リソースグループ作成
 
@@ -62,6 +72,8 @@
 > **ノート**:  ラボ環境を作成済みの際はスキップ
 
 ## 3.  ANF サブネット作成
+
+* ANF サブネットは /26, /28, /24 を推奨 (通常時は /26を推奨)
 
 * パラメータ
   * ANF subnet name: **anf-sub**  
@@ -111,6 +123,8 @@
 
 ## 5. Bastionを構成する (GUI作業)
 
+ブラウザー上のAzure portal を使用して仮想マシンに接続するために、Azure Bastionをデプロイします  
+
 * パラメータ
   * Name: anfjpe-vnet-bastion
   * Tier: Standard
@@ -146,6 +160,9 @@
   ![bastion1](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-bastion.png)
 
 ## 7. Azure NetApp Files アカウント作成
+
+* Azure ポータルで "netapp" で検索すると、Azure NetApp Files のアイコンが現れます  
+  ![anf icon](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-account.png)
 
 * パラメータ
   * ANF アカウント名: **anfjpe**  
