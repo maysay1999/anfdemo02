@@ -17,6 +17,7 @@
   **容量プールサイズ**を大きくして帯域を増やす  
   **サービスレベルを変更**して帯域を増やす  
   **QoS**の使い方をマスターする
+* ANFでボリューム作成後は仮想サーバにマウントし、fioにて性能を確認します。さらに、業務利用でより高いスループットが必要となったことを想定し、ボリュームサイズを変更します  
 
 ## ANF のストレージ階層
 
@@ -27,6 +28,8 @@
 ![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images//anf-nfs-diagram.png)
 
 > **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220319_hands-on_diagram_nfs.pdf)から
+
+## ここからハンズオンセッションを始めます。CLIの記載もありますが、GUIでの作業を推奨します
 
 ## 1. リソースグループ作成
 
@@ -62,6 +65,8 @@
 > **ノート**:  ラボ環境を作成済みの際はスキップ
 
 ## 3.  ANF サブネット作成
+
+* ANF サブネットは /26, /28, /24 を推奨 (通常時は /26を推奨)
 
 * パラメータ
   * ANF subnet name: **anf-sub**  
@@ -102,6 +107,8 @@
 
 ## 5. Bastionを構成する (GUI作業)
 
+ブラウザー上のAzure portal を使用して仮想マシンに接続するために、Azure Bastionをデプロイします  
+
 * パラメータ
   * Name: anfjpe-vnet-bastion
   * Tier: Standard
@@ -131,7 +138,7 @@
 Bastion で Ubuntu にログイン
 
 * Root にてログイン
-  * sudo su - または sudo -i を使う
+  * 今回は sudo を利用し、root 権限で作業します (sudo su - または sudo -i を使う)
 
   ```bash
    sudo -i
@@ -142,6 +149,9 @@ Bastion で Ubuntu にログイン
   ![bastion2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-bastion2.png)
 
 ## 7. Azure NetApp Files アカウント作成
+
+* Azure ポータルで "netapp" で検索すると、Azure NetApp Files のアイコンが現れます  
+  ![anf icon](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-account.png)
 
 * パラメータ
   * ANF アカウント名: **anfjpe**  
@@ -444,4 +454,3 @@ Bastion で Ubuntu にログイン
 ## 推奨コンテンツ
 
 [Azure NetApp Files のドキュメント](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/)サイト
-
