@@ -198,9 +198,9 @@ Bastion で Ubuntu にログイン
 ## 9. ボリューム作成
 
 * パラメータ
-  * Volume 名: **nfsvol1**
-  * NFS バージョン **3**
-  * クオータ: **1024** GiB
+  * ボリューム名: **nfsvol1**  
+  * NFS バージョン: **NFSv3**  
+  * クオータ: **1024** GiB  
 
   Note) デプロイに約 4 分
 
@@ -236,7 +236,7 @@ Bastion で Ubuntu にログイン
 
 * パラメータ
   * マウントパス: **/mnt/nfsvol1/**
-  * **Mount Instruction** の指示通りに設定
+  * 作成されたボリュームの**マウントに関する指示** を参照 (1.および3.を実施)
 
 * 手順  
   1. NFS client software をインストール  
@@ -252,6 +252,9 @@ Bastion で Ubuntu にログイン
   ```bash
   df -h
   ```
+
+  一番下のラインにこのように表記される  
+  `172.28.80.4:/nfsvol1  1.0T  256K  1.0T   1% /mnt/nfsvol1` 
 
 ## 11.　ベンチマークツール fio インストール
 
@@ -298,15 +301,9 @@ Bastion で Ubuntu にログイン
 ## 14. One-time スナップショット と volume-based 復元
 
 * GUI にて実行  
-  1. test.txt という名のテストファイルを作成  
-  2. *snapshot01*  の名でスナップショットを作成
-  3. スナップショットからクローンを作成
-  4. 復元してみる (optional): できたスナップショットを右クリックすることで復元可能
-
-  ```bash
-    cd /mnt/nfsvol1/ 
-    echo "this is the test" > test.txt
-  ```
+  1. *snapshot01*  の名でスナップショットを作成
+  2. スナップショットからクローンを作成
+  3. 復元してみる (optional): できたスナップショットを右クリックすることで復元可能
 
 * 豆知識
   * 保存できる snapshot の最大値は 255
