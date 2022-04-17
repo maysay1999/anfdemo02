@@ -281,8 +281,8 @@ Bastion で Ubuntu にログイン
 
 > **ノート**:  ベンチマークツールで実際に帯域がいくつか、ダウンタイムなしでボリュームサイズの増減が可能か確認してみよう
 
-このようなアウトプット。[w=16.5MiB/s]が現在の帯域  
-![real-time thoughput](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-thoughput.png)  
+  このようなアウトプット。[w=16.5MiB/s]が現在の帯域  
+  ![real-time thoughput](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-thoughput.png)  
 
 ## 13. ボリュームサイズを　2TiB (2048)　に変更
 
