@@ -271,7 +271,7 @@
 ## 11. ボリュームを Windows10 VM にマップ
 
 * パラメータ
-  * **Mount Instruction** の指示通りに設定
+  * 作成されたボリュームの**マウントに関する指示** 上にマウント用のパスが記載される
 
   ![volume2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-mount.png)
 
