@@ -368,6 +368,11 @@ Bastion で Ubuntu にログイン
 
 ## 17. QoS 種類を自動から手動に変更
 
+* QoSを手動にするケース:  
+  * ボリュームは小さいが、スループットを上げたい場合  
+  * SAP HANAの場合  
+  * ボリューム毎に求められるスループットが違う場合  
+
 * 手順  
   1. 容量プールでQoS 種類を自動から手動に変更
      ![QoS](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-qos.png)  
