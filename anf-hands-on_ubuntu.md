@@ -378,6 +378,7 @@ Bastion で Ubuntu にログイン
      ![QoS](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-qos.png)  
   2. ボリュームのスループットを50M/sec に変更 (右クリックで変更可能)  
      ![QoS 2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-qos2.png)  
+  3. 12で作成した fio でリアルタイムで確認できる
   
 > **コマンド**:  AZ CLI で実行した場合
 
