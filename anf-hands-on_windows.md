@@ -38,6 +38,8 @@
 
 ## ここからハンズオンセッションを始めます。CLIの記載もありますが、GUIでの作業を推奨します
 
+[CLI(Azure Cloud Shell)](https://docs.microsoft.com/ja-jp/azure/cloud-shell/overview)の使い方は[こちら](https://docs.microsoft.com/ja-jp/azure/cloud-shell/overview)をご参照下さい
+
 ## 1. リソースグループ作成
 
 * パラメータ
