@@ -281,7 +281,7 @@ Bastion で Ubuntu にログイン
 
 > **ノート**:  ベンチマークツールで実際に帯域がいくつか、ダウンタイムなしでボリュームサイズの増減が可能か確認してみよう
 
-  このようなアウトプット。[w=16.5MiB/s]が現在の帯域  
+  このようなアウトプット。[w=16.5MiB/s]が現在のスループット  
   ![real-time thoughput](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-thoughput.png)  
 
 ## 13. ボリュームサイズを　2TiB (2048)　に変更
@@ -289,6 +289,7 @@ Bastion で Ubuntu にログイン
 * 予測値  
   * スループットが 16Mbpsから 32Mbps になる  
   * ダウンタイムが発生しない  
+    (12 で作成したfioをみながらスループットを変更すると、ダウンタイムが発生していないことがわかります)  
 
   ![resize volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-changevolume.png)
 
