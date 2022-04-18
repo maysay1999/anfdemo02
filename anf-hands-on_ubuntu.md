@@ -34,8 +34,8 @@
 ## 1. リソースグループ作成
 
 * パラメータ
-  * Resource Group name: **anfdemolab-rg**
-  * Location: **Japan East**
+  * リソースグループ名: **anfdemolab-rg**
+  * ロケーション: **Japan East**
 
 > **コマンド**:  AZ CLI で実行した場合
 
@@ -48,11 +48,11 @@
 ## 2. 仮想ネットワーク anfjpe-vnet　作成
 
 * パラメータ
-  * VNet name: **anfjpe-vnet**  
-  * Location: **Japan East**  
-  * Address Space: **172.28.80.0/22**  
-  * Subnet name: **vm-sub**  
-  * Subnet: **172.28.81.0/24**  
+  * 仮想ネットワーク名: **anfjpe-vnet**  
+  * ロケーション: **Japan East**  
+  * アドレス空間: **172.28.80.0/22**  
+  * サブネット名: **vm-sub**  
+  * サブネットのCIDR: **172.28.81.0/24**  
 
 > **コマンド**:  AZ CLI で実行した場合
 
@@ -69,9 +69,9 @@
 * ANF サブネットは /26, /28, /24 を推奨 (通常時は /26を推奨)
 
 * パラメータ
-  * ANF subnet name: **anf-sub**  
-  * ANF subnet: **172.28.80.0/26**  
-  * ANF delegation: **Microsoft.Netapp/volumes**  
+  * ANFサブネット名: **anf-sub**  
+  * ANFサブネット: **172.28.80.0/26**  
+  * ANF委任先: **Microsoft.Netapp/volumes**  
 
   ![subnet](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-subnet.png)
 
@@ -91,17 +91,17 @@
 ## 4. Ubuntu VM作成
 
 * パラメータ
-  * Virtual machine name: **ubuntu01**
-  * Region: **Japan East**
-  * Image: **Ububtu Server 20.04 LTS - Gen 2**
-  * VM type: **Standard_D2s_v4**
-  * Authentication type: **Password**
-  * Username: **anfadmin**
-  * Password: ---- (min length is 12)
-  * OS disk type: **Premium SSD** (default)
-  * VNet: **anfjpe-vnet**
-  * Subnet: **vm-sub**
-  * Public IP: **None**
+  * VM名: **ubuntu01**
+  * ロケーション: **Japan East**
+  * イメージ: **Ububtu Server 20.04 LTS - Gen 2**
+  * VMタイプ: **Standard_D2s_v4**
+  * 認証タイプ: **Password**
+  * ユーザー名: **anfadmin**
+  * パスワード: ---- (12文字以上英数字)
+  * OSディスクタイプ: **Premium SSD** (default)
+  * 仮想ネットワーク: **anfjpe-vnet**
+  * サブネット: **vm-sub**
+  * パブリックIP: **None**
 
 > **ノート**:  ラボ環境を作成済みの際はスキップ
 
@@ -110,12 +110,11 @@
 ブラウザー上のAzure portal を使用して仮想マシンに接続するために、Azure Bastionをデプロイします  
 
 * パラメータ
-  * Name: anfjpe-vnet-bastion
-  * Tier: Standard
-  * Virtual Network: anfjpe-vnet
-  * New public IP name : anfjpe-vnet-ip
-  * Public IP address SKU: Standard
-  * Procedure: Execute these command lines and create bastion on GUI portal
+  * 名前: anfjpe-vnet-bastion
+  * ティア: Standard
+  * 仮想ネットワーク: anfjpe-vnet
+  * 新しいパブリックIP名 : anfjpe-vnet-ip
+  * パブリックIPのSKU: Standard
 
 > **コマンド**:  AZ CLI で実行した場合
 
