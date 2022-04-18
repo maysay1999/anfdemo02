@@ -306,7 +306,10 @@ Bastion で Ubuntu にログイン
 
 * GUI にて実行  
   1. *snapshot01*  の名でスナップショットを作成
-  2. スナップショットからクローンを作成
+  2. スナップショットからクローンを作成  
+     * ボリューム名: clone  
+     * サイズ: 100MiB  
+     ![Create clone](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-clone.png)  
   3. 復元してみる (optional): できたスナップショットを右クリックすることで復元可能
 
 * 豆知識
