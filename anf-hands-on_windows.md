@@ -159,6 +159,9 @@
 
   ![bastion1](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-bastion.png)
 
+> **ノート**:  ネットワークに関するポップアップがあれば、「はい」をクリックする  
+  ![Windows popup](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-network.png)  
+
 ## 7. Azure NetApp Files アカウント作成
 
 * Azure ポータルで "netapp" で検索すると、Azure NetApp Files のアイコンが現れます  
