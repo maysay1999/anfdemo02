@@ -286,10 +286,10 @@ Bastion で Ubuntu にログイン
   fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=600 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=ANFThroughputTest
   ```
 
-> **ノート**:  ベンチマークツールで実際に帯域がいくつか、ダウンタイムなしでボリュームサイズの増減が可能か確認してみよう
+  > **ノート**:  ベンチマークツールで実際に帯域がいくつか、ダウンタイムなしでボリュームサイズの増減が可能か確認してみよう
 
-  このようなアウトプット。[w=16.5MiB/s]が現在のスループット  
-  ![real-time thoughput](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-thoughput.png)  
+    このようなアウトプット。[w=16.5MiB/s]が現在のスループット  
+    ![real-time thoughput](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-thoughput.png)  
 
 ## 13. ボリュームサイズを　2TiB (2048)　に変更
 
@@ -320,7 +320,7 @@ Bastion で Ubuntu にログイン
   3. 復元してみる (optional): できたスナップショットを右クリックすることで復元可能
 
 * 豆知識
-  * 保存できる snapshot の最大値は 255
+  * 保存できる snapshot の最大値は 1ボリュームあたり 255個
 
 > **コマンド**:  AZ CLI で実行した場合
 
