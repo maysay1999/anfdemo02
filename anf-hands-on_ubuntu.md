@@ -260,6 +260,7 @@ Bastion で Ubuntu にログイン
 * 書き込みテストで、test.txt の名のファイルを作成してみる
 
   ```bash
+  cd /mnt/nfsvol1/
   echo "this is is test" > test.txt
   ```
 
