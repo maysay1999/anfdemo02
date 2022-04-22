@@ -17,7 +17,7 @@
   az netappfiles account create -g test-rg -n anftest -l japaneast
   ```
   
-  > **何のため?**:  ANFはすべての環境で動作するわけではないから　上記のコマンドでエラーがあれば、[Service Request](https://docs.microsoft.com/ja-jp/azure/azure-portal/supportability/how-to-create-azure-support-request) を起こす
+  > **何のため?**:  ANFはすべての環境で動作するわけではないから  *Creation of 'netAppAccounts' has been restricted in this region.* のエラーが起きた際は、[こちらのサイト](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/request-region-access)から登録が必要
 
 * 問題がなければこちらのコマンドで削除
 
