@@ -255,7 +255,13 @@ Bastion で Ubuntu にログイン
   ```
 
   一番下のラインにこのように表記される  
-  `172.28.80.4:/nfsvol1  1.0T  256K  1.0T   1% /mnt/nfsvol1` 
+  `172.28.80.4:/nfsvol1  1.0T  256K  1.0T   1% /mnt/nfsvol1`  
+
+* 書き込みテストで、test.txt の名のファイルを作成してみる
+
+  ```bash
+  echo "this is is test" > test.txt
+  ```
 
 ## 11.　ベンチマークツール fio インストール
 
