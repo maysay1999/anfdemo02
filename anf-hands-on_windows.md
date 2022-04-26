@@ -113,7 +113,7 @@
 
 > **ノート**:  ラボ環境を作成済みの際はスキップ
 
-## 5. Bastionを構成する (GUI作業)
+## 4. Bastionを構成する (GUI作業)
 
 ブラウザー上のAzure portal を使用して仮想マシンに接続するために、Azure Bastionをデプロイします  
 
@@ -140,7 +140,42 @@
 
 > **ノート**:  ラボ環境を作成済みの際はスキップ
 
-## 3.  ANF サブネット作成
+## 5. Bastionで Windows 10 にログイン
+
+* Bastion で Windows 10 にログイン
+  * ユーザー名: `anfadmin@azureisfun.local`
+  * パスワード: main.tf につけたパスワード
+  * 注意) Bastionでは **{ドメイン名}\\{ユーザ名}** は使用できない。  
+    ドメインメンバーとしてログインするときは、**{ユーザ名}@{ドメイン名}**  
+
+  ![bastion1](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-bastion.png)
+
+> **ノート**:  ネットワークに関するポップアップがあれば、「はい」をクリックする  
+  ![Windows popup](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-network.png)  
+
+## 6. Azure NetApp Files アカウント作成
+
+* Azure ポータルで "netapp" で検索すると、Azure NetApp Files のアイコンが現れます  
+  ![anf icon](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-account.png)
+
+* 次に NetAppアカウントを作成します
+
+  * パラメータ
+    * ANF アカウント名: **anfjpe**  
+    * ロケーション: **Japan East**  
+    * リソースグループ: **anfdemolab-rg**
+
+  ![anf acccount](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-anfaccount.png)
+
+> **コマンド**:  AZ CLI で実行した場合
+
+  ```bash
+  az netappfiles account create \
+      -g anfdemolab-rg \
+      --name anfjpe -l japaneast
+  ```
+
+## 7.  ANF サブネット作成
 
 * ANF サブネットは /26, /28, /24 を推奨 (通常時は /26を推奨)
 
@@ -163,41 +198,6 @@
   ```
 
 > **ノート**:  ANF用のサブネットは /26 を推奨 (/28, /26, /24 が推奨値)
-
-## 6. Bastionで Windows 10 にログイン
-
-* Bastion で Windows 10 にログイン
-  * ユーザー名: `anfadmin@azureisfun.local`
-  * パスワード: main.tf につけたパスワード
-  * 注意) Bastionでは **{ドメイン名}\\{ユーザ名}** は使用できない。  
-    ドメインメンバーとしてログインするときは、**{ユーザ名}@{ドメイン名}**  
-
-  ![bastion1](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-bastion.png)
-
-> **ノート**:  ネットワークに関するポップアップがあれば、「はい」をクリックする  
-  ![Windows popup](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-network.png)  
-
-## 7. Azure NetApp Files アカウント作成
-
-* Azure ポータルで "netapp" で検索すると、Azure NetApp Files のアイコンが現れます  
-  ![anf icon](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-account.png)
-
-* 次に NetAppアカウントを作成します
-
-  * パラメータ
-    * ANF アカウント名: **anfjpe**  
-    * ロケーション: **Japan East**  
-    * リソースグループ: **anfdemolab-rg**
-
-  ![anf acccount](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-anfaccount.png)
-
-> **コマンド**:  AZ CLI で実行した場合
-
-  ```bash
-  az netappfiles account create \
-      -g anfdemolab-rg \
-      --name anfjpe -l japaneast
-  ```
 
 ## 8. 容量プールを作成
 
