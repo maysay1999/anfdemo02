@@ -166,11 +166,14 @@ Bastion で Ubuntu にログイン
 ## 7. Azure NetApp Files アカウント作成
 
 * Azure ポータルで "netapp" で検索すると、Azure NetApp Files のアイコンが現れます  
-  ![anf icon](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-account.png)
+  ![anf icon](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-account.png)  
 
-* パラメータ
-  * ANF アカウント名: **anfjpe**  
-  * ロケーション: **Japan East**  
+* 次に NetAppアカウントを作成します 下記パラメータを記入し、「作成」をクリックします
+
+  * パラメータ
+    * ANF アカウント名(名前): **anfjpe**  
+    * ロケーション(場所): **Japan East**  
+    * リソースグループ: **anfdemolab-rg**
 
   ![anf acccount](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-anfaccount.png)
 
