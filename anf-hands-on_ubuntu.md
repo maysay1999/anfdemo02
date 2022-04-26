@@ -23,6 +23,20 @@
 
 ![storage hierarchy](https://docs.microsoft.com/ja-jp/azure/media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)
 
+## ANF のユースケース
+
+[ANF のユースケース](https://cloud.netapp.com/hubfs/Solution-Templates/ANF_Solution%20Brief_v3_Final.pdf)は[こちら](https://cloud.netapp.com/hubfs/Solution-Templates/ANF_Solution%20Brief_v3_Final.pdf)からダウングレードできます
+
+主な用途は  
+
+* **SAP**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#sap-hana)
+* **HPC**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#hpc-solutions)
+* **VDI**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#virtual-desktop-infrastructure-solutions)
+* **Azure VMware Solutions**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#azure-vmware-solutions)
+* **Oracle**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#oracle)
+* **kubernetes(DevOps)**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#azure-platform-services-solutions)
+* **File share**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#file-sharing-and-global-file-caching)
+
 ## ダイアグラム
 
 ![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images//anf-nfs-diagram.png)
