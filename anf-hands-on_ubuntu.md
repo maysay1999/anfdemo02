@@ -43,7 +43,7 @@
 
 > **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220319_hands-on_diagram_nfs.pdf)から
 
-## ここからハンズオンセッションを始めます。CLIの記載もありますが、GUIでの作業を推奨します 既に[ラボ環境](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)を作成済みの方は、手順5から始めてください
+## ここからハンズオンセッションを始めます。CLIの記載もありますが、GUIでの作業を推奨します 既に[ラボ環境](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)を作成済みの方は、[手順5](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_ubuntu.md#5-bastion%E3%81%A7-ubuntu-%E3%81%AB%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3)から始めてください
 
 [CLI(Azure Cloud Shell)](https://docs.microsoft.com/ja-jp/azure/cloud-shell/overview)の使い方は[こちら](https://docs.microsoft.com/ja-jp/azure/cloud-shell/overview)をご参照下さい
 
