@@ -201,11 +201,13 @@
 
 ## 8. 容量プールを作成
 
-* パラメータ
-  * 容量プール: **pool1**
-  * サービスレベル: **標準**
-  * サイズ: 4TiB
-  * QoS タイプ: auto (default)
+* 「プールの追加」をクリックして容量プールを新規作成
+
+  * パラメータ
+    * 容量プール: **pool1**
+    * サービスレベル: **標準**
+    * サイズ: 4TiB
+    * QoS タイプ: auto (default)
 
   ![pool](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-pool2.png)
 
@@ -227,12 +229,14 @@
 
 ## 9. Active Directory 接続
 
-* パラメータ
-  * ドメイン名: **azureisfun.local**
-  * プライマリDNS: **192.168.81.4**
-  * SNBサーバーprefix: **shared** (shared-XXXX の名前で SMBボリュームが作成される)
-  * ユーザー: **anfadmin**
-  * パスワード: 設定したパスワード
+* 「アクティブディレクトリ接続」から参加をクリックし、参加させる
+
+  * パラメータ  
+    * プライマリDNS: **192.168.81.4**  
+    * ドメイン名: **azureisfun.local**  
+    * SNBサーバーprefix: **shared** (shared-XXXX の名前で SMBボリュームが作成される)  
+    * ユーザー: **anfadmin**  
+    * パスワード: 設定したパスワード  
 
   ![adds](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-ad.png)
 
