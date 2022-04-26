@@ -27,7 +27,7 @@
 
 [ANF のユースケース](https://cloud.netapp.com/hubfs/Solution-Templates/ANF_Solution%20Brief_v3_Final.pdf)は[こちら](https://cloud.netapp.com/hubfs/Solution-Templates/ANF_Solution%20Brief_v3_Final.pdf)からダウングレードできます(英語版)
 
-主な用途は  
+主な用途  
 
 * **SAP**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#sap-hana)
 * **HPC**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#hpc-solutions)
@@ -126,9 +126,11 @@
 
 ## 5. Bastionで Ubuntu にログイン
 
-Bastion で Ubuntu にログイン
+* Bastion で Ubuntu にログイン
+  * ユーザー名: `anfadmin`
+  * パスワード: main.tf につけたパスワード
 
-* Root にてログイン
+* sudoで Root で作業する  
   * 今回は sudo を利用し、root 権限で作業します (sudo su - または sudo -i を使う)
 
   ```bash
@@ -279,7 +281,7 @@ Bastion で Ubuntu にログイン
   一番下のラインにこのように表記される  
   `172.28.80.4:/nfsvol1  1.0T  256K  1.0T   1% /mnt/nfsvol1`  
 
-* 書き込みテストで、test.txt の名のファイルを作成してみる
+* 書き込みテスト test.txt の名のファイルを作成してみる
 
   ```bash
   cd /mnt/nfsvol1/
