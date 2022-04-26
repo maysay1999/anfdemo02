@@ -219,10 +219,13 @@ Bastion で Ubuntu にログイン
 
 * パラメータ
   * ボリューム名: **nfsvol1**  
-  * NFS バージョン: **NFSv3**  
   * クオータ: **1024** GiB  
+  プロトコルのタブで設定  
+  * NFS バージョン: **NFSv3**  
 
   Note) デプロイに約 4 分
+
+  ![volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-volume0.png)
 
   ![volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-volume.png)
 
