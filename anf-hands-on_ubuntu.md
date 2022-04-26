@@ -189,11 +189,13 @@ Bastion で Ubuntu にログイン
 
 ## 8. 容量プールを作成
 
-* パラメータ
-  * 容量プール: **pool1**
-  * サービスレベル: **標準**
-  * サイズ: 4TiB
-  * QoS タイプ: auto (default)
+* 「プールの追加」をクリックして容量プールを新規作成
+
+  * パラメータ
+    * 容量プール: **pool1**
+    * サービスレベル: **標準**
+    * サイズ: 4TiB
+    * QoS タイプ: auto (default)
 
   ![pool](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-pool2.png)
 
