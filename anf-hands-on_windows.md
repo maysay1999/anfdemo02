@@ -150,8 +150,8 @@
 
   ![bastion1](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-bastion.png)
 
-> **ノート**:  ネットワークに関するポップアップがあれば、「はい」をクリックする  
-  ![Windows popup](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-network.png)  
+  > **ノート**:  ネットワークに関するポップアップがあれば、「はい」をクリックする  
+    ![Windows popup](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-network.png)  
 
 ## 6.  ANF サブネット作成
 
@@ -229,7 +229,8 @@
 
 ## 9. Active Directory 接続
 
-* 「アクティブディレクトリ接続」から参加をクリックし、参加させる
+* 「アクティブディレクトリ接続」から参加をクリックし、参加させる  
+   赤字の * の箇所が必須項目 今回は必須項目のみ記入  
 
   * パラメータ  
     * プライマリDNS: **192.168.81.4**  
@@ -265,6 +266,8 @@
   * プロトコルタイプ: **SMB**  
 
   Note) デプロイに約 4 分
+
+  ![volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-volume0.png)
 
   ![volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-volume.png)
 
