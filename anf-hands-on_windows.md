@@ -201,13 +201,13 @@
 
 ## 8. 容量プールを作成
 
-* 「プールの追加」をクリックして容量プールを新規作成
+* 「プールの追加」をクリックして容量プールを新規作成 「作成」ボタンをクリックして作成
 
   * パラメータ
-    * 容量プール: **pool1**
+    * 容量プールの名前: **pool1**
     * サービスレベル: **標準**
     * サイズ: 4TiB
-    * QoS タイプ: auto (default)
+    * QoSの種類: 自動 (default)
 
   ![pool](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-pool2.png)
 
