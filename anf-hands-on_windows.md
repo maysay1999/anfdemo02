@@ -27,7 +27,7 @@
 
 [ANF のユースケース](https://cloud.netapp.com/hubfs/Solution-Templates/ANF_Solution%20Brief_v3_Final.pdf)は[こちら](https://cloud.netapp.com/hubfs/Solution-Templates/ANF_Solution%20Brief_v3_Final.pdf)からダウングレードできます(英語版)
 
-主な用途は  
+主な用途  
 
 * **SAP**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#sap-hana)
 * **HPC**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#hpc-solutions)
@@ -350,6 +350,7 @@
 ## 15. One-time スナップショット と volume-based 復元
 
 * 手順 GUI にて実行  
+  ANFのバージョンコントール機能を体験してみよう  
   1. test.txt という名のテストファイルを作成  
   2. *snapshot01*  の名でスナップショットを作成  
   3. test.txtを開き内容を書き換える  
