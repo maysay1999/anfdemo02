@@ -366,7 +366,7 @@
      ![restoration](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-restore.png)  
 
 * 豆知識
-  * 保存できる snapshot の最大値は 255
+  * 保存できる snapshot の最大値は 1ボリュームあたり 255個  
 
 ## 16. スナップショット: file-based 復元
 
