@@ -394,13 +394,18 @@
 
 ## 18. QoS 種類を自動から手動に変更
 
+* QoSを手動にするケース:  
+  * ボリュームは小さいが、スループットを上げたい場合  
+  * SAP HANAの場合  
+  * ボリューム毎に求められるスループットが違う場合  
+
 * 手順  
   1. 容量プールでQoS 種類を自動から手動に変更
      ![Change QoS](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-qos.png)  
-  2. ボリュームのスループットを手動で 50M/sec に変更  
+  2. ボリュームのスループットを手動で **50M/sec** に変更  
      ![Manually change throughput](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-throughput50.png)  
 
-  スループットを50M/sec に変更
+  スループットを **50M/sec** に変更
   
 > **コマンド**:  AZ CLI で実行した場合
 
