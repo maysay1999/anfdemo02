@@ -80,31 +80,7 @@
 
 > **ノート**:  ラボ環境を作成済みの際はスキップ
 
-## 3.  ANF サブネット作成
-
-* ANF サブネットは /26, /28, /24 を推奨 (通常時は /26を推奨)
-
-* パラメータ
-  * ANFサブネット名: **anf-sub**  
-  * ANFサブネット: **172.28.80.0/26**  
-  * ANF委任先: **Microsoft.Netapp/volumes**  
-
-  ![subnet](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-subnet.png)
-
-> **コマンド**:  AZ CLI で実行した場合
-
-  ```bash
-  az network vnet subnet create \
-      --resource-group anfdemolab-rg \
-      --vnet-name anfjpe-vnet \
-      --name anf-sub \
-      --delegations "Microsoft.NetApp/volumes" \
-      --address-prefixes 172.28.80.0/26
-  ```
-
-> **ノート**:  ANF用のサブネットは /26 を推奨 (/28, /26, /24 が推奨値)
-
-## 4. Ubuntu VM作成
+## 3. Ubuntu VM作成
 
 * パラメータ
   * VM名: **ubuntu01**
@@ -121,7 +97,7 @@
 
 > **ノート**:  ラボ環境を作成済みの際はスキップ
 
-## 5. Bastionを構成する (GUI作業)
+## 4. Bastionを構成する (GUI作業)
 
 ブラウザー上のAzure portal を使用して仮想マシンに接続するために、Azure Bastionをデプロイします  
 
@@ -148,7 +124,7 @@
 
 > **ノート**:  ラボ環境を作成済みの際はスキップ
 
-## 6. Bastionで Ubuntu にログイン
+## 5. Bastionで Ubuntu にログイン
 
 Bastion で Ubuntu にログイン
 
@@ -162,6 +138,30 @@ Bastion で Ubuntu にログイン
   ![bastion1](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-bastion.png)
 
   ![bastion2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-bastion2.png)
+
+## 6.  ANF サブネット作成
+
+* ANF サブネットは /26, /28, /24 を推奨 (通常時は /26を推奨)
+
+* パラメータ
+  * ANFサブネット名: **anf-sub**  
+  * ANFサブネット: **172.28.80.0/26**  
+  * ANF委任先: **Microsoft.Netapp/volumes**  
+
+  ![subnet](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-subnet.png)
+
+> **コマンド**:  AZ CLI で実行した場合
+
+  ```bash
+  az network vnet subnet create \
+      --resource-group anfdemolab-rg \
+      --vnet-name anfjpe-vnet \
+      --name anf-sub \
+      --delegations "Microsoft.NetApp/volumes" \
+      --address-prefixes 172.28.80.0/26
+  ```
+
+> **ノート**:  ANF用のサブネットは /26 を推奨 (/28, /26, /24 が推奨値)
 
 ## 7. Azure NetApp Files アカウント作成
 
