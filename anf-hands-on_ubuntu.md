@@ -43,11 +43,9 @@
 
 > **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220319_hands-on_diagram_nfs.pdf)から
 
-## ここからハンズオンセッションを始めます。CLIの記載もありますが、GUIでの作業を推奨します
+## ここからハンズオンセッションを始めます。CLIの記載もありますが、GUIでの作業を推奨します 既に[ラボ環境](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)を作成済みの方は、手順5から始めてください
 
 [CLI(Azure Cloud Shell)](https://docs.microsoft.com/ja-jp/azure/cloud-shell/overview)の使い方は[こちら](https://docs.microsoft.com/ja-jp/azure/cloud-shell/overview)をご参照下さい
-
-既に[ラボ環境](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)を作成済みの方は、手順5から始めてください
 
 ## 1. リソースグループ作成
 
