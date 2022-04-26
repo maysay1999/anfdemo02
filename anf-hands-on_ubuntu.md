@@ -406,9 +406,16 @@
   * ボリューム毎に求められるスループットが違う場合  
 
 * 手順  
+  リアルタイムでの状態を見るため、再度 fio を実行  
+
+   ```bash
+    cd /mnt/nfsvol1 
+    fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=600 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=ANFThroughputTest
+  ```
+
   1. 容量プールでQoS 種類を自動から手動に変更
      ![QoS](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-qos.png)  
-  2. ボリュームのスループットを50M/sec に変更 (右クリックで変更可能)  
+  2. ボリュームのスループットを**50M/sec** に変更 (右クリックで変更可能)  
      ![QoS 2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-qos2.png)  
   3. 12で作成した fio でリアルタイムで確認できる
   
@@ -420,7 +427,7 @@
       --qos-type Manual
   ```
 
-  スループットを50M/sec に変更
+  スループットを **50M/sec** に変更
   
   ```bash
   az netappfiles volume update -g anfdemolab-rg \
