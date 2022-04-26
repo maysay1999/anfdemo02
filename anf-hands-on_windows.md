@@ -23,6 +23,20 @@
 
 ![storage hierarchy](https://docs.microsoft.com/ja-jp/azure/media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)
 
+## ANF のユースケース
+
+[ANF のユースケース](https://cloud.netapp.com/hubfs/Solution-Templates/ANF_Solution%20Brief_v3_Final.pdf)は[こちら](https://cloud.netapp.com/hubfs/Solution-Templates/ANF_Solution%20Brief_v3_Final.pdf)からダウングレードできます(英語版)
+
+主な用途は  
+
+* **SAP**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#sap-hana)
+* **HPC**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#hpc-solutions)
+* **VDI**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#virtual-desktop-infrastructure-solutions)
+* **Azure VMware Solutions**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#azure-vmware-solutions)
+* **Oracle**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#oracle)
+* **kubernetes(DevOps)**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#azure-platform-services-solutions)
+* **File share**  設定方法等詳細は[こちら](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures#file-sharing-and-global-file-caching)
+
 ## ダイアグラム
 
 ![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-diagram.png)
@@ -36,7 +50,7 @@
 * [ボリューム](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-understand-storage-hierarchy#volumes): NFS (NFSv3 または NFSv4.1)、SMB3、またはデュアル プロトコル (NFSv3 と SMB、または NFSv4.1 と SMB)を対応  
 * [QoS](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-understand-storage-hierarchy#qos_types): QoS の種類は容量プールの属性です。 Azure NetApp Files では、"自動 (既定)" と "手動" の 2 種類の QoS 容量プールが提供されます  
 
-## ここからハンズオンセッションを始めます。CLIの記載もありますが、GUIでの作業を推奨します
+## ここからハンズオンセッションを始めます。CLIの記載もありますが、GUIでの作業を推奨します 既に[ラボ環境](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)を作成済みの方は、手順5から始めてください
 
 [CLI(Azure Cloud Shell)](https://docs.microsoft.com/ja-jp/azure/cloud-shell/overview)の使い方は[こちら](https://docs.microsoft.com/ja-jp/azure/cloud-shell/overview)をご参照下さい
 
@@ -73,31 +87,7 @@
 
 > **ノート**:  ラボ環境を作成済みの際はスキップ
 
-## 3.  ANF サブネット作成
-
-* ANF サブネットは /26, /28, /24 を推奨 (通常時は /26を推奨)
-
-* パラメータ
-  * ANFサブネット名: **anf-sub**  
-  * ANFサブネット: **172.28.80.0/26**  
-  * ANF委任先: **Microsoft.Netapp/volumes**  
-
-  ![subnet](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-subnet.png)
-
-> **コマンド**:  AZ CLI で実行した場合
-
-  ```bash
-  az network vnet subnet create \
-      --resource-group anfdemolab-rg \
-      --vnet-name anfjpe-vnet \
-      --name anf-sub \
-      --delegations "Microsoft.NetApp/volumes" \
-      --address-prefixes 172.28.80.0/26
-  ```
-
-> **ノート**:  ANF用のサブネットは /26 を推奨 (/28, /26, /24 が推奨値)
-
-## 4. Peering で Domain Controller がある VNet と繋ぐ
+## 3. Peering で Domain Controller がある VNet と繋ぐ
 
 * パラメータ
   * Peering link name: **Anf-to-Ad**
@@ -106,7 +96,7 @@
 
 > **ノート**:  ラボ環境を作成済みの際はスキップ
 
-## 5. Windows VM作成
+## 4. Windows VM作成
 
 * パラメータ
   * VM名: **Win10-01**
@@ -149,6 +139,30 @@
   ```
 
 > **ノート**:  ラボ環境を作成済みの際はスキップ
+
+## 3.  ANF サブネット作成
+
+* ANF サブネットは /26, /28, /24 を推奨 (通常時は /26を推奨)
+
+* パラメータ
+  * ANFサブネット名: **anf-sub**  
+  * ANFサブネット: **172.28.80.0/26**  
+  * ANF委任先: **Microsoft.Netapp/volumes**  
+
+  ![subnet](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-subnet.png)
+
+> **コマンド**:  AZ CLI で実行した場合
+
+  ```bash
+  az network vnet subnet create \
+      --resource-group anfdemolab-rg \
+      --vnet-name anfjpe-vnet \
+      --name anf-sub \
+      --delegations "Microsoft.NetApp/volumes" \
+      --address-prefixes 172.28.80.0/26
+  ```
+
+> **ノート**:  ANF用のサブネットは /26 を推奨 (/28, /26, /24 が推奨値)
 
 ## 6. Bastionで Windows 10 にログイン
 
