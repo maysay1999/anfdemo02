@@ -50,7 +50,7 @@
 * [ボリューム](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-understand-storage-hierarchy#volumes): NFS (NFSv3 または NFSv4.1)、SMB3、またはデュアル プロトコル (NFSv3 と SMB、または NFSv4.1 と SMB)を対応  
 * [QoS](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-understand-storage-hierarchy#qos_types): QoS の種類は容量プールの属性です。 Azure NetApp Files では、"自動 (既定)" と "手動" の 2 種類の QoS 容量プールが提供されます  
 
-## ここからハンズオンセッションを始めます。CLIの記載もありますが、GUIでの作業を推奨します 既に[ラボ環境](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)を作成済みの方は、手順5から始めてください
+## ここからハンズオンセッションを始めます。CLIの記載もありますが、GUIでの作業を推奨します 既に[ラボ環境](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md)を作成済みの方は、[手順5](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_windows.md#5-bastion%E3%81%A7-windows-10-%E3%81%AB%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3)から始めてください
 
 [CLI(Azure Cloud Shell)](https://docs.microsoft.com/ja-jp/azure/cloud-shell/overview)の使い方は[こちら](https://docs.microsoft.com/ja-jp/azure/cloud-shell/overview)をご参照下さい
 
