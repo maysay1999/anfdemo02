@@ -11,7 +11,7 @@
 
 ![diagram](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-diagram.png)
 
-> **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220302_hands-on_diagram_crr.pdf)から
+> **Note**:  ダイアグラムのダウンロードは[こちら](https://github.com/maysay1999/anfdemo02/blob/main/pdfs/220606_hands-on_diagram_crr.pdf)から
 
 ## 料金
 
@@ -39,9 +39,9 @@
    ~/AnfCrr/japanwest-create.sh
   ```
 
-* こちらが自動作成されます
+* このshellを実行することで、西日本にこちらのリソースが自動作成されます
   * Japneast にソースボリューム: anfjpe/pool1/source-volume  
-  * Japnwest の Vnet: **anfjpw-vnet**  
+  * Japnwest の VNet: **anfjpw-vnet**  
   * Japnwest の Address space:  **172.29.80.0/22**  
   * Japnwest の Subnet #1: **vm-sub**.  172.29.81.0/24  
   * Japnwest の Subnet #2: **anf-sub**.  172.29.80.0/26  
@@ -50,9 +50,11 @@
 
 ## 3. レプリケーション ボリュームを作成
 
+* 通常のボリュームではなく、**レプリケーション ボリューム**を作成する
+
 * パラメータ
   * Replication volume name: **destination-volume**  
-  * Througput: **16Mbps**  
+  * Throughput: **16Mbps**(QoSをmanualで設定しているため、設定する必要あり)  
   * Replication frequency: **daily**  
   * Source volume ID: `az netappfiles volume show -g anfdemolab-rg --account-name anfjpe --pool-name pool1 --name source-volume  --query id -o tsv`  
 
@@ -98,12 +100,13 @@
   --volume-type "DataProtection"
   ```
 
-## 4. ディスティネーションボリューム (destination-volume) のリソースID を ソースボリューム (destination-volume)に貼り付ける
+## 4. ディスティネーションボリューム (destination-volume) のリソースID を ソースボリューム (source-volume)に貼り付ける
 
 * 手順  
   1. ディスティネーションボリューム (destination-volume) のリソースID をコピー  
+     ボリューム --> source-volume --> プロパティ --> リソースID
      ![resource of destination volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-crr-volumeid_dst.png)  
-     あるいはこのコマンド
+      あるいはこのコマンド
 
   ```bash
   az netappfiles volume show -g anfdemolab-rg \
@@ -111,7 +114,7 @@
   --name destination-volume  --query id -o tsv
   ```
 
-  2. Pool (pool1) --> volume (source-volume) --> Replication に貼る  
+  2. コピーを取った1の値を、Pool (pool1) --> volume (source-volume) --> Replication に貼る  
     あるいはこのコマンド
 
   ```bash
