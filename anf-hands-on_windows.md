@@ -142,7 +142,7 @@
 
 ## 5. Bastionで Windows 10 にログイン
 
-* ドメイン参加が終わっていない場合は、[こちらのリンク](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md#11-windows-10-client-%E3%82%92-ad-domain-azureisfunlocal-%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%95%E3%81%9B%E3%82%8B)を参照にドメイン参加作業をおこなう  
+* Windows10のドメイン参加が終わっていない場合は、[こちらのリンク](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md#11-windows-10-client-%E3%82%92-ad-domain-azureisfunlocal-%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%95%E3%81%9B%E3%82%8B)を参照にドメイン参加作業をおこなう  
 
 * Bastion で Windows 10 にログイン。 リソースグループ --> "anfdemolab-rg" --> ubuntu から "接続" をクリック --> "Bastion"  
   * ユーザー名: `anfadmin@azureisfun.local`
