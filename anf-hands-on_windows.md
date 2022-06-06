@@ -142,6 +142,8 @@
 
 ## 5. Bastionで Windows 10 にログイン
 
+* ドメイン参加が終わっていない場合は、[こちらのリンク](https://github.com/maysay1999/tipstricks/blob/main/anf-demo-creation.md#11-windows-10-client-%E3%82%92-ad-domain-azureisfunlocal-%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%95%E3%81%9B%E3%82%8B)を参照にドメイン参加作業をおこなう  
+
 * Bastion で Windows 10 にログイン。 リソースグループ --> "anfdemolab-rg" --> ubuntu から "接続" をクリック --> "Bastion"  
   * ユーザー名: `anfadmin@azureisfun.local`
   * パスワード: main.tf につけたパスワード
@@ -356,7 +358,7 @@
 
 * 手順 GUI にて実行  
   ANFのバージョンコントール機能を体験してみよう  
-  1. Zドライブ内に、test.txt という名のテストファイルを作成  
+  1. Zドライブ内に、test.txt という名のテキストファイルを作成し、  
   2. ボリューム nfsvol1 --> Snapshots --> Add snapshot で *snapshot01*  の名でスナップショットを作成  
   3. test.txtを開き内容を書き換える  
   4. *snapshot02*  の名でスナップショットを作成  
