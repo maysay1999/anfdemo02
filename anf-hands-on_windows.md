@@ -142,7 +142,7 @@
 
 ## 5. Bastionで Windows 10 にログイン
 
-* Bastion で Windows 10 にログイン。 リソースグループ --> anfdemolab-rg --> ubuntu から 接続 --> Bastion  
+* Bastion で Windows 10 にログイン。 リソースグループ --> "anfdemolab-rg" --> ubuntu から "接続" をクリック --> "Bastion"  
   * ユーザー名: `anfadmin@azureisfun.local`
   * パスワード: main.tf につけたパスワード
   * 注意) Bastionでは **{ドメイン名}\\{ユーザ名}** は使用できない。  
@@ -305,9 +305,9 @@
   ![volume2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-mount.png)
 
 * 手順  
-  1. This PC Map で右クリック Map Network Device... をクリック  
-  2. Zドライブにマップ  
-  3. Zドライブ上にtext.txtを作成
+  1. Windows ファイルエクスプローラーの "This PC" アイコンで 右クリック "Map Network Device..." をクリック  
+  2. Z ドライブにマップ  
+  3. Z ドライブ上にtext.txtを作成  
 
   ![z drive](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-zdrive.png)
 
@@ -330,6 +330,8 @@
   ![CrystalDiskMark](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-crystal.png)
 
 ## 14. ボリュームサイズを　2TiB　に変更
+
+* "ボリューム" --> "概要" --> "サイズ変更" でサイズを2048に変更  
 
 * 予測値  
   * スループットが 16Mbpsから 32Mbps になる  
@@ -354,8 +356,8 @@
 
 * 手順 GUI にて実行  
   ANFのバージョンコントール機能を体験してみよう  
-  1. test.txt という名のテストファイルを作成  
-  2. *snapshot01*  の名でスナップショットを作成  
+  1. Zドライブ内に、test.txt という名のテストファイルを作成  
+  2. ボリューム nfsvol1 --> Snapshots --> Add snapshot で *snapshot01*  の名でスナップショットを作成  
   3. test.txtを開き内容を書き換える  
   4. *snapshot02*  の名でスナップショットを作成  
   5. test.txtを開き内容を書き換える  
