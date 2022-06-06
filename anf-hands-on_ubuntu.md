@@ -126,9 +126,11 @@
 
 ## 5. Bastionで Ubuntu にログイン
 
-* Bastion で Ubuntu にログイン
+* Bastion で Ubuntu にログイン。 リソースグループ --> anfdemolab-rg --> ubuntu から 接続 --> Bastion  
   * ユーザー名: `anfadmin`
   * パスワード: main.tf につけたパスワード
+
+  ![bastion3](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-bastion3)
 
 * sudoで Root で作業する  
   * 今回は sudo を利用し、root 権限で作業します (sudo su - または sudo -i を使う)
