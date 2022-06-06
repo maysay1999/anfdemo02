@@ -126,11 +126,13 @@
 
 ## 5. Bastionで Ubuntu にログイン
 
-* Bastion で Ubuntu にログイン。 リソースグループ --> anfdemolab-rg --> ubuntu から 接続 --> Bastion  
+* Bastion で Ubuntu にログイン。 リソースグループ --> "anfdemolab-rg" --> ubuntu から "接続" をクリック --> "Bastion"  
   * ユーザー名: `anfadmin`
   * パスワード: main.tf につけたパスワード
 
-  ![bastion3](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-bastion3.png)
+  ![bastion3](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-bastion3.png)  
+
+  ![bastion1](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-bastion.png)  
 
 * sudoで Root で作業する  
   * 今回は sudo を利用し、root 権限で作業します (sudo su - または sudo -i を使う)
@@ -138,8 +140,6 @@
   ```bash
    sudo -i
   ```
-
-  ![bastion1](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-bastion.png)
 
   ![bastion2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-bastion2.png)
 
@@ -392,7 +392,7 @@
 
 ## 16. スナップショット ポリシー
 
-* Azureポータルで、Azure NetApp Account (anfjpe) にアクセス  
+* Azureポータルで、Azure NetApp Account (anfjpe) にアクセスし、"スナップショットポリシー"をクリック  
   ![Snapsho policy top](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-snapshotpolicy3.png)  
 
 * パラメータ  
