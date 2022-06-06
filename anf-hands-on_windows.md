@@ -142,7 +142,7 @@
 
 ## 5. Bastionで Windows 10 にログイン
 
-* Bastion で Windows 10 にログイン
+* Bastion で Windows 10 にログイン。 リソースグループ --> anfdemolab-rg --> ubuntu から 接続 --> Bastion  
   * ユーザー名: `anfadmin@azureisfun.local`
   * パスワード: main.tf につけたパスワード
   * 注意) Bastionでは **{ドメイン名}\\{ユーザ名}** は使用できない。  
@@ -182,7 +182,7 @@
 * Azure ポータルで "netapp" で検索すると、Azure NetApp Files のアイコンが現れます  
   ![anf icon](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-account.png)
 
-* 次に NetAppアカウントを作成します  下記パラメータを記入し、「作成」をクリックします
+* "Azure NetApp Files" のアイコンをクリックし、 NetAppアカウントを作成します  下記パラメータを記入し、「作成」をクリックします
 
   * パラメータ
     * ANF アカウント名: **anfjpe**  
@@ -378,36 +378,41 @@
 
 ## 17. スナップショット ポリシー
 
+* Azureポータルで、Azure NetApp Account (anfjpe) にアクセス  
+  ![Snapsho policy top](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-snapshotpolicy3.png)  
+
 * パラメータ  
   * スナップショットポリシー名:  **policy02**
   * 保存するスナップショットの数: **8**
-  * 毎時何分に実行: (好みの時間)
+  * スナップショットを作成する時間 (分): (好みの時間)
 
 * 手順 GUI にて実行  
-  1. NetApp Account --> Snapshot policies で Snapshot policy を作成
+  1. スナップショットポリシーを作成  
      ![snapshot policy creation](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshotpolicy.png)  
-  2. 1で作成した Snapshot policy を特定の volume にアサイン
+  2. 作成したスナップショットポリシーをボリュームにあてる  
      ![snapshot policy assignment](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-snapshotpolicy2.png)  
+  3. "保存" をクリック  
 
 * 豆知識
   * タイムゾーンは UTC で表記されているので、+9 する必要あり
 
 ## 18. QoS 種類を自動から手動に変更
 
+* QoS 種類は Azure NetApp Files アカウントの下の "容量プール" で行う  
 * QoSを手動にするケース:  
   * ボリュームは小さいが、スループットを上げたい場合  
   * SAP HANAの場合  
   * ボリューム毎に求められるスループットが違う場合  
 
 * 手順  
-  1. 容量プールでQoS 種類を自動から手動に変更
+  1. Azure NetApp Files アカウントの下の **"容量プール"** のQoS 種類を "自動" から "手動"に変更  
      ![Change QoS](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-qos.png)  
-  2. ボリュームのスループットを手動で **50M/sec** に変更  
+  2. ボリュームのスループットを**50M/sec** に変更 (右クリックで変更可能)  
      ![Manually change throughput](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-throughput50.png)  
-
-  スループットを **50M/sec** に変更
   
 > **コマンド**:  AZ CLI で実行した場合
+
+  スループットを **50M/sec** に変更  
 
   ```bash
   az netappfiles volume update -g anfdemolab-rg \
@@ -418,15 +423,17 @@
 
 ## 19. 容量プールのサイズを増やし、ボリュームのスループットをさらに増やす
 
+* 容量プールのサイズ変更は Azure NetApp Files アカウントの下の "容量プール" --> "サイズ変更" で行う  
+
 * 手順  
-  1. 容量プールのサイズを 6 TiB　に拡張  
+  1. 容量プールのサイズを 6 TiB　に拡張。サイズ変更 --> 6TiB に変更 --> "OK"  
      ![Resize pool](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-resizepool.png)  
-  2. スループットを80M/sec に変更  
+  2. ボリューム smbvol1 のスループットを "スループットの変更" で 80M/sec に変更し、"OK" をクリック  
      ![Manually change throughput](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-throughput80.png)  
 
 > **コマンド**:  AZ CLI で実行した場合
 
-  容量プールを 6TB に変更  
+  容量プールを 6TiB に変更  
 
   ```bash
   az netappfiles pool update -g anfdemolab-rg \
@@ -450,11 +457,12 @@
 ## 20. サービスレベルを変更し、ボリュームのスループットをまたさらに増やす
 
 * 手順  
-  1. Premiumサービスレベルの4TB容量プール **pool2** を作成  
+  ポイント: 容量プールをもう一つ違うサービスレベルで作成し、ボリュームを移動させ、空になった容量プールを削除  
+  1. Premiumサービスレベルの4TB容量プール **pool2** を新規で作成  
      ![Create pool2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-servicelevel.png)  
-  2. ボリュームを容量プール **pool2** に移動  
+  2. ボリュームをプール **pool2** に移動 (右クリックから"Change Pool")  
      ![Move volume to pool2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-servicelevel2.png)  
-  3. pool1を削除  
+  3. 空になったpool1を削除  (右クリックから削除)
 
 > **コマンド**:  AZ CLI で実行した場合
 
