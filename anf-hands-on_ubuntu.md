@@ -130,7 +130,7 @@
   * ユーザー名: `anfadmin`
   * パスワード: main.tf につけたパスワード
 
-  ![bastion3](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-bastion3)
+  ![bastion3](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-bastion3.png)
 
 * sudoで Root で作業する  
   * 今回は sudo を利用し、root 権限で作業します (sudo su - または sudo -i を使う)
@@ -172,7 +172,7 @@
 * Azure ポータルで "netapp" で検索すると、Azure NetApp Files のアイコンが現れます  
   ![anf icon](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-account.png)  
 
-* 次に NetAppアカウントを作成します 下記パラメータを記入し、「作成」をクリックします
+* "Azure NetApp Files" のアイコンをクリックし、 NetAppアカウントを作成します 下記パラメータを記入し、「作成」をクリックします
 
   * パラメータ
     * ANF アカウント名(名前): **anfjpe**  
