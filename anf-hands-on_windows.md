@@ -378,7 +378,7 @@
 
 ## 17. スナップショット ポリシー
 
-* Azureポータルで、Azure NetApp Account (anfjpe) にアクセス  
+* Azureポータルで、Azure NetApp Account (anfjpe) にアクセスし、"スナップショットポリシー"をクリック  
   ![Snapsho policy top](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-snapshotpolicy3.png)  
 
 * パラメータ  
@@ -426,7 +426,7 @@
 * 容量プールのサイズ変更は Azure NetApp Files アカウントの下の "容量プール" --> "サイズ変更" で行う  
 
 * 手順  
-  1. 容量プールのサイズを 6 TiB　に拡張。サイズ変更 --> 6TiB に変更 --> "OK"  
+  1. 容量プールのサイズを 6 TiB　に拡張。サイズ変更 --> 6TiB に変更 --> "OK"をクリック  
      ![Resize pool](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-resizepool.png)  
   2. ボリューム smbvol1 のスループットを "スループットの変更" で 80M/sec に変更し、"OK" をクリック  
      ![Manually change throughput](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-smb-throughput80.png)  
