@@ -328,6 +328,10 @@
 
 ## 13. ボリュームサイズを　2TiB (2048)　に変更
 
+* "ボリューム" --> "概要" --> "サイズ変更" でサイズを2048に変更  
+
+  ![resize volume overview](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-resize.png)  
+
 * 予測値  
   * スループットが 16Mbpsから 32Mbps になる  
   * ダウンタイムが発生しない  
@@ -347,12 +351,15 @@
 ## 14. One-time スナップショット と volume-based 復元
 
 * GUI にて実行  
-  1. *snapshot01*  の名でスナップショットを作成
-  2. スナップショットからクローンを作成  
-     * ボリューム名: clone  
-     * サイズ: 100MiB  
+  1. ボリューム nfsvol1 --> Snapshots --> Add snapshot でスナップショットを作成  
+     ![Create snapshot](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-snapshot0.png)  
+  2. *snapshot01*  の名でスナップショットを作成
+  3. スナップショットからクローンを作成 (optional)  
+     * "snapshot01" の上で右クリックし、"新しいボリュームに複製を選択"
+     * 名前: clone  
+     * サイズ: ディフォルトのまま(100MiB)
      ![Create clone](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-clone.png)  
-  3. 復元してみる (optional): できたスナップショットを右クリックすることで復元可能
+  4. 復元してみる (optional): できたスナップショットを右クリックすることで復元可能
 
 * 豆知識
   * 保存できる snapshot の最大値は 1ボリュームあたり 255個
@@ -370,28 +377,35 @@
 
 ## 15. スナップショット: file-based 復元
 
+* Ubuntu の Bastion のスクリーンからCLIでの操作を行う  
+
 * 手順  
   1. `cd /mnt/nfsvol1/`
   2. `ls -la`
   3. `cd .snapshot`
   4. `ls -la`
   5. `cd snapshot01`
-  6. ファイル test.txt を text2.txt の名前でリストアしてみる  `cp test.txt ../../test2.txt`
+  6. ファイル test.txt を text2.txt の名前でリストアしてみる  
+     `cp test.txt ../../test2.txt`  
 
   ![file-based restoration](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-snapshot2.png)
 
 ## 16. スナップショット ポリシー
 
+* Azureポータルで、Azure NetApp Account (anfjpe) にアクセス  
+  ![Snapsho policy top](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-snapshotpolicy3.png)  
+
 * パラメータ  
   * スナップショットポリシー名:  **policy01**
   * 保存するスナップショットの数: **8**
-  * 毎時何分に実行: (好みの時間)
+  * スナップショットを作成する時間 (分): (好みの時間)
 
 * 手順  
   1. スナップショットポリシーを作成  
     ![snapshot policy](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-snapshotpolicy.png)  
   2. 作成したスナップショットポリシーをボリュームにあてる  
     ![snapshot policy2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-snapshotpolicy2.png)  
+  3. "保存" をクリック  
   
 * 豆知識
   * タイムゾーンは UTC で表記されているので、+9 する必要あり
@@ -410,6 +424,7 @@
 
 ## 17. QoS 種類を自動から手動に変更
 
+* QoS 種類は Azure NetApp Files アカウントの下の "容量プール" で行う  
 * QoSを手動にするケース:  
   * ボリュームは小さいが、スループットを上げたい場合  
   * SAP HANAの場合  
@@ -423,7 +438,7 @@
     fio -rw=randwrite -bs=8k -size=2000m -numjobs=40 -runtime=600 -direct=1 -invalidate=1 -ioengine=libaio -iodepth=32 -iodepth_batch=32 -group_reporting -name=ANFThroughputTest
   ```
 
-  1. 容量プールでQoS 種類を自動から手動に変更
+  1. Azure NetApp Files アカウントの下の **"容量プール"** のQoS 種類を "自動" から "手動"に変更  
      ![QoS](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-qos.png)  
   2. ボリュームのスループットを**50M/sec** に変更 (右クリックで変更可能)  
      ![QoS 2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-qos2.png)  
@@ -448,13 +463,17 @@
 
 ## 18. 容量プールのサイズを増やし、ボリュームのスループットをさらに増やす
 
+* 容量プールのサイズ変更は Azure NetApp Files アカウントの下の "容量プール" --> "サイズ変更" で行う  
+
 * 手順  
-  1. 容量プールのサイズを 6 TiB　に拡張  
+  1. 容量プールのサイズを 6 TiB　に拡張。サイズ変更 --> 6TiB に変更 --> "OK"  
      ![resize pool](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-resizepool.png)  
-  2. スループットを80M/sec に変更  
+  2. ボリューム nfsvol1 のスループットを "スループットの変更" で 80M/sec に変更し、"OK" をクリック  
      ![resize pool2](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-resizepool2.png)  
 
-> **コマンド**:  AZ CLI で実行した場合
+> **コマンド**:  AZ CLI で実行した場合  
+
+  容量プールを 6TiB に変更  
 
   ```bash
   az netappfiles pool update -g anfdemolab-rg \
