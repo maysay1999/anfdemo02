@@ -221,6 +221,10 @@
 
 ## 9. ボリューム作成
 
+* ボリュームから **"ボリュームの追加"** をクリックし、**"確認と作成**"をクリックし、ボリュームを作成する
+
+  ![create volume](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-volume_create.png)
+
 * パラメータ
   * ボリューム名: **nfsvol1**  
   * クォータ (GiB): **1024** GiB  
@@ -263,14 +267,18 @@
 
 * パラメータ
   * マウントパス: **/mnt/nfsvol1/**
-  * 作成されたボリュームの**マウントに関する指示** を参照 (1.および3.を実施)
+  * 作成されたボリュームの**マウントに関する指示** を参照  
 
 * 手順  
   1. NFS client software をインストール  
+     `apt install -y nfs-common`  
      ![nfs-common](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-anfmount.png)  
-  2. ディレクトリを変更`cd /mnt`  
-  3. 新しくディレクトリを作成 `mkdir nfsvol1`  
-  4. マウントする: `mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 172.28.80.4:/nfsvol1 nfsvol1`  
+  2. ディレクトリを変更  
+     `cd /mnt`  
+  3. 新しくディレクトリを作成  
+     `mkdir nfsvol1`  
+  4. マウントする  
+     `mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 172.28.80.4:/nfsvol1 nfsvol1`  
      ![mount](https://github.com/maysay1999/anfdemo02/blob/main/images/anf-nfs-anfmount2.png)  
 
 * ボリュームのマウント状態を確認  
